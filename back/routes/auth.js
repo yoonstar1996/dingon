@@ -3,7 +3,7 @@ const router = express.Router();
 const {User} = require("../models");
 const passport = require("passport");
 const {isLoggedIn,isNotLoggedIn} = require("./middlewares");
-
+const bcrypt = require("bcrypt")
 router.post("/signup",isNotLoggedIn,async(req,res,next)=>{
     const { email, nickName, password } = req.body;
     try {

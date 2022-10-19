@@ -1,9 +1,10 @@
 import React from "react";
+import AssignModal from "./AssignModal";
 
 function Main () {
     return ( 
         <>
-        <div>안녕하세요</div>
+        <AssignModal/>
         </>
      );
 }
