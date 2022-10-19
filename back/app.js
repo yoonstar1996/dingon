@@ -33,7 +33,7 @@ sequelize
 const passportConfig = require("./passport");
 const authRouter = require("./routes/auth");
 const searchRouter = require("./routes/search");
-
+const postRouter = require("./routes/post");
 passportConfig();
 app.use(morgan("dev"));
 app.use(express.json());
@@ -56,7 +56,7 @@ app.get("/",(req,res)=>{
 });
 app.use("/auth",authRouter);
 app.use("/search",searchRouter);
-
+app.use("/post",postRouter);
 app.use((req,res,next)=>{
     res.send({code:404});
 });
