@@ -5,16 +5,25 @@ const Wholegaesipan = () => {
       <div className="wrap">
         <div
           style={{ backgroundColor: "red", width: "100px", height: "100px" }}
-        ></div>
+        >
+          {" "}
+          갤러리
+        </div>
         <div
           style={{ backgroundColor: "blue", width: "100px", height: "100px" }}
-        ></div>
+        >
+          마이너갤
+        </div>
         <div
           style={{ backgroundColor: "violet", width: "100px", height: "100px" }}
-        ></div>
+        >
+          미니갤
+        </div>
         <div
           style={{ backgroundColor: "gray", width: "100px", height: "100px" }}
-        ></div>
+        >
+          갤로그
+        </div>
       </div>
     </>
   );
