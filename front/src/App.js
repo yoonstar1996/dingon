@@ -17,7 +17,7 @@ const Test = (props) => {
 function App() {
   return (
     <div>
-      <Test></Test>
+      {/* <Test></Test> */}
       <Search></Search>
     </div>
   );

@@ -3,7 +3,7 @@
     padding: 0;
 }
 .Search{
-    width: 70%;
+    width: 50%;
     height: 100px;
     position: fixed;
     display: flex;
@@ -20,8 +20,6 @@
 .gaesipan{
     height: 50%;
     width: 100%;
-    
-    
 }
 .Searchengine{
     width: 60%;
