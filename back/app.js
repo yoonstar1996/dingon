@@ -54,7 +54,7 @@ app.use((req, res, next) => {
   next();
 });
 app.get("/", (req, res) => {
-  // res.send({code:"안녕하세요 저는 우석우 입니다"});
+  res.send({ code: "안녕하세요 저는 우석우 입니다" });
 });
 app.post("/signup", async (req, res, next) => {
   const { email, nickName, password } = req.body;
