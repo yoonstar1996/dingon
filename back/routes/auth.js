@@ -48,8 +48,10 @@ router.post("/logout",isLoggedIn,(req,res,next)=>{
 });
 router.post("/emailCheck",isNotLoggedIn,async(req,res,next)=>{
     try{
-        const User = User.findOne({where:{email:req.body.email}});
-        if(User){
+        //비동기 처리 및 변수 바꿈
+        const Userdata = await User.findOne({where:{email:req.body.email}});
+        console.log(Userdata);
+        if(Userdata){
             res.send({code:400});
         }
         else{
@@ -62,8 +64,9 @@ router.post("/emailCheck",isNotLoggedIn,async(req,res,next)=>{
 });
 router.post("/nickNameCheck",isNotLoggedIn,async(req,res,next)=>{
     try{
-        const User = User.findOne({where:{nickName:req.body.nickName}});
-        if(User){
+        //비동기 처리 및 변수 바꿈
+        const Userdata = await User.findOne({where:{nickName:req.body.nickName}});
+        if(Userdata){
             res.send({code:400});
         }
         else{
