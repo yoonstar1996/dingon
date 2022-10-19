@@ -2,6 +2,8 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Search from "./Search/Search";
+import wholegaesipan from "./whole/all";
+import Wholegaesipan from "./whole/all";
 
 const Test = (props) => {
   const [value, setValue] = useState("");
@@ -17,8 +19,8 @@ const Test = (props) => {
 function App() {
   return (
     <div>
-      {/* <Test></Test> */}
-      <Search></Search>
+      {/* <Search></Search> */}
+      <Wholegaesipan></Wholegaesipan>
     </div>
   );
 }
