@@ -23,13 +23,16 @@ const passport = require("passport");
 sequelize
   .sync({ alter: true })
   .then(() => {
-    console.log("데이터베이스 연결 성공");
+    console.log("데이터베이스 연결 성공했습니다");
   })
   .catch((err) => {
     console.error(err);
   }); // DB연결
 
 const passportConfig = require("./passport");
+const authRouter = require("./routes/auth");
+const searchRouter = require("./routes/search");
+const postRouter = require("./routes/post");
 passportConfig();
 app.use(morgan("dev"));
 app.use(express.json());
@@ -41,6 +44,7 @@ app.use(passport.session());
 
 app.use("/uploads", express.static("uploads"));
 app.use("/static", express.static("static"));
+
 
 app.use(
   cors({
@@ -92,6 +96,7 @@ app.post("/login", (req, res, next) => {
       return res.send({ code: 200 });
     });
   })(req, res, next);
+
 });
 app.use((req, res, next) => {
   res.send({ code: 404 });
