@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Search from "./Search";
+import Search from "./Search/Search";
 
 const Test = (props) => {
   const [value, setValue] = useState("");
