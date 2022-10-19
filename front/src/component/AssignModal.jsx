@@ -44,11 +44,11 @@ function AssignModal() {
         let data={
             email:Email,
             password:Pw,
-            nickNmae:nickName
+            nickName:nickName
         }
 
         axios({
-            url: "/auth/signup",
+            url: "http://localhost:8050/auth/signup",
             method: "post",
             data:data
         }).then((result) => {
