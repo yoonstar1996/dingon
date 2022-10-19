@@ -1,0 +1,28 @@
+.wrapper{
+    border: 1px solid #eeeeee;
+    width: 1050px;
+    height: 500px;
+    margin: 30px;
+}
+.allSelect{
+    background-color: rgb(69, 69, 172);
+    display: inline;
+    color: white;
+    border-radius: 10px;
+}
+.mid-div{
+    border: 1px solid blue;
+    width: 1048px;
+    height: 450px;
+    margin: 20px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    overflow-y: scroll;
+}
+.mid-div > div{
+    margin: 5px;
+    display: inline;
+    width: 100px;
+}
