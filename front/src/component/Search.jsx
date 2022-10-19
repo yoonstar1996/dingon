@@ -1,5 +1,5 @@
 import axios from "axios";
-import "./Search.css";
+import "../css/Search.css";
 import { useState } from "react";
 const Search = () => {
   const [name, setText] = useState("");
@@ -26,7 +26,7 @@ const Search = () => {
                 type="button"
                 onClick={() => {
                   axios({
-                    url: "/search/board",
+                    url: "http://localhost:8050/search/board",
                     method: "GET",
                     data: name,
                   }).then((response) => {
@@ -34,7 +34,7 @@ const Search = () => {
                   });
                 }}
               >
-                검색 dkdk
+                검색asdasdasda
               </button>
             </div>
           </div>
