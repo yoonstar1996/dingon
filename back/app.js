@@ -45,7 +45,6 @@ app.use(passport.session());
 app.use("/uploads", express.static("uploads"));
 app.use("/static", express.static("static"));
 
-
 app.use(
   cors({
     origin: ["http://localhost:3000"],
@@ -96,7 +95,6 @@ app.post("/login", (req, res, next) => {
       return res.send({ code: 200 });
     });
   })(req, res, next);
-
 });
 app.use((req, res, next) => {
   res.send({ code: 404 });
