@@ -1,8 +1,8 @@
 import axios from "axios";
 import "./Search.css";
-import { userState } from "react";
+import { useState } from "react";
 const Search = () => {
-  //   const [text, setText] = userState("");
+  const [name, setText] = useState("");
   return (
     <>
       <div className="wrap">
@@ -17,8 +17,8 @@ const Search = () => {
                 type="text"
                 placeholder="검색"
                 onChange={(e) => {
-                  console.log(e.target.value);
-                  //   setText(e.target.value);
+                  setText(e.target.value);
+                  console.log(name);
                 }}
               ></input>
             </div>
@@ -26,6 +26,11 @@ const Search = () => {
               <button
                 type="button"
                 onClick={() => {
+                  axios({
+                    url: "/search/board",
+                    method: "GET",
+                    data: name,
+                  });
                   //   console.log(textvalue);
                 }}
               >
