@@ -1,44 +1,48 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import AssignModal from "./AssignModal";
 import Hitgall from "./Hitgall";
 
-export default function Sticky() {
+export default function Sticky({check}) {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
-
+  const [onAssign,setOnAssign]=useState(false);
+  
   function login() {
     var data = {
-      id: setId,
-      pw: setPw,
+      email: id,
+      password: pw,
     };
 
     axios({
-      url: "/auth/login",
+      url: "http://localhost:8050/auth/login",
       method: "post",
       data: data,
     }).then((response) => {
-      if (response.data.success) {
-        window.location.href = "/";
+      console.log(response.data);
+      if (response.data.code===200) {
+        alert("성공")
+        check(true)
+        // window.location.href = "/";
       } else {
         alert("로그인 실패~");
       }
     });
   }
 
-  function signuplink() {
-    window.location.href = "/asign";
-  }
+  
 
   let [hit, setHit] = useState([]);
-  useEffect(() => {
-    axios.get("/search/hit").then((response) => {
-      setHit(response.data);
-    });
-  }, []);
-
+  // useEffect(() => {
+  //   axios.get("/search/hit").then((response) => {
+  //     setHit(response.data);
+  //   });
+  // }, []);
+  console.log(onAssign);
   return (
     <>
+      {onAssign ? <AssignModal senddata={setOnAssign}/>:<></>}
       <div className="content-right">
         <div className="loginbox">
           <form className="formbox">
@@ -71,7 +75,9 @@ export default function Sticky() {
             </button>
           </div>
           <div>
-            <button onClick={signuplink}>회원가입</button>
+            <button onClick={()=>{
+              setOnAssign(true)
+            }}>회원가입</button>
           </div>
         </div>
         <div className="hitgall">
