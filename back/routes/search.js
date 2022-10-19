@@ -16,3 +16,17 @@ router.get("/board",async(req,res,next)=>{
     }
 
 });
+
+router.get("/hit",async(req,res,next)=>{
+    try{
+        const query = `select boards.name, COUNT(posts.id) as COUNT from boards inner join posts group by boards.name ORDER BY COUNT DESC LIMIT 10`;
+        const data = await sequelize.query(query,{type:QueryTypes.SELECT});
+        res.send(data);
+    }
+    catch(err){
+        next(err);
+    }
+
+});
+
+module.exports = router;

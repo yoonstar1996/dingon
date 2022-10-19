@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const {User} = require("../models");
 const passport = require("passport");
-router.post("/signup",(req,res,next)=>{
+router.post("/signup",async(req,res,next)=>{
     const { email, nickName, password } = req.body;
     try {
       const exUser = await User.findOne({ where: { email } });
@@ -21,7 +21,7 @@ router.post("/signup",(req,res,next)=>{
       return next(error);
     }
 });
-router.post("/login",(req,res,next)=>{
+router.post("/login",async(req,res,next)=>{
     passport.authenticate("local", (authError, user, info) => {
         if (authError) {
           console.error(authError);
