@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import axios from "axios";
 import Main from "./component/Main";
 import Sticky from "./component/Sticky";
-import Search from "./Search/Search";
+import Search from "./component/Search";
 const App = (props) => {
   const [value, setValue] = useState("");
   const [isLogin, setIsLogin] = useState(false);
