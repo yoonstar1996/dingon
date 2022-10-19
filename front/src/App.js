@@ -1,3 +1,4 @@
+
 import logo from "./logo.svg";
 import "./App.css";
 import { useState, useEffect } from "react";
@@ -6,6 +7,7 @@ import axios from "axios";
 import Main from "./component/Main";
 import Sticky from "./component/Sticky";
 const App = (props) => {
+
   const [value, setValue] = useState("");
   const [isLogin,setIsLogin]= useState(false);
   console.log(isLogin);
@@ -20,8 +22,10 @@ const App = (props) => {
     <>
     <Sticky check={setIsLogin}/>
       <Main />
+      {/* <Search></Search> */}
     </>
   );
 };
+
 
 export default App;
