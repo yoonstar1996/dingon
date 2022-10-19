@@ -30,5 +30,6 @@ module.exports = class Post extends Sequelize.Model{
         db.Post.hasMany(db.SubComment,{foreignKey:"postId",targetKey:"id",onDelete:"cascade",onUpdate:"cascade"});
         db.Post.belongsToMany(db.User,{through:'likes',onDelete:"cascade",onUpdate:"cascade"});
         db.Post.belongsToMany(db.Board,{through:'concepts',onDelete:"cascade",onUpdate:"cascade"});
+        db.Post.belongsTo(db.Board,{foreignKey:'boardId',sourceKey:"id",onDelete:"cascade",onUpdate:"cascade"});
     }
 }
