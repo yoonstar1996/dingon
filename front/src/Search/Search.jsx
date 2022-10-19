@@ -34,7 +34,7 @@ const Search = () => {
                   });
                 }}
               >
-                검색
+                검색asdasdasda
               </button>
             </div>
           </div>
