@@ -11,7 +11,6 @@ import Footer from "./component/Footer"
 
 import Gaesi from "./component/gaesi";
 import Allgall from "./component/Allgall";
-
 const App = (props) => {
   const [nickName,setNickName] = useState("");
   const [value, setValue] = useState("");
