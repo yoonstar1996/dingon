@@ -49,6 +49,9 @@ const App = (props) => {
           <Footer></Footer>
         </div>
       </div>
+      {/* <div>
+        <Gaesi></Gaesi>
+      </div> */}
     </>
   );
 };
