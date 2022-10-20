@@ -10,7 +10,11 @@ import {
 import Sticky from "./Sticky";
 import "../css/Sticky.css";
 import "../css/AssignModal.css";
+
 import PostMade from "./postmade";
+
+import {Board} from "./Board.jsx";
+
 function Main() {
 
 
@@ -20,13 +24,14 @@ function Main() {
                 <Route path="/post" element={<div>아장모가받았다</div>}></Route>
                 <Route path="/postmade" element={<PostMade/>}></Route>
                 <Route path="/postupdate" element={{/*기영*/ }}></Route>
-                <Route path="/gallery/:name" element={{/*경민*/ }}></Route>
+                <Route path="/gallery/:name" element={<Board></Board>}></Route>
                 <Route path="/gallery/made" element={{/*정우*/ }}></Route>
                 <Route path="/*" element={{/*원준*/ }}></Route>
             </Routes>
     );
 
   
+
 }
 
 export default Main;
