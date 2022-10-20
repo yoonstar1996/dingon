@@ -8,19 +8,12 @@ import {
   useParams,
 } from "react-router-dom";
 import "../css/AssignModal.css";
-
+import { Board } from "./Board.jsx";
 function Main() {
   return (
     <Routes>
       <Route path="/" element={<div>아내가만든 컴포넌트</div>}></Route>
-      <Route
-        path="/post"
-        element={
-          {
-            /*기영*/
-          }
-        }
-      ></Route>
+      <Route path="/post" element={<div>아장모가받았다</div>}></Route>
       <Route
         path="/postupdate"
         element={
@@ -29,14 +22,7 @@ function Main() {
           }
         }
       ></Route>
-      <Route
-        path="/gallery/:name"
-        element={
-          {
-            /*경민*/
-          }
-        }
-      ></Route>
+      <Route path="/gallery/:name" element={<Board></Board>}></Route>
       <Route
         path="/gallery/made"
         element={

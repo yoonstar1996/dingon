@@ -21,17 +21,30 @@ const App = (props) => {
   // },[]);
   return (
     <>
-      <Search></Search>
-      <Sticky
-        isLogin={isLogin}
-        setIsLogin={setIsLogin}
-        nickname={nickname}
-        setNickname={setNickname}
-      />
-      <BrowserRouter>
-        <Main isLogin={isLogin} setIsLogin={setIsLogin} />
-      </BrowserRouter>
-      {/* <Footer/> */}
+      <div className="body">
+        <div className="searchandLogo">
+          <Search />
+        </div>
+        <div className="dividebar"></div>
+        <div className="container">
+          <div className="main">
+            <BrowserRouter>
+              <Main isLogin={isLogin} setIsLogin={setIsLogin} />
+            </BrowserRouter>
+          </div>
+          <div className="sticky">
+            <Sticky
+              isLogin={isLogin}
+              setIsLogin={setIsLogin}
+              nickname={nickname}
+              setNickname={setNickname}
+            />
+          </div>
+        </div>
+        <div className="Footer">
+          <Footer></Footer>
+        </div>
+      </div>
     </>
   );
 };
