@@ -6,7 +6,7 @@ import axios from "axios";
 import Main from "./component/Main";
 import Sticky from "./component/Sticky";
 import Search from "./component/Search";
-import Footer from "./component/Footer"
+import Footer from "./component/Footer";
 const App = (props) => {
   const [value, setValue] = useState("");
   const [isLogin, setIsLogin] = useState(false);
@@ -20,6 +20,7 @@ const App = (props) => {
   // },[]);
   return (
     <>
+
       <div className="body">
         <div className="searchandLogo">
           <Search />
@@ -39,6 +40,7 @@ const App = (props) => {
           푸터
         </div>
       </div>
+
     </>
   );
 };
