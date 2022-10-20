@@ -21,10 +21,11 @@ const App = (props) => {
   return (
     <>
       <Search></Search>
+      <Sticky/>
       <BrowserRouter>
         <Main/>
       </BrowserRouter>
-      <Footer/>
+      {/* <Footer/> */}
     </>
   );
 };
