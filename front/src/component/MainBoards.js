@@ -8,6 +8,11 @@ const MainBoards = (props) => {
   // const [name, setName] = useState(""); //board name
   // const [createdat, setCreatedat] = useState("");
   // const [clicked, setClicked] = useState("");
+  axios({
+    url: "http://localhost:8050/search/top4",
+    method: "get",
+    data: data,
+  });
   return (
     <>
       <div className="mainBoardsBox box1">
