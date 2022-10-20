@@ -21,7 +21,7 @@ const sessionMiddleware = session({
 });
 const passport = require("passport");
 sequelize
-  .sync({ alter: true })
+  .sync({ force: false })
   .then(() => {
     console.log("데이터베이스 연결 성공했습니다");
   })
@@ -33,6 +33,8 @@ const passportConfig = require("./passport");
 const authRouter = require("./routes/auth");
 const searchRouter = require("./routes/search");
 const postRouter = require("./routes/post");
+const galleryRouter = require("./routes/gallery");
+
 passportConfig();
 app.use(morgan("dev"));
 app.use(express.json());
@@ -62,6 +64,7 @@ app.get("/", (req, res) => {
 app.use("/auth",authRouter);
 app.use("/search",searchRouter);
 app.use("/post",postRouter);
+app.use("/gallery",galleryRouter);
 app.use((req, res, next) => {
   res.send({ code: 404 });
 });
