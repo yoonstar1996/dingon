@@ -2,10 +2,10 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function Loginbox({ isLogin, setIsLogin, setNickname }) {
+export default function Loginbox({ setOnAssign,isLogin, setIsLogin, setNickname, }) {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
-  const [onAssign, setOnAssign] = useState(false);
+  //const [onAssign, setOnAssign] = useState(false);
 
   function login() {
     var data = {
@@ -30,6 +30,7 @@ export default function Loginbox({ isLogin, setIsLogin, setNickname }) {
   }
   return (
     <>
+
       <div className="loginbox">
         <form className="formbox">
           <input

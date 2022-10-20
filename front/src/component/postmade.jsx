@@ -28,6 +28,8 @@ function PostMade() {
           const formData = new FormData();
           formData.append('img', file); // formData는 키-밸류 구조
           // 백엔드 multer라우터에 이미지를 보낸다.
+          console.log(input.files[0]);
+          console.log(quillRef);
           try {
             const result = await axios.post('http://localhost:4050/img', formData);
             console.log('성공 시, 백엔드가 보내주는 데이터', result.data.url);
@@ -98,6 +100,7 @@ function PostMade() {
             <div className="mainPost">
                 <div style={{ width: "80%" }}>
                     <ReactQuill
+                        style={{height:"400px"}}
                         ref={quillRef}
                         theme="snow"
                         placeholder="플레이스 홀더"
