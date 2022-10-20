@@ -38,7 +38,7 @@ export default function Sticky({ isLogin, setIsLogin, nickname, setNickname }) {
             <div>실시간 힛갤</div>
             <button>새로고침</button>
           </div>
-          <Hitgall hits={hit} />
+          <Hitgall />
         </div>
       </div>
     </>

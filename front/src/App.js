@@ -7,6 +7,7 @@ import Main from "./component/Main";
 import Sticky from "./component/Sticky";
 import Search from "./component/Search";
 import Footer from "./component/Footer";
+import Allgall from "./component/Allgall";
 const App = (props) => {
   const [value, setValue] = useState("");
   const [isLogin, setIsLogin] = useState(false);
@@ -42,6 +43,7 @@ const App = (props) => {
           </div>
         </div>
         <div className="Footer">
+          <Allgall></Allgall>
           <Footer></Footer>
         </div>
       </div>
