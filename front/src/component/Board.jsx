@@ -28,7 +28,7 @@ export const Board = (props)=>{
     const [err,setErr] = useState(false);
     const [page,setPage] = useState(1);
     const [total,setTotal] = useState(0);
-    const [list,setList] = useState(null);
+    const [list,setList] = useState([]);
     const handlePageChange = (page) => { setPage(page); };
     useEffect(async()=>{
         const data = await axios.get(`http://localhost:8050/gallery?name=${encodeURIComponent(name)}`);
@@ -38,20 +38,25 @@ export const Board = (props)=>{
         else{
             setTotal(data.data.cnt);
         }
+        
     },[]);
-    useEffect(async()=>{
+    useEffect(()=>{
+        console.log("Aaaaa");
         if(err==false && total!=0){
-            const data = await axios.get(`http://localhost:8050/gallery/list?page=${page}&name=${encodeURI(name)}`);
-            setList(data.data.list);
+            axios.get(`http://localhost:8050/gallery/list?page=${page}&name=${encodeURI(name)}`).then((data)=>{
+                setList(data.data.list);
+                console.log(data.data.list); 
+            });
+
         }
     },[page,total]);
     return(
         <>
             {!err ? <div style={{width:"100%"}} className="boardBox">
                 <h1 style={{textAlign:"center"}}>{name} 갤러리에 오신 것을 환영합니다</h1>
-                {total == 0 ? <div style={{backgroundColor:"white",textAlign:"center"}}>게시글이 없어요! 게시글을 추가해 보세요</div> : ()=>{}}
-                {list && list.map((v)=>{
-                    return <div>{v.title}</div>
+                {total == 0 ? <div style={{backgroundColor:"white",textAlign:"center"}}>게시글이 없어요! 게시글을 추가해 보세요</div> : ""}
+                {list.length !== 0 && list.map((v)=>{
+                    return <div>제목:{v.title} 조회수:{v.clicked} 생성일:{v.createdAt} </div>
                 })}
                 <PaginationBox>
                 <Pagination
