@@ -10,6 +10,7 @@ import Footer from "./component/Footer";
 const App = (props) => {
   const [value, setValue] = useState("");
   const [isLogin, setIsLogin] = useState(false);
+  const [nickname, setNickname] = useState("");
   console.log(isLogin);
   // useEffect(async()=>{
   //     const data = await axios("http://localhost:8050");
@@ -28,11 +29,16 @@ const App = (props) => {
         <div className="container">
           <div className="main">
             <BrowserRouter>
-              <Main />
+              <Main isLogin={isLogin} setIsLogin={setIsLogin} />
             </BrowserRouter>
           </div>
           <div className="sticky">
-            <Sticky />
+            <Sticky
+              isLogin={isLogin}
+              setIsLogin={setIsLogin}
+              nickname={nickname}
+              setNickname={setNickname}
+            />
           </div>
         </div>
         <div className="Footer">
