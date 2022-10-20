@@ -43,7 +43,7 @@ const App = (props) => {
           </div>
         </div>
         <div className="Footer">
-          <hr/>
+          <hr />
           <Footer></Footer>
         </div>
       </div>
