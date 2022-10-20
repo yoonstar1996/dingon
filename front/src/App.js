@@ -20,7 +20,6 @@ const App = (props) => {
   // },[]);
   return (
     <>
-
       <div className="body">
         <div className="searchandLogo">
           <Search />
@@ -33,14 +32,13 @@ const App = (props) => {
             </BrowserRouter>
           </div>
           <div className="sticky">
-            <Sticky/>
+            <Sticky />
           </div>
         </div>
         <div className="Footer">
-          푸터
+          <Footer></Footer>
         </div>
       </div>
-
     </>
   );
 };
