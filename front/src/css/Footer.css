@@ -1,0 +1,28 @@
+.Footer{
+    width: 100vw;
+    height: 200px;
+    background-color: transparent;
+    position: absolute;
+    bottom: 0px;
+    text-align: center;
+    font-size: 14px;
+}
+.inside{
+    margin-top: 80px;
+    margin-left: 10px;
+}
+.inside ul{
+    list-style-type: none;
+    display: flex;
+}
+.inside li{
+    position: relative;
+    padding: 0px 7px 0px 10px;
+}
+.inside a{
+    text-decoration: none;
+    color: black;
+}
+.inside a:hover{
+    color: brown;
+}
