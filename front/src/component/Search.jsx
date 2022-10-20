@@ -1,5 +1,5 @@
 import axios from "axios";
-import "./Search.css";
+import "../css/Search.css";
 import { useState } from "react";
 const Search = () => {
   const [name, setText] = useState("");
@@ -34,7 +34,7 @@ const Search = () => {
                   });
                 }}
               >
-                검색
+                검색asdasdasda
               </button>
             </div>
           </div>
