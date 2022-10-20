@@ -2,7 +2,6 @@
   "development": {
     "username": "root",
     "password": "answjddn123!@#",
-
     "database": "dc",
     "host": "127.0.0.1",
     "dialect": "mysql",
