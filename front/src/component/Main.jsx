@@ -7,9 +7,8 @@ import {
   Link,
   useParams,
 } from "react-router-dom";
-import Sticky from "./Sticky";
-import "../css/Sticky.css";
 import "../css/AssignModal.css";
+
 function Main() {
   return (
     <Routes>
