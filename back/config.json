@@ -1,11 +1,8 @@
 {
   "development": {
     "username": "root",
-<<<<<<< HEAD
     "password": "qwer1234!",
-=======
-    "password": "yoonstar1996!!",
->>>>>>> upstream/develop
+
     "database": "dc",
     "host": "127.0.0.1",
     "dialect": "mysql",
