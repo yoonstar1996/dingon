@@ -20,8 +20,7 @@
 .content-right {
   width: 320px;
   position: sticky;
-  top: 100px;
-  left: 780px;
+  margin: 0 0 0 25px;
 }
 .loginbox {
   display: flex;
