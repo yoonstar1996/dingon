@@ -22,7 +22,7 @@ const App = (props) => {
   // },[]);
   return (
     <>
-      {/* <div className="body">
+      <div className="body">
         <div className="searchandLogo">
           <Search />
         </div>
@@ -46,9 +46,6 @@ const App = (props) => {
           <hr/>
           <Footer></Footer>
         </div>
-      </div> */}
-      <div>
-        <Gaesi></Gaesi>
       </div>
     </>
   );
