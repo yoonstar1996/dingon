@@ -8,16 +8,13 @@
     font-size: 14px;
 }
 .inside{
-    margin-top: 80px;
-    margin-left: 10px;
-}
-.inside ul{
-    list-style-type: none;
-    display: flex;
+    padding-top: 80px;
 }
 .inside li{
-    position: relative;
-    padding: 0px 7px 0px 10px;
+    text-decoration: none;
+    list-style-type: none;
+    display: inline;
+    padding: 10px;
 }
 .inside a{
     text-decoration: none;
