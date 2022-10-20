@@ -9,12 +9,6 @@ import "../css/IsLogined.css";
 export default function Sticky({ isLogin, setIsLogin, nickname, setNickname }) {
   const [onAssign, setOnAssign] = useState(false);
 
-  let [hit, setHit] = useState([]);
-  // useEffect(() => {
-  //   axios.get("/search/hit").then((response) => {
-  //     setHit(response.data);
-  //   });
-  // }, []);
   console.log(onAssign);
   return (
     <>
@@ -35,11 +29,7 @@ export default function Sticky({ isLogin, setIsLogin, nickname, setNickname }) {
           />
         )}
         <div className="hitgall">
-          <div className="refresh">
-            <div>실시간 힛갤</div>
-            <button>새로고침</button>
-          </div>
-          <Hitgall hits={hit} />
+          <Hitgall />
         </div>
       </div>
     </>

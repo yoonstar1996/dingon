@@ -16,7 +16,7 @@ const MainBoards = () => {
 
       setHot(response.data.list);
     });
-  },[]);
+  }, []);
 
 
   return (
