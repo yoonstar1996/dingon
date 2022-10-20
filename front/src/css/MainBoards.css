@@ -1,20 +1,20 @@
 .box1 {
-  position: fixed;
+  position: absolute;
   top: 150px;
   left: 100px;
 }
 .box2 {
-  position: fixed;
+  position: absolute;
   top: 150px;
   left: 600px;
 }
 .box3 {
-  position: fixed;
+  position: absolute;
   top: 500px;
   left: 100px;
 }
 .box4 {
-  position: fixed;
+  position: absolute;
   top: 500px;
   left: 600px;
 }
