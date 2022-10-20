@@ -13,7 +13,7 @@ const MainBoard = ({ title, className, data }) => {
   return (
     <>
       <div className={`mainBoardsBox ${className} boardTitle`}>
-        {title} {data.name}
+        {title} {data.name} 갤러리
         {list}
       </div>
     </>
