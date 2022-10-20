@@ -31,6 +31,7 @@ export default function Sticky({ isLogin, setIsLogin, nickname, setNickname }) {
             isLogin={isLogin}
             setIsLogin={setIsLogin}
             setNickname={setNickname}
+            setOnAssign={setOnAssign}
           />
         )}
         <div className="hitgall">
