@@ -20,12 +20,27 @@ const App = (props) => {
   // },[]);
   return (
     <>
-      <Search></Search>
-      <Sticky />
-      <BrowserRouter>
-        <Main />
-      </BrowserRouter>
-      <Footer />
+
+      <div className="body">
+        <div className="searchandLogo">
+          <Search />
+        </div>
+        <div className="dividebar"></div>
+        <div className="container">
+          <div className="main">
+            <BrowserRouter>
+              <Main />
+            </BrowserRouter>
+          </div>
+          <div className="sticky">
+            <Sticky/>
+          </div>
+        </div>
+        <div className="Footer">
+          푸터
+        </div>
+      </div>
+
     </>
   );
 };
