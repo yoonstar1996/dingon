@@ -7,6 +7,7 @@ import Main from "./component/Main";
 import Sticky from "./component/Sticky";
 import Search from "./component/Search";
 import Footer from "./component/Footer";
+import Gaesi from "./component/gaesi";
 const App = (props) => {
   const [value, setValue] = useState("");
   const [isLogin, setIsLogin] = useState(false);
@@ -21,7 +22,7 @@ const App = (props) => {
   // },[]);
   return (
     <>
-      <div className="body">
+      {/* <div className="body">
         <div className="searchandLogo">
           <Search />
         </div>
@@ -44,6 +45,9 @@ const App = (props) => {
         <div className="Footer">
           <Footer></Footer>
         </div>
+      </div> */}
+      <div>
+        <Gaesi></Gaesi>
       </div>
     </>
   );
