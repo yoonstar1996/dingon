@@ -32,8 +32,13 @@ function PostMade() {
           // 백엔드 multer라우터에 이미지를 보낸다.
           console.log(input.files[0]);
           console.log(quillRef);
-          try {
-            const result = await axios.post('http://localhost:8050/post/img', {withCredentials:true},formData);
+          axios({
+            url: "http://localhost:8050/post/img",
+            method: "post",
+            data: formData,
+            withCredentials:true
+          }).then((result) => {
+            console.log(result.data);
             console.log('성공 시, 백엔드가 보내주는 데이터', result.data.url);
             const IMG_URL = result.data.url;
             // 이 URL을 img 태그의 src에 넣은 요소를 현재 에디터의 커서에 넣어주면 에디터 내에서 이미지가 나타난다
@@ -52,9 +57,8 @@ function PostMade() {
             const range = editor.getSelection();
             // 가져온 위치에 이미지를 삽입한다
             editor.insertEmbed(range.index, 'image', IMG_URL);
-          } catch (error) {
-            console.log('실패했어요ㅠ');
-          }
+          });
+          
         });
       };
     const modules = useMemo(() => {
