@@ -12,7 +12,7 @@ const Main = memo((props)=> {
       <Routes>
         <Route path="/" element={<MainBoards />}></Route>
         <Route path="/post" element={<div>아장모가받았다</div>}></Route>
-        <Route path="/postmade" element={<PostMade />}></Route>
+        <Route path="/postmade/:name" element={<PostMade />}></Route>
         <Route
           path="/postupdate"
           element={

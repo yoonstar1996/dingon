@@ -4,7 +4,7 @@ const multer = require("multer");
 const path = require("path");
 const {isLoggedIn,isNotLoggedIn} = require("./middlewares");
 const {v4:uuidv4} = require("uuid");
-const {Post,User,Postmedia} = require("../models");
+const {Post,User,Postmedia,Board} = require("../models");
 const upload = multer({
     storage: multer.diskStorage({
         destination(req, file, done) {
@@ -20,7 +20,8 @@ const upload = multer({
 
 router.post("/uploads",isLoggedIn,async(req,res,next)=>{
     try{
-        const data = await Post.create({title:req.body.title,content:req.body.content});
+        const num=await Board.findOne({raw:true,where:{name:req.body.name}});
+        const data = await Post.create({boardId:num.id,title:req.body.title,content:req.body.content});
         res.send({code:200});
     }
     catch(err){
@@ -30,11 +31,7 @@ router.post("/uploads",isLoggedIn,async(req,res,next)=>{
 router.post("/img",isLoggedIn,upload.single("files"),async(req,res,next)=>{
     console.log("sdsds");
     try{
-        const data = await Post.create({
-            userId:req.user.id,
-            content: req.body.content
-        });
-        console.log(req.file.path);
+        console.log(req.file);
         res.send({code:200, url:"http://localhost:8050/"+req.file.path});
     }
     catch(err){

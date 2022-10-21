@@ -7,10 +7,12 @@ import Button from '@mui/material/Button';
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useState, useMemo,useRef } from "react"
+import { useParams } from "react-router-dom";
 function PostMade() {
     const [title,setTitle]=useState("");
     const [value, setValue] = useState(''); // 에디터 속 콘텐츠를 저장하는 state
     const quillRef = useRef(); 
+    const {name}=useParams();
     const imageHandler = () => {
         console.log('에디터에서 이미지 버튼을 클릭하면 이 핸들러가 시작됩니다!');
       
@@ -32,8 +34,13 @@ function PostMade() {
           // 백엔드 multer라우터에 이미지를 보낸다.
           console.log(input.files[0]);
           console.log(quillRef);
-          try {
-            const result = await axios.post('http://localhost:8050/post/img', {withCredentials:true},formData);
+          axios({
+            url: "http://localhost:8050/post/img",
+            method: "post",
+            data: formData,
+            withCredentials:true
+          }).then((result) => {
+            console.log(result.data);
             console.log('성공 시, 백엔드가 보내주는 데이터', result.data.url);
             const IMG_URL = result.data.url;
             // 이 URL을 img 태그의 src에 넣은 요소를 현재 에디터의 커서에 넣어주면 에디터 내에서 이미지가 나타난다
@@ -52,9 +59,8 @@ function PostMade() {
             const range = editor.getSelection();
             // 가져온 위치에 이미지를 삽입한다
             editor.insertEmbed(range.index, 'image', IMG_URL);
-          } catch (error) {
-            console.log('실패했어요ㅠ');
-          }
+          });
+          
         });
       };
     const modules = useMemo(() => {
@@ -84,10 +90,16 @@ function PostMade() {
       ];
       const sendData = async ()=>{
         let data={
+          board:name,
           title:title,
           content:quillRef.current.value
         }
-        let result = await axios.post('http://localhost:8050/post/uploads',{withCredentials:true}, data);
+        const result = await axios({
+          url: "http://localhost:8050/post/uploads",
+          method: "post",
+          data: data,
+          withCredentials:true
+        })
         console.log(result.data);
       }
     return (
@@ -120,7 +132,7 @@ function PostMade() {
                     />
                 </div>
                 <div style={{width:"100%",marginTop:"50px",display:"flex",justifyContent:"flex-end",marginRight:"170px"}}>
-                  <Button variant="contained">글 작성 하기</Button>
+                  <Button onClick={sendData} variant="contained">글 작성 하기</Button>
                 </div>
             </div>
         </div>
