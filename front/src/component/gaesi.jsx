@@ -6,11 +6,12 @@ import { TextareaAutosizeProps } from "@mui/material";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
+import { useParams } from "react-router-dom";
 const Gaesi = () => {
   const [title, Settitle] = useState(""); // 콘텐츠 타이틀
   const [content, Setcontent] = useState(""); // 콘텐츠 저장하기
   const quillRef = useRef();
-
+  console.log(title);
   console.log(content);
   return (
     <>
@@ -25,7 +26,7 @@ const Gaesi = () => {
           </div>
           <div className="warning">
             <ErrorOutlineIcon></ErrorOutlineIcon>
-            {"원준이형 바봉~!"}
+            {"일단 수정할거면 개추"}
           </div>
           <hr></hr>
           <div className="title">
@@ -33,6 +34,7 @@ const Gaesi = () => {
               fullWidth
               type="text"
               placeholder="제목 수정"
+              onChange={Settitle}
             ></TextField>
           </div>
           <div className="main_content">
