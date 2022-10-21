@@ -1,43 +1,54 @@
 import "../css/Gaesi.css";
-import { useState } from "react";
+import { useState, useRef, useMemo } from "react";
 import React from "react";
+import { TextField } from "@mui/material";
+import { TextareaAutosizeProps } from "@mui/material";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 const Gaesi = () => {
+  const [title, Settitle] = useState(""); // 콘텐츠 타이틀
+  const [content, Setcontent] = useState(""); // 콘텐츠 저장하기
+  const quillRef = useRef();
+
+  console.log(content);
   return (
     <>
       <div className="wrap">
         <div className="content">
-          <div>
-            <h2>
-              <a href="/">Dingon</a>
-            </h2>
-            <hr></hr>
+          <div className="title_head">
+            <h2>작성글 수정</h2>
           </div>
-          <div className="input_from">
-            <div className="input">
-              <p>
-                수정 삭제 하기
-                <br></br>
-                음란물, 차별 ,비하, 혐오 및 초상권 침해 게시물은 민, 형사상의
-                책임을 질 수 있습니다.
-              </p>
-              <hr></hr>
-
-              <label for="text">제목</label>
-              <input type="text" placeholder="제목" name="title"></input>
-              <br></br>
-              <div className="content_btn">
-                <button></button>
-                <button></button>
-              </div>
-              <label>글쓰기</label>
-              <input
-                type="text"
-                placeholder="내용"
-                name="content"
-                id="content"
-              ></input>
-            </div>
+          <div className="warning">
+            <ErrorOutlineIcon></ErrorOutlineIcon>
+            {"음란물 배포 및, 혐오스런 내용을 담으면 7일간 갤질 못한다"}
           </div>
+          <div className="warning">
+            <ErrorOutlineIcon></ErrorOutlineIcon>
+            {"원준이형 바봉~!"}
+          </div>
+          <hr></hr>
+          <div className="title">
+            <TextField
+              fullWidth
+              type="text"
+              placeholder="제목 수정"
+            ></TextField>
+          </div>
+          <div className="main_content">
+            <label>게시글</label>
+            <ReactQuill
+              placeholder="게시글 수정"
+              theme="snow"
+              style={{ height: "450px", overflow: "scroll" }}
+              onChange={Setcontent}
+              value={content}
+            ></ReactQuill>
+          </div>
+        </div>
+        <div className="modify_btn">
+          <button id="delete">삭제</button>
+          <button id="modify">수정</button>
         </div>
       </div>
     </>
