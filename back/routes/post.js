@@ -4,7 +4,7 @@ const multer = require("multer");
 const path = require("path");
 const {isLoggedIn,isNotLoggedIn} = require("./middlewares");
 const {v4:uuidv4} = require("uuid");
-const {Post,User,Postmedia} = require("../models");
+const {Post,User,Postmedia,Board} = require("../models");
 const upload = multer({
     storage: multer.diskStorage({
         destination(req, file, done) {
@@ -18,27 +18,22 @@ const upload = multer({
     limits: { fileSize: 5 * 1024 * 1024*1024*1024 },
 });
 
-
-router.post("/uploads",isLoggedIn,upload.array("files"),async(req,res)=>{
+router.post("/uploads",isLoggedIn,async(req,res,next)=>{
     try{
-        const data = await Post.create({
-            userId:req.user.id,
-            content: req.body.content
-        });
-        for (let i=0 ; i<req.files.length;i++){
-            let type='img';
-            if(path.extname(req.files[i].path)=='.jpeg'||path.extname(req.files[i].path)=='.jpg'||path.extname(req.files[i].path)=='.png'||path.extname(req.files[i].path)=='.gif'){
-                type='img';
-            }
-            else{
-                type="video";
-            }
-            await Postmedia.create({
-                postId: data.dataValues.id,
-                src: '/'+req.files[i].path,
-                type:type
-            });
-        }
+    
+        const num=await Board.findOne({raw:true,where:{name:req.body.board}});
+        const data = await Post.create({userId:req.user.id,boardId:num.id,title:req.body.title,content:req.body.content});
+        res.send({code:200});
+    }
+    catch(err){
+        next(err);
+    }
+});
+router.post("/img",isLoggedIn,upload.single("files"),async(req,res,next)=>{
+    console.log("sdsds");
+    try{
+        console.log(req.file);
+        res.send({code:200, url:"http://localhost:8050/"+req.file.path});
     }
     catch(err){
         next(err);
