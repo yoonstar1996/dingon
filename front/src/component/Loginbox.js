@@ -2,7 +2,12 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function Loginbox({ setOnAssign,isLogin, setIsLogin, setNickname, }) {
+export default function Loginbox({
+  setOnAssign,
+  isLogin,
+  setIsLogin,
+  setNickname,
+}) {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
   //const [onAssign, setOnAssign] = useState(false);
@@ -18,7 +23,6 @@ export default function Loginbox({ setOnAssign,isLogin, setIsLogin, setNickname,
       method: "post",
       data: data,
     }).then((response) => {
-      console.log(response.data.user.nickName);
       if (response.data.code === 200) {
         alert("성공");
         setIsLogin(true);
@@ -30,7 +34,6 @@ export default function Loginbox({ setOnAssign,isLogin, setIsLogin, setNickname,
   }
   return (
     <>
-
       <div className="loginbox">
         <form className="formbox">
           <input
@@ -45,7 +48,7 @@ export default function Loginbox({ setOnAssign,isLogin, setIsLogin, setNickname,
             placeholder="ID"
           ></input>
           <input
-            type="text"
+            type="password"
             value={pw}
             onChange={(e) => {
               setPw(e.target.value);

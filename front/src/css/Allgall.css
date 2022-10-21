@@ -1,8 +1,8 @@
 .wrapper {
   border: 1px solid none;
-  width: 1050px;
+  width: 1240px;
   height: 500px;
-  margin: 30px;
+  margin: 20px 0 0 20px;
 }
 .top-div {
   display: flex;
@@ -18,10 +18,12 @@
   border-radius: 10px;
   width: 150px;
   padding: 8px 4px;
+  display: flex;
+  justify-content: center;
 }
 .mid-div {
   border: 1px solid blue;
-  width: 1168px;
+  width: 1187px;
   height: 450px;
   margin: 20px 0 0 0;
   display: flex;

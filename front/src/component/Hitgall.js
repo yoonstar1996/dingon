@@ -9,12 +9,10 @@ export default function Hitgall() {
       url: "http://localhost:8050/search/hit",
       method: "get",
     }).then((response) => {
-      console.log(response.data.list);
-      console.log(hit);
+      console.log(response.data);
       setHit(response.data.list);
     });
   }, []);
-
   return (
     <>
       <div className="refresh">
@@ -25,7 +23,6 @@ export default function Hitgall() {
               url: "http://localhost:8050/search/hit",
               method: "get",
             }).then((response) => {
-              console.log(response.data.list);
               setHit(response.data.list);
             });
           }}
@@ -33,9 +30,9 @@ export default function Hitgall() {
           새로고침
         </button>
       </div>
-      {hit.map((result) => {
-        <div>{result}</div>;
-      })}
+      {hit.map((item) => (
+        <div>{item.name}</div>
+      ))}
     </>
   );
 }

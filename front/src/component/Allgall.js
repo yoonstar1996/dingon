@@ -1,14 +1,19 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../css/Allgall.css";
 
 export default function Allgall() {
-  axios({
-    url: "http://localhost:8050/",
-    method: "get",
-  }).then((response) => {
-    console.log(response.data);
-  });
+  const [all, setAll] = useState([]);
+
+  useEffect(() => {
+    axios({
+      url: "http://localhost:8050/gallery/all",
+      method: "get",
+    }).then((response) => {
+      console.log(response.data.list);
+      setAll(response.data.list);
+    });
+  }, []);
   return (
     <>
       <div className="wrapper">
@@ -17,7 +22,9 @@ export default function Allgall() {
           <div className="namesort">ㄱㄴㄷ순</div>
         </div>
         <div className="mid-div">
-          <div>~~갤러리</div>
+          {all.map((item) => (
+            <div key={item.name}>{item.name}</div>
+          ))}
         </div>
       </div>
     </>
