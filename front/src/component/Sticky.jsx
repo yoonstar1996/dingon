@@ -3,6 +3,7 @@ import AssignModal from "./AssignModal";
 import Hitgall from "./Hitgall";
 import Loginbox from "./Loginbox";
 import IsLogined from "./IsLogined";
+import ScrollToTop from "./ScrollToTop";
 import "../css/Sticky.css";
 import "../css/IsLogined.css";
 
@@ -29,6 +30,7 @@ export default function Sticky({ isLogin, setIsLogin, nickname, setNickname }) {
           />
         )}
         <div className="hitgall">
+          <ScrollToTop></ScrollToTop>
           <Hitgall />
         </div>
       </div>
