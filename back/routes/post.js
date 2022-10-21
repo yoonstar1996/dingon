@@ -20,8 +20,9 @@ const upload = multer({
 
 router.post("/uploads",isLoggedIn,async(req,res,next)=>{
     try{
-        const num=await Board.findOne({raw:true,where:{name:req.body.name}});
-        const data = await Post.create({boardId:num.id,title:req.body.title,content:req.body.content});
+    
+        const num=await Board.findOne({raw:true,where:{name:req.body.board}});
+        const data = await Post.create({userId:req.user.id,boardId:num.id,title:req.body.title,content:req.body.content});
         res.send({code:200});
     }
     catch(err){

@@ -100,7 +100,13 @@ function PostMade() {
           data: data,
           withCredentials:true
         })
-        console.log(result.data);
+        if(result.data.code==200){
+          window.location=`/gallery/${name}`;
+        }
+        else{
+          alert("서버에러 났음ㅋ");
+          window.location=`/gallery/${name}`;
+        }
       }
     return (
         <div className="frame">

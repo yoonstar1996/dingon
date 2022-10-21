@@ -22,9 +22,9 @@ router.get("/",async (req,res,next)=>{
     }
     
 });
-router.get("/list",async(req,res)=>{
+router.get("/list",async(req,res,next)=>{
     try{
-        const query = `select * from posts inner join boards on posts.boardId = boards.id inner join users on users.id = posts.userId where boards.name="${decodeURI(req.query.name)}" LIMIT 10 OFFSET ${(req.query.page-1)*10}`;
+        const query = `select * from posts inner join boards on posts.boardId = boards.id inner join users on users.id = posts.userId where boards.name="${decodeURI(req.query.name)}" ORDER BY posts.createdAt DESC LIMIT 10 OFFSET ${(req.query.page-1)*10}`;
         const data = await sequelize.query(query,{type:QueryTypes.SELECT});
 
         res.send({code:200,list:data});
