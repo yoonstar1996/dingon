@@ -3,10 +3,12 @@ import "../css/PostMade.css"
 import TextField from '@mui/material/TextField';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import Button from '@mui/material/Button';
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useState, useMemo,useRef } from "react"
 function PostMade() {
+    const [title,setTitle]=useState("");
     const [value, setValue] = useState(''); // 에디터 속 콘텐츠를 저장하는 state
     const quillRef = useRef(); 
     const imageHandler = () => {
@@ -26,12 +28,12 @@ function PostMade() {
           const file = input.files[0];
           // multer에 맞는 형식으로 데이터 만들어준다.
           const formData = new FormData();
-          formData.append('img', file); // formData는 키-밸류 구조
+          formData.append('files', file); // formData는 키-밸류 구조
           // 백엔드 multer라우터에 이미지를 보낸다.
           console.log(input.files[0]);
           console.log(quillRef);
           try {
-            const result = await axios.post('http://localhost:4050/img', formData);
+            const result = await axios.post('http://localhost:8050/img', formData);
             console.log('성공 시, 백엔드가 보내주는 데이터', result.data.url);
             const IMG_URL = result.data.url;
             // 이 URL을 img 태그의 src에 넣은 요소를 현재 에디터의 커서에 넣어주면 에디터 내에서 이미지가 나타난다
@@ -80,7 +82,14 @@ function PostMade() {
         'blockquote',
         'image',
       ];
-      
+      const sendData = async ()=>{
+        let data={
+          title:title,
+          content:quillRef.current.value
+        }
+        let result = await axios.post('http://localhost:8050/post/uploads', data);
+        console.log(result.data);
+      }
     return (
         <div className="frame">
             <div className="Logo">
@@ -88,7 +97,7 @@ function PostMade() {
             </div>
             <hr />
             <div className="titlename">
-                <TextField fullWidth type="text" placeholder="제목" />
+                <TextField onChange={(e)=>{setTitle(e.target.value)}} fullWidth type="text" placeholder="제목" />
             </div>
             <div className="alertstory">
                 <ErrorOutlineIcon />{"절대절대 부적절한 이미지 혹은 내용을 담으면 안됩니다!"}
@@ -100,7 +109,7 @@ function PostMade() {
             <div className="mainPost">
                 <div style={{ width: "80%" }}>
                     <ReactQuill
-                        style={{height:"400px"}}
+                        style={{height:"500px"}}
                         ref={quillRef}
                         theme="snow"
                         placeholder="플레이스 홀더"
@@ -109,6 +118,9 @@ function PostMade() {
                         modules={modules}
                         formats={formats}
                     />
+                </div>
+                <div style={{width:"100%",marginTop:"50px",display:"flex",justifyContent:"flex-end",marginRight:"170px"}}>
+                  <Button variant="contained">글 작성 하기</Button>
                 </div>
             </div>
         </div>
