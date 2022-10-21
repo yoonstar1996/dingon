@@ -43,8 +43,8 @@ const App = (props) => {
             />
           </div>
         </div>
+        <Allgall></Allgall>
         <div className="Footer">
-          <Allgall></Allgall>
           <hr />
           <Footer></Footer>
         </div>
