@@ -28,13 +28,14 @@ router.post("/uploads",isLoggedIn,async(req,res,next)=>{
     }
 });
 router.post("/img",isLoggedIn,upload.single("files"),async(req,res)=>{
+    console.log("sdsds");
     try{
         const data = await Post.create({
             userId:req.user.id,
             content: req.body.content
         });
         console.log(req.file.path);
-        res.send({code:200, url:"http://localhost:8050"+req.file.path});
+        res.send({code:200, url:"http://localhost:8050/"+req.file.path});
     }
     catch(err){
         next(err);
