@@ -26,7 +26,7 @@ router.get("/list",async(req,res)=>{
     try{
         const query = `select * from posts inner join boards on posts.boardId = boards.id inner join users on users.id = posts.userId where boards.name="${decodeURI(req.query.name)}" LIMIT 10 OFFSET ${(req.query.page-1)*10}`;
         const data = await sequelize.query(query,{type:QueryTypes.SELECT});
-        console.log(data);
+
         res.send({code:200,list:data});
     }
     catch(err){

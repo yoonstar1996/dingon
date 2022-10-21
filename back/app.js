@@ -10,8 +10,8 @@ const app = express();
 dotenv.config();
 const cors = require("cors");
 const sessionMiddleware = session({
-  resave: false,
-  saveUninitialized: false,
+  resave: true,
+  saveUninitialized: true,
   secret: process.env.COOKIE_SECRET,
   cookie: {
     httpOnly: true,
@@ -54,12 +54,9 @@ app.use(
     optionsSuccessStatus: 200,
   })
 );
-app.use((req, res, next) => {
-  console.log(req.user);
-  next();
-});
+
 app.get("/", (req, res) => {
-  res.send({ code: "안녕하세요 저는 우석우 입니다" });
+  // res.send({ code: "안녕하세요 저는 우석우 입니다" });
 });
 app.use("/auth",authRouter);
 app.use("/search",searchRouter);

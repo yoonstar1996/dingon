@@ -4,7 +4,12 @@ import MainBoards from "./MainBoards";
 import PostMade from "./postmade";
 import Gaesi from "./gaesi";
 import { Board } from "./Board.jsx";
+<<<<<<< HEAD
+function Main(props) {
+=======
+import NewBoard from "./NewBoard";
 function Main() {
+>>>>>>> 3ae47c16e5ccdeb9bb236a3cc035996fda87075a
   return (
     <>
       <Routes>
@@ -19,15 +24,10 @@ function Main() {
             }
           }
         ></Route>
-        <Route path="/gallery/:name" element={<Board></Board>}></Route>
+        <Route path="/gallery/:name" element={<Board isLogin={props.isLogin} ></Board>}></Route>
         <Route path="/gallery/made" element={<Gaesi></Gaesi>}></Route>
         <Route
-          path="/*"
-          element={
-            {
-              /*원준*/
-            }
-          }
+          path="/gallery/create*" element={<NewBoard></NewBoard>}
         ></Route>
       </Routes>
     </>
