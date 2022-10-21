@@ -18,27 +18,23 @@ const upload = multer({
     limits: { fileSize: 5 * 1024 * 1024*1024*1024 },
 });
 
-
-router.post("/uploads",isLoggedIn,upload.array("files"),async(req,res)=>{
+router.post("/uploads",isLoggedIn,async(req,res,next)=>{
+    try{
+        const data = await Post.create({title:req.body.title,content:req.body.content});
+        res.send({code:200});
+    }
+    catch(err){
+        next(err);
+    }
+});
+router.post("/img",isLoggedIn,upload.single("files"),async(req,res)=>{
     try{
         const data = await Post.create({
             userId:req.user.id,
             content: req.body.content
         });
-        for (let i=0 ; i<req.files.length;i++){
-            let type='img';
-            if(path.extname(req.files[i].path)=='.jpeg'||path.extname(req.files[i].path)=='.jpg'||path.extname(req.files[i].path)=='.png'||path.extname(req.files[i].path)=='.gif'){
-                type='img';
-            }
-            else{
-                type="video";
-            }
-            await Postmedia.create({
-                postId: data.dataValues.id,
-                src: '/'+req.files[i].path,
-                type:type
-            });
-        }
+        console.log(req.file.path);
+        res.send({code:200, url:"http://localhost:8050"+req.file.path});
     }
     catch(err){
         next(err);
