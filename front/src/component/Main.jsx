@@ -1,11 +1,12 @@
-import React from "react";
+import React,{memo} from "react";
 import { Routes, Route } from "react-router-dom";
 import MainBoards from "./MainBoards";
 import PostMade from "./postmade";
 import Gaesi from "./gaesi";
 import { Board } from "./Board.jsx";
 import NewBoard from "./NewBoard";
-function Main(props) {
+
+const Main = memo((props)=> {
   return (
     <>
       <Routes>
@@ -28,6 +29,6 @@ function Main(props) {
       </Routes>
     </>
   );
-}
+});
 
 export default Main;
