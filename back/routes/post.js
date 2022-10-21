@@ -27,7 +27,7 @@ router.post("/uploads",isLoggedIn,async(req,res,next)=>{
         next(err);
     }
 });
-router.post("/img",isLoggedIn,upload.single("files"),async(req,res)=>{
+router.post("/img",isLoggedIn,upload.single("files"),async(req,res,next)=>{
     console.log("sdsds");
     try{
         const data = await Post.create({
