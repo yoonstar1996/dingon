@@ -4,12 +4,8 @@ import MainBoards from "./MainBoards";
 import PostMade from "./postmade";
 import Gaesi from "./gaesi";
 import { Board } from "./Board.jsx";
-<<<<<<< HEAD
-function Main(props) {
-=======
 import NewBoard from "./NewBoard";
-function Main() {
->>>>>>> 3ae47c16e5ccdeb9bb236a3cc035996fda87075a
+function Main(props) {
   return (
     <>
       <Routes>
