@@ -4,6 +4,7 @@ import MainBoards from "./MainBoards";
 import PostMade from "./postmade";
 import Gaesi from "./gaesi";
 import { Board } from "./Board.jsx";
+import NewBoard from "./NewBoard";
 function Main() {
   return (
     <>
@@ -22,12 +23,7 @@ function Main() {
         <Route path="/gallery/:name" element={<Board></Board>}></Route>
         <Route path="/gallery/made" element={<Gaesi></Gaesi>}></Route>
         <Route
-          path="/*"
-          element={
-            {
-              /*원준*/
-            }
-          }
+          path="/gallery/create*" element={<NewBoard></NewBoard>}
         ></Route>
       </Routes>
     </>
