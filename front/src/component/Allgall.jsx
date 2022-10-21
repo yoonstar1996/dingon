@@ -1,16 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "../css/Allgall.css";
-
+import { Link, useParams } from "react-router-dom";
 export default function Allgall() {
   const [all, setAll] = useState([]);
+  const { id } = useParams();
 
   useEffect(() => {
     axios({
       url: "http://localhost:8050/gallery/all",
       method: "get",
     }).then((response) => {
-      console.log(response.data.list);
       setAll(response.data.list);
     });
   }, []);
@@ -23,7 +23,9 @@ export default function Allgall() {
         </div>
         <div className="mid-div">
           {all.map((item) => (
-            <div key={item.name}>{item.name}</div>
+            <Link key={item.name} to={`/gallery/${item.name}`}>
+              <div>{item.name}</div>
+            </Link>
           ))}
         </div>
       </div>

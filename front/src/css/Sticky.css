@@ -82,3 +82,24 @@
   display: flex;
   justify-content: space-between;
 }
+.refresh > button {
+  background-color: transparent;
+  border: none;
+}
+.refresh > button:hover {
+  cursor: pointer;
+}
+
+.HitList {
+  margin: 8px 0;
+}
+.HitList > a {
+  /* margin: 15px 22px; */
+  display: inline;
+  color: black;
+  text-decoration: none;
+}
+
+.HitList > a:hover {
+  color: rgb(69, 69, 172);
+}

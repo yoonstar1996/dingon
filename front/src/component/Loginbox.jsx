@@ -33,6 +33,16 @@ export default function Loginbox({
       }
     });
   }
+
+  useEffect(() => {
+    let Enter2 = document.querySelector("#pw");
+    Enter2.addEventListener("keydown", ({ key }) => {
+      if (key === "Enter") {
+        login();
+      }
+    });
+  });
+
   return (
     <>
       <div className="loginbox">

@@ -1,8 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import RefreshIcon from "@mui/icons-material/Refresh";
+import { Link, useParams } from "react-router-dom";
 
 export default function Hitgall() {
   const [hit, setHit] = useState([]);
+  const { id } = useParams();
 
   useEffect(() => {
     axios({
@@ -27,12 +30,16 @@ export default function Hitgall() {
             });
           }}
         >
-          새로고침
+          <RefreshIcon />
         </button>
       </div>
-      {hit.map((item) => (
-        <div>{item.name}</div>
-      ))}
+      <ol className="HitList">
+        {hit.map((item) => (
+          <Link key={item.name} to={`/gallery/${item.name}`}>
+            <li>{item.name}</li>
+          </Link>
+        ))}
+      </ol>
     </>
   );
 }
