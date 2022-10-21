@@ -1,18 +1,24 @@
+/* .MainBoardsDiv{
+  background-color: white;
+} */
+
 .box1 {
   position: absolute;
-  left: 30px;
+  top: 20px;
+  left: 50px;
 }
 .box2 {
   position: absolute;
-  left: 430px;
+  top: 20px;
+  left: 450px;
 }
 .box3 {
   position: absolute;
   top: 320px; 
-  left: 30px;
+  left: 50px;
 }
 .box4 {
   position: absolute;
   top: 320px;
-  left: 430px;
+  left: 450px;
 }

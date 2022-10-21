@@ -12,15 +12,14 @@ const MainBoards = () => {
   let [hot, setHot] = useState([]);
   useEffect(() => {
     axios.get("http://localhost:8050/search/top4").then((response) => {
-
       setHot(response.data.list);
+      
     });
   }, []);
 
-
   return (
     <>
-    <div style={{position: "relative", height: "620px"}}>
+    <div className="MainBoardsDiv" style={{position: "relative", height: "620px"}}>
       <MainBoard
         className="box1"
         title="핫게시판 : "

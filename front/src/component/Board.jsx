@@ -41,7 +41,6 @@ export const Board = (props)=>{
         
     },[]);
     useEffect(()=>{
-        console.log("Aaaaa");
         if(err==false && total!=0){
             axios.get(`http://localhost:8050/gallery/list?page=${page}&name=${encodeURI(name)}`).then((data)=>{
                 setList(data.data.list);
@@ -54,9 +53,10 @@ export const Board = (props)=>{
         <>
             {!err ? <div style={{width:"100%"}} className="boardBox">
                 <h1 style={{textAlign:"center"}}>{name} 갤러리에 오신 것을 환영합니다</h1>
+                {props.isLogin ==true ? <button>글작성</button>: null}
                 {total == 0 ? <div style={{backgroundColor:"white",textAlign:"center"}}>게시글이 없어요! 게시글을 추가해 보세요</div> : ""}
                 {list.length !== 0 && list.map((v)=>{
-                    return <div>제목:{v.title} 조회수:{v.clicked} 생성일:{v.createdAt} </div>
+                    return <div>제목:{v.title} 닉네임:{v.nickName} 조회수:{v.clicked} 생성일:{v.createdAt} </div>
                 })}
                 <PaginationBox>
                 <Pagination

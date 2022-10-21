@@ -5,7 +5,7 @@ const MainBoard = ({ title, className, data }) => {
     var list = data.posts.map((value) => {
       return (
         <div key={value.id} className="boxPost">
-          {value.title} {value.createdAt}
+        작성자 : {value.nickName}ㅣ {value.title} {value.createdAt}
         </div>
       );
     });
@@ -13,7 +13,7 @@ const MainBoard = ({ title, className, data }) => {
   return (
     <>
       <div className={`mainBoardsBox ${className} boardTitle`}>
-        {title} {data.name} 갤러리
+        {title}  갤러리
         {list}
       </div>
     </>

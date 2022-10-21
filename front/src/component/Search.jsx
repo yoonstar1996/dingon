@@ -7,36 +7,29 @@ const Search = () => {
     <>
       <div className="wrap">
         <div className="Search">
-          <div className="logo">
-            <div className="icon">여기는 로고</div>
-          </div>
-          <div className="Searchengine">
-            <div className="Searchinput">
+          <div className="logo">여기는 로고</div>
+          <div className="searchengine">
+            <form>
               <input
                 type="text"
                 placeholder="검색"
                 onChange={(e) => {
+                  // console.log(e.target.value);
                   setText(e.target.value);
-                  console.log(name);
                 }}
               ></input>
-            </div>
-            <div className="Searchbtn">
               <button
-                type="button"
                 onClick={() => {
                   axios({
-                    url: "http://localhost:8050/search/board",
-                    method: "GET",
-                    data: name,
-                  }).then((response) => {
-                    console.log(response.data);
+                    url: "/search/board",
+                    method: "get",
+                    data: "name",
                   });
                 }}
               >
-                검색asdasdasda
+                검색
               </button>
-            </div>
+            </form>
           </div>
         </div>
       </div>
