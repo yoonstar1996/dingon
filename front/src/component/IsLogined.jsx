@@ -13,6 +13,7 @@ export default function IsLogined({ isLogin, setIsLogin, nickname }) {
       if (response.data) {
         alert("로그아웃~");
         setIsLogin(false);
+        window.location='/';
       } else {
         alert("로그아웃 실패~");
       }
