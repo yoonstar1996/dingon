@@ -20,21 +20,17 @@ const upload = multer({
 
 router.post("/uploads",isLoggedIn,async(req,res,next)=>{
     try{
-        const data = await Post.create({title:req.body.title,content:req.body.content});
+        const data = await Post.create({boardId:1,title:req.body.title,content:req.body.content});
         res.send({code:200});
     }
     catch(err){
         next(err);
     }
 });
-router.post("/img",isLoggedIn,upload.single("files"),async(req,res)=>{
+router.post("/img",isLoggedIn,upload.single("files"),async(req,res,next)=>{
     console.log("sdsds");
     try{
-        const data = await Post.create({
-            userId:req.user.id,
-            content: req.body.content
-        });
-        console.log(req.file.path);
+        console.log(req.file);
         res.send({code:200, url:"http://localhost:8050/"+req.file.path});
     }
     catch(err){

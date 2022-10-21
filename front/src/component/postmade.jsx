@@ -91,7 +91,12 @@ function PostMade() {
           title:title,
           content:quillRef.current.value
         }
-        let result = await axios.post('http://localhost:8050/post/uploads',{withCredentials:true}, data);
+        const result = await axios({
+          url: "http://localhost:8050/post/uploads",
+          method: "post",
+          data: data,
+          withCredentials:true
+        })
         console.log(result.data);
       }
     return (
@@ -124,7 +129,7 @@ function PostMade() {
                     />
                 </div>
                 <div style={{width:"100%",marginTop:"50px",display:"flex",justifyContent:"flex-end",marginRight:"170px"}}>
-                  <Button variant="contained">글 작성 하기</Button>
+                  <Button onClick={sendData} variant="contained">글 작성 하기</Button>
                 </div>
             </div>
         </div>
