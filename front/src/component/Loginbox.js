@@ -22,6 +22,7 @@ export default function Loginbox({
       url: "http://localhost:8050/auth/login",
       method: "post",
       data: data,
+      withCredentials: true,
     }).then((response) => {
       if (response.data.code === 200) {
         alert("성공");
