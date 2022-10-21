@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from "react";
-import { useParams } from "react-router-dom";
+import { useParams ,Link} from "react-router-dom";
 import axios from "axios";
 import Pagination from "react-js-pagination";
 import styled from 'styled-components'
@@ -53,7 +53,7 @@ export const Board = (props)=>{
         <>
             {!err ? <div style={{width:"100%"}} className="boardBox">
                 <h1 style={{textAlign:"center"}}>{name} 갤러리에 오신 것을 환영합니다</h1>
-                {props.isLogin ==true ? <button>글작성</button>: null}
+                {props.isLogin ==true ? <button><a href="/postmade">글작성</a></button>: null}
                 {total == 0 ? <div style={{backgroundColor:"white",textAlign:"center"}}>게시글이 없어요! 게시글을 추가해 보세요</div> : ""}
                 {list.length !== 0 && list.map((v)=>{
                     return <div>제목:{v.title} 닉네임:{v.nickName} 조회수:{v.clicked} 생성일:{v.createdAt} </div>
