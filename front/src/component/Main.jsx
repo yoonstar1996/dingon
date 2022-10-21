@@ -1,17 +1,18 @@
-import React from "react";
+import React,{memo} from "react";
 import { Routes, Route } from "react-router-dom";
 import MainBoards from "./MainBoards";
 import PostMade from "./postmade";
 import Gaesi from "./gaesi";
 import { Board } from "./Board.jsx";
 import NewBoard from "./NewBoard";
-function Main() {
+
+const Main = memo((props)=> {
   return (
     <>
       <Routes>
         <Route path="/" element={<MainBoards />}></Route>
         <Route path="/post" element={<div>아장모가받았다</div>}></Route>
-        <Route path="/postmade" element={<PostMade />}></Route>
+        <Route path="/postmade/:name" element={<PostMade />}></Route>
         <Route
           path="/postupdate"
           element={
@@ -20,7 +21,7 @@ function Main() {
             }
           }
         ></Route>
-        <Route path="/gallery/:name" element={<Board></Board>}></Route>
+        <Route path="/gallery/:name" element={<Board isLogin={props.isLogin} ></Board>}></Route>
         <Route path="/gallery/made" element={<Gaesi></Gaesi>}></Route>
         <Route
           path="/gallery/create*" element={<NewBoard></NewBoard>}
@@ -28,6 +29,6 @@ function Main() {
       </Routes>
     </>
   );
-}
+});
 
 export default Main;

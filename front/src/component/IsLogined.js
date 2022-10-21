@@ -6,12 +6,13 @@ export default function IsLogined({ isLogin, setIsLogin, nickname }) {
   const logout = () => {
     axios({
       url: "http://localhost:8050/auth/logout",
-      method: "post",
+      method: "post",withCredentials: true 
     }).then((response) => {
       console.log(response.data);
       if (response.data) {
         alert("로그아웃~");
         setIsLogin(false);
+        window.location='/';
       } else {
         alert("로그아웃 실패~");
       }

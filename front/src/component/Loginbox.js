@@ -17,8 +17,9 @@ export default function Loginbox({ setOnAssign,isLogin, setIsLogin, setNickname,
       url: "http://localhost:8050/auth/login",
       method: "post",
       data: data,
+      withCredentials: true 
     }).then((response) => {
-      console.log(response.data.user.nickName);
+
       if (response.data.code === 200) {
         alert("성공");
         setIsLogin(true);
