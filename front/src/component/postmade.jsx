@@ -7,10 +7,12 @@ import Button from '@mui/material/Button';
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useState, useMemo,useRef } from "react"
+import { useParams } from "react-router-dom";
 function PostMade() {
     const [title,setTitle]=useState("");
     const [value, setValue] = useState(''); // 에디터 속 콘텐츠를 저장하는 state
     const quillRef = useRef(); 
+    const {name}=useParams();
     const imageHandler = () => {
         console.log('에디터에서 이미지 버튼을 클릭하면 이 핸들러가 시작됩니다!');
       
@@ -88,6 +90,7 @@ function PostMade() {
       ];
       const sendData = async ()=>{
         let data={
+          board:name,
           title:title,
           content:quillRef.current.value
         }
