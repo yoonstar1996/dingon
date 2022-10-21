@@ -6,13 +6,15 @@ import axios from "axios";
 import Main from "./component/Main";
 import Sticky from "./component/Sticky";
 import Search from "./component/Search";
-import Footer from "./component/Footer";
+
+import Footer from "./component/Footer"
+
 import Gaesi from "./component/gaesi";
 import Allgall from "./component/Allgall";
 const App = (props) => {
+  const [nickName,setNickName] = useState("");
   const [value, setValue] = useState("");
   const [isLogin, setIsLogin] = useState(false);
-  const [nickname, setNickname] = useState("");
   console.log(isLogin);
   // useEffect(async()=>{
   //     const data = await axios("http://localhost:8050");
@@ -38,8 +40,8 @@ const App = (props) => {
             <Sticky
               isLogin={isLogin}
               setIsLogin={setIsLogin}
-              nickname={nickname}
-              setNickname={setNickname}
+              nickname={nickName}
+              setNickname={setNickName}
             />
           </div>
         </div>
