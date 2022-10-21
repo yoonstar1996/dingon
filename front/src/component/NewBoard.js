@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "../css/NewBoard.css";
+
 
 function NewBoard(){
-    const [Id, setId] = useState("");
+    // const [Id, setId] = useState("");
     const [Name, setName] = useState("");
 
     const create = () => {
         let data = {
-            id: Id,
             name: Name
         };
         axios({
-            url: "",
+            url: "http://localhost:8050/gallery/add",
             method: "post",
             data : data
         }).then((result) => {
@@ -27,10 +28,13 @@ function NewBoard(){
         }); 
     };
     const checkBoardName = () => {
+        let data = {
+            name : encodeURI(Name)
+        }
         axios({
-            url: "",
-            method: "post",
-            // data : {name : name}
+            url: "http://localhost:8050/gallery/check",
+            method: "get",
+            data : data
         }).then((result) => {
             console.log(result.data)
             if (result.data.code === 400){
@@ -44,10 +48,10 @@ function NewBoard(){
                 <div>갤러리 생성 규칙 </div>
                 <div>갤러리 생성하기</div>
                 <div>갤러리 제목</div>
-                <input placeholder="만들고자 하는 갤러리 제목을 입력해주세요"></input>
+                <input  className="boardName" placeholder="만들고자 하는 갤러리 제목을 입력해주세요" onChange={(e)=>{setName(e.target.value);}}></input>
                 <button onClick={checkBoardName}>중복확인</button>
                 <br></br>
-                <input placeholder="게시판 제목을 입력해주세요"></input>  
+                {/* <input placeholder="갤러리 제목을 입력해주세요"></input>   */}
                 <button onClick={create}>갤러리 생성</button>
             </div>
         </>
