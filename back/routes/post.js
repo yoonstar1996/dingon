@@ -44,7 +44,7 @@ router.get("/content",async(req,res,next)=>{
         //post:{content, clicked, createdAt,nickName, title,userId}}
         const num = await Post.findOne({where:{id:req.query.postId}});
         await Post.update({clicked:num.clicked+1},{where:{id:req.query.postId}});
-        const query = `select posts.content, posts.clicked, posts.createdAt, users.nickName, users.id as userId from posts inner join users on posts.userId=users.id where posts.id="${req.query.postId}"`;
+        const query = `select posts.title, posts.content, posts.clicked, posts.createdAt, users.nickName, users.id as userId from posts inner join users on posts.userId=users.id where posts.id="${req.query.postId}"`;
         const data = await sequelize.query(query,QueryTypes.SELECT);
         res.send(data[0][0]);
     }

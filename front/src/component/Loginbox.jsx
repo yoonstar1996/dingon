@@ -24,11 +24,12 @@ export default function Loginbox({
       data: data,
       withCredentials: true,
     }).then((response) => {
+      console.log(response.data)
       if (response.data.code === 200) {
         alert("성공");
-        setIsLogin(response.data.userId);
+        setIsLogin(response.data.user.userId);
         setNickname(response.data.user.nickName);
-        console.log(response.data.user)
+        
       } else {
         alert("로그인 실패~");
       }
