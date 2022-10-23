@@ -17,6 +17,7 @@ const Show = () => {
       console.log(response.data);
       let new_div = document.createElement("div");
       new_div.innerHTML = response.data.content;
+
       content.current.innerHTML = response.data.content;
       let userNickname = response.data.userId;
       content.current.innerHTML += `<input
@@ -28,7 +29,8 @@ const Show = () => {
     <>
       <div className="wrap">
         <div className="content">
-          <div ref={content} className="get_content"></div>
+          <div ref={content} className="get_content">
+          </div>
         </div>
       </div>
     </>
