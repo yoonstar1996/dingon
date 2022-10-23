@@ -6,6 +6,7 @@ import axios from "axios";
 const Show = () => {
   const { name, id } = useParams();
   const content = useRef();
+
   useEffect(() => {
     axios({
       url: "http://localhost:8050/post/content",
@@ -14,17 +15,22 @@ const Show = () => {
       withCredentials: true,
     }).then((response) => {
       console.log(response.data);
-      console.log(content);
       let new_div = document.createElement("div");
       new_div.innerHTML = response.data.content;
+
       content.current.innerHTML = response.data.content;
+      let userNickname = response.data.userId;
+      content.current.innerHTML += `<input
+              value=${userNickname}
+            ></input>`;
     });
   }, []);
   return (
     <>
       <div className="wrap">
         <div className="content">
-          <div ref={content} className="get_content"></div>
+          <div ref={content} className="get_content">
+          </div>
         </div>
       </div>
     </>

@@ -29,42 +29,6 @@ const Gaesi = () => {
     <>
       <div className="wrap">
         <div className="content">
-          <div className="title_head">
-            <h2>작성글 수정</h2>
-          </div>
-          <div className="warning">
-            <ErrorOutlineIcon></ErrorOutlineIcon>
-            {"음란물 배포 및, 혐오스런 내용을 담으면 7일간 갤질 못한다"}
-          </div>
-          <div className="warning">
-            <ErrorOutlineIcon></ErrorOutlineIcon>
-            {"일단 수정할거면 개추"}
-          </div>
-          <hr></hr>
-          <div className="title">
-            <TextField
-              fullWidth
-              type="text"
-              placeholder="제목 수정"
-              onChange={(e) => {
-                Settitle(e.target.value);
-                console.log(title);
-              }}
-            ></TextField>
-          </div>
-          <div className="main_content">
-            <label>게시글</label>
-            <ReactQuill
-              placeholder="게시글 수정"
-              theme="snow"
-              style={{ height: "450px", overflow: "scroll" }}
-              onChange={Setcontent}
-              value={content}
-              // value={content}
-            ></ReactQuill>
-          </div>
-        </div>
-        <div className="modify_btn">
           <button id="delete">삭제</button>
           <button id="modify">수정</button>
         </div>
