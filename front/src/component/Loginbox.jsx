@@ -26,8 +26,9 @@ export default function Loginbox({
     }).then((response) => {
       if (response.data.code === 200) {
         alert("성공");
-        setIsLogin(true);
+        setIsLogin(response.data.userId);
         setNickname(response.data.user.nickName);
+        console.log(response.data.user)
       } else {
         alert("로그인 실패~");
       }
@@ -41,7 +42,7 @@ export default function Loginbox({
         login();
       }
     });
-  });
+  },[]);
 
   return (
     <>
