@@ -25,6 +25,7 @@
     width: 60px;
     height: 60px;
     background-color: crimson;
+    cursor: pointer;
 }
 #modify{
     margin: 10px;
@@ -32,4 +33,5 @@
     width: 60px;
     height: 60px;
     background-color: paleturquoise;
+    cursor: pointer;
 }

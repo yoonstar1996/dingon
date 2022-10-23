@@ -13,6 +13,18 @@ const Gaesi = () => {
   const quillRef = useRef();
   console.log(title);
   console.log(content);
+  const ImageHandler = () => {
+    console.log("이미지 버튼 클릭시 이게 실행이 된다");
+
+    const modify_input = document.createElement("input");
+    // 이거는 이미지 저장하는 DOM 만들기
+    modify_input.setAttribute("type", "file");
+    //이거는 type 속성 만들어 주기
+    modify_input.setAttribute("accept", "image/*");
+    //얘는 속성 이미지라고 선언 해주기
+    modify_input.click();
+    //click 하면 위에서 만든 버튼 click 함
+  };
   return (
     <>
       <div className="wrap">
@@ -34,7 +46,10 @@ const Gaesi = () => {
               fullWidth
               type="text"
               placeholder="제목 수정"
-              onChange={Settitle}
+              onChange={(e) => {
+                Settitle(e.target.value);
+                console.log(title);
+              }}
             ></TextField>
           </div>
           <div className="main_content">
@@ -45,6 +60,7 @@ const Gaesi = () => {
               style={{ height: "450px", overflow: "scroll" }}
               onChange={Setcontent}
               value={content}
+              // value={content}
             ></ReactQuill>
           </div>
         </div>
