@@ -11,10 +11,16 @@ const MainBoards = () => {
 
   let [hot, setHot] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:8050/search/top4").then((response) => {
+    axios({
+      url: "http://localhost:8050/search/top4",
+      method: "get",
+      data: "",
+      withCredentials:true
+    }).then((response)=>{
+      console.log(response.data)
       setHot(response.data.list);
-      
-    });
+    })
+    
   }, []);
 
   return (

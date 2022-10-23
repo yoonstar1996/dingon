@@ -32,9 +32,11 @@ router.get("/top4",async(req,res,next)=>{
     try{
         const query = `select boards.name,boards.id, COUNT(posts.id) as COUNT from boards inner join posts on posts.boardId=boards.id group by boards.name ORDER BY COUNT DESC LIMIT 4`;
         const data = await sequelize.query(query,{type:QueryTypes.SELECT});
+        // console.log("실행")
         for (let i=0; i< data.length; i++){
             const query2 = `select posts.createdAt, posts.userId, posts.clicked, posts.title, posts.id from posts where boardId ="${data[i].id} LIMIT 10"`;
             const data2 = await sequelize.query(query2,{type:QueryTypes.SELECT});
+            console.log(data2);
             for (let j=0 ;j <data2.length; j++){
             
                 const temp = await User.findOne({where:{id:data2[j].userId}});
@@ -45,6 +47,7 @@ router.get("/top4",async(req,res,next)=>{
                 data[i].posts.push(data2[j]);
             }
         }
+        console.log(data);
         res.send({list:data,code:200});
 
     }
