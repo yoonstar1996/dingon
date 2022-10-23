@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useParams,Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import Pagination from "react-js-pagination";
 import styled from "styled-components";
@@ -57,14 +57,14 @@ export const Board = (props) => {
   useEffect(() => {
     axios.get(
       `http://localhost:8050/gallery?name=${encodeURIComponent(name)}`
-    ).then((data)=>{
-        if (data.data.code == 400) {
-            setErr(true);
-          } else {
-            setTotal(data.data.cnt);
-          }
+    ).then((data) => {
+      if (data.data.code == 400) {
+        setErr(true);
+      } else {
+        setTotal(data.data.cnt);
+      }
     });
-  },[name]);
+  }, [name]);
   useEffect(() => {
     if (err == false && total != 0) {
       axios
@@ -78,8 +78,8 @@ export const Board = (props) => {
           console.log(data.data.list);
         });
     }
-    if (total==0){
-        setList([]);
+    if (total == 0) {
+      setList([]);
     }
   }, [page, total]);
   return (
@@ -89,7 +89,7 @@ export const Board = (props) => {
           <h1 style={{ textAlign: "center" }}>
             {name} 갤러리에 오신 것을 환영합니다
           </h1>
-          {props.isLogin ? <Link to={"/postmade/"+name}><span>글작성</span></Link> : null}
+          {props.isLogin ? <Link to={"/postmade/" + name}><span>글작성</span></Link> : null}
           {total == 0 ? (
             <div style={{ backgroundColor: "white", textAlign: "center" }}>
               게시글이 없어요! 게시글을 추가해 보세요
@@ -100,9 +100,11 @@ export const Board = (props) => {
           {list.length !== 0 &&
             list.map((v) => {
               return (
-                <div>
-                  제목:{v.title} 조회수:{v.clicked} 생성일:{v.createdAt}{" "}
-                </div>
+                <Link to={"/postmade/"+name+"/"+ v.id}>
+                  <div>
+                    제목:{v.title} 조회수:{v.clicked} 생성일:{v.createdAt}{" "}
+                  </div>
+                </Link>
               );
             })}
           <PaginationBox>
