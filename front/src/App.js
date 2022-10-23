@@ -23,7 +23,7 @@ const App = (props) => {
       .then((data) => {
         console.log(data.data);
         if (data.data.code == 200) {
-          setIsLogin(true);
+          setIsLogin(data.data.userId);
           setNickName(data.data.nickName);
         }
       });

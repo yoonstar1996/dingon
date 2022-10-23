@@ -15,8 +15,6 @@ const Show = () => {
     }).then((response) => {
       console.log(response.data);
       console.log(content);
-      let new_div = document.createElement("div");
-      new_div.innerHTML = response.data.content;
       content.current.innerHTML = response.data.content;
     });
   }, []);
@@ -24,7 +22,8 @@ const Show = () => {
     <>
       <div className="wrap">
         <div className="content">
-          <div ref={content} className="get_content"></div>
+          <div ref={content} className="get_content">
+          </div>
         </div>
       </div>
     </>
