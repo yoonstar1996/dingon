@@ -55,6 +55,7 @@ export const Board = (props) => {
     setPage(page);
   };
   useEffect(() => {
+    setPage(1);
     axios
       .get(`http://localhost:8050/gallery?name=${encodeURIComponent(name)}`)
       .then((data) => {
