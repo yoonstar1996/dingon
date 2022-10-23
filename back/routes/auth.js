@@ -80,8 +80,9 @@ router.post("/nickNameCheck",isNotLoggedIn,async(req,res,next)=>{
     }
 });
 router.get("/isLoggedIn",(req,res,next)=>{
+  // console.log(req.user);
   if(req.user){
-    res.send({code:200,nickName:req.user.nickName});
+    res.send({code:200,nickName:req.user.nickName,userId:req.user.dataValues.id});
   }
   else{
     res.send({code:400});
