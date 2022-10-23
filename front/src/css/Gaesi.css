@@ -8,17 +8,7 @@
     height: 100%;
   
 }
-.title_head h2{
-    position: relative;
-    bottom: 20px;
-}
-.warning{
-    font-size: 15px;
-    display: flex;
-}
-.modify_btn{
-    float: right;
-}
+
 #delete{
     margin: 10px;
     border: none;
