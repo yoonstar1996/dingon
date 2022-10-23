@@ -1,0 +1,13 @@
+.wrap{
+    margin: 0px;
+    padding: 0px;
+}
+.content{
+    width: 100%;
+    height: 100%;
+    border: 1px solid grey;
+}
+img{
+    width: 70%;
+    height: 70%;
+}
