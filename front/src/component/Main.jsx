@@ -1,12 +1,13 @@
-import React,{memo} from "react";
+import React, { memo } from "react";
 import { Routes, Route } from "react-router-dom";
 import MainBoards from "./MainBoards";
 import PostMade from "./postmade";
 import Gaesi from "./gaesi";
 import { Board } from "./Board.jsx";
 import NewBoard from "./NewBoard";
+import Show from "./show";
 
-const Main = memo((props)=> {
+const Main = memo((props) => {
   return (
     <>
       <Routes>
@@ -21,11 +22,13 @@ const Main = memo((props)=> {
             }
           }
         ></Route>
-        <Route path="/gallery/:name" element={<Board isLogin={props.isLogin} ></Board>}></Route>
-        <Route path="/gallery/made" element={<Gaesi></Gaesi>}></Route>
         <Route
-          path="/gallery/create*" element={<NewBoard></NewBoard>}
+          path="/gallery/:name"
+          element={<Board isLogin={props.isLogin}></Board>}
         ></Route>
+        <Route path="/gallery/show" element={<Show></Show>}></Route>
+        <Route path="/gallery/made" element={<Gaesi></Gaesi>}></Route>
+        <Route path="/gallery/create*" element={<NewBoard></NewBoard>}></Route>
       </Routes>
     </>
   );
