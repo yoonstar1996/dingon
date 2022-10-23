@@ -12,6 +12,7 @@ const MainBoards = () => {
   let [hot, setHot] = useState([]);
   useEffect(() => {
     axios.get("http://localhost:8050/search/top4").then((response) => {
+      // console.log(response.data);
       setHot(response.data.list);
       
     });
@@ -25,6 +26,7 @@ const MainBoards = () => {
         title="핫게시판 : "
         data={hot.length !== 0 && hot[0]}
       ></MainBoard>
+      {/* 여기서 사용한 className 은 클래스명 준 것 아님.. */}
       <MainBoard
         className="box2"
         title="핫게시판 : "

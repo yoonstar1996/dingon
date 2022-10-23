@@ -40,19 +40,29 @@ function NewBoard(){
             if (result.data.code === 400){
                 alert("이미 존재하는 갤러리이름입니다.")
             }
+            else if (result.data.code === 500){
+                alert("서버상 문제가 발생했습니다")
+            }
+            else alert("등록 가능한 갤러리 이름입니다!")
         })
     }
     return (
         <>
             <div className="newBoardBox">
-                <div>갤러리 생성 규칙 </div>
-                <div>갤러리 생성하기</div>
-                <div>갤러리 제목</div>
-                <input  className="boardName" placeholder="만들고자 하는 갤러리 제목을 입력해주세요" onChange={(e)=>{setName(e.target.value);}}></input>
-                <button onClick={checkBoardName}>중복확인</button>
-                <br></br>
-                {/* <input placeholder="갤러리 제목을 입력해주세요"></input>   */}
-                <button onClick={create}>갤러리 생성</button>
+                <div className="theContent">
+                    <div className="newBoardTitle">
+                        <h2>갤러리 생성하기</h2></div>
+                        <hr></hr>
+                        <br></br>
+                        <div>갤러리 생성 규칙 </div>
+                        <br></br>
+                    <span>갤러리 제목 : </span>
+                    <input  className="boardName" placeholder="만들고자 하는 갤러리 제목을 입력해주세요" onChange={(e)=>{setName(e.target.value);}}></input>
+                    <button className="checkBtn" onClick={checkBoardName}>중복확인</button>
+                    <br></br>
+                    {/* <input placeholder="갤러리 제목을 입력해주세요"></input>   */}
+                    <button className="createBtn" onClick={create}>갤러리 생성</button>
+                </div>
             </div>
         </>
     );
