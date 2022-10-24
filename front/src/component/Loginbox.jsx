@@ -17,6 +17,7 @@ export default function Loginbox({
       email: id,
       password: pw,
     };
+    console.log(data);
 
     axios({
       url: "http://localhost:8050/auth/login",
@@ -24,25 +25,20 @@ export default function Loginbox({
       data: data,
       withCredentials: true,
     }).then((response) => {
+      console.log(response.data);
       if (response.data.code === 200) {
         alert("성공");
-        setIsLogin(response.data.userId);
+<<<<<<< HEAD
+        console.log(response.data);
+=======
+>>>>>>> 21904d888ccf10451c7281eef50d7adae2281a21
+        setIsLogin(response.data.user.userId);
         setNickname(response.data.user.nickName);
-        console.log(response.data.user)
       } else {
         alert("로그인 실패~");
       }
     });
   }
-
-  useEffect(() => {
-    let Enter2 = document.querySelector("#pw");
-    Enter2.addEventListener("keydown", ({ key }) => {
-      if (key === "Enter") {
-        login();
-      }
-    });
-  },[]);
 
   return (
     <>
@@ -62,6 +58,11 @@ export default function Loginbox({
           <input
             type="password"
             value={pw}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                login();
+              }
+            }}
             onChange={(e) => {
               setPw(e.target.value);
             }}

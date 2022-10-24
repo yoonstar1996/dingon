@@ -15,38 +15,26 @@ const MainBoards = () => {
       url: "http://localhost:8050/search/top4",
       method: "get",
       data: "",
-      withCredentials:true
-    }).then((response)=>{
+      withCredentials: true
+    }).then((response) => {
       console.log(response.data)
       setHot(response.data.list);
     })
-    
+
   }, []);
 
   return (
     <>
-    <div className="MainBoardsDiv" style={{position: "relative", height: "620px"}}>
-      <MainBoard
-        className="box1"
-        title="핫게시판 : "
-        data={hot.length !== 0 && hot[0]}
-      ></MainBoard>
-      <MainBoard
-        className="box2"
-        title="핫게시판 : "
-        data={hot.length !== 0 && hot[1]}
-      ></MainBoard>
-      <MainBoard
-        className="box3"
-        title="핫게시판 : "
-        data={hot.length !== 0 && hot[2]}
-      ></MainBoard>
-      <MainBoard
-        className="box4"
-        title="핫게시판 : "
-        data={hot.length !== 0 && hot[3]}
-      ></MainBoard>
-    </div>
+      <div className="MainBoardsDiv" style={{ position: "relative", height: "620px" }}>
+        {hot.map((v, i) => {
+          return (<MainBoard
+            key={i}
+            className={"box" + (i + 1)}
+            title={hot[0].name}
+            data={hot.length !== 0 && hot[0]}
+          />)
+        })}
+      </div>
     </>
   );
 };

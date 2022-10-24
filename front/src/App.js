@@ -22,12 +22,13 @@ const App = (props) => {
       .get("http://localhost:8050/auth/isLoggedIn", { withCredentials: true })
       .then((data) => {
         console.log(data.data);
-        if (data.data.code == 200) {
+        if (data.data.code === 200) {
+          console.log("success");
           setIsLogin(data.data.userId);
           setNickName(data.data.nickName);
         }
       });
-  }, []);
+  });
   // useEffect(async()=>{
   //     const data = await axios("http://localhost:8050");
   //     setValue(data.data.code);
