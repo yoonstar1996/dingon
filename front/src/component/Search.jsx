@@ -2,15 +2,19 @@ import axios from "axios";
 import "../css/Search.css";
 import { useState } from "react";
 import Input from "@mui/material/Input";
+import { LinearProgress } from "@mui/material";
+import { Link } from "react-router-dom";
 const Search = () => {
   const [name, setText] = useState("");
   return (
     <>
       <div className="wrap">
         <div className="Search">
-          <div className="logo">
-            <img src="/img/logo2.png"></img>
-          </div>
+          <Link style={{ cursor: "pointer" }} to="/">
+            <div className="logo">
+              <img src="/img/logo2.png" />
+            </div>
+          </Link>
           <div className="searchengine">
             <form>
               <Input
