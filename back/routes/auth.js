@@ -23,10 +23,15 @@ router.post("/signup",isNotLoggedIn,async(req,res,next)=>{
       return next(error);
     }
 });
+// passport.authenticate의 구조
+// passport.authenticate = (a,callback)=>{
+//  return (req,res,next) =>{ 특정 동작 수행}
+//} a(c,d)(req,res,next) -> 커링 함수
 router.post("/login",isNotLoggedIn,async(req,res,next)=>{
     passport.authenticate("local", (authError, user, info) => {
-      console.log(authError);
-      console.log(user);
+        if(info){
+          console.log(info);
+        }
         if (authError) {
           console.error(authError);
           return res.send({ code: 400 });
@@ -80,9 +85,8 @@ router.post("/nickNameCheck",isNotLoggedIn,async(req,res,next)=>{
     }
 });
 router.get("/isLoggedIn",(req,res,next)=>{
-  // console.log(req.user);
   if(req.user){
-    res.send({code:200,nickName:req.user.nickName,userId:req.user.dataValues.id});
+    res.send({code:200,nickName:req.user.nickName,userId:req.user.id});
   }
   else{
     res.send({code:400});

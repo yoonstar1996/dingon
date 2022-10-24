@@ -3,18 +3,27 @@
   height: 280px;
   border: 1px solid black;
   display: inline-block;
-  margin-right: 20px;
+  /* margin-right: 20px; */
   margin-bottom: 30px;
+  border-radius: 10px;
+  
 }
 
 .boxPost {
   border: 0.5px solid black;
   margin-bottom: 5px;
   font-size: 15px;
+  text-align: center;
+
 }
 .boardTitle {
   text-align: center;
   margin-top: 0;
   margin-bottom: 0;
   font-size: 25px;
+  background-color: rgb(69, 69, 172);
+  color: white;
+  width: 380px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;  
 }

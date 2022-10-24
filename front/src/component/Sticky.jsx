@@ -21,7 +21,7 @@ export default function Sticky({
     <>
       {onAssign ? <AssignModal senddata={setOnAssign} /> : <></>}
       <div className="content-right">
-        {isLogin ? (
+        {isLogin!= false ? (
           <IsLogined
             isLogin={isLogin}
             setIsLogin={setIsLogin}
