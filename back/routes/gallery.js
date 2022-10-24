@@ -45,15 +45,18 @@ router.get("/all",async(req,res)=>{
     }
 });
 
-router.get("/check",isLoggedIn,async(req,res)=>{
+router.get("/check", isLoggedIn, async(req,res)=>{
+    console.log("aaaaaa")
     try{
         const name = decodeURI(req.query.name);
+        console.log("name:",name);
         const data = await Board.findAll({where:{name:name}});
+        console.log(data);
         if(data.length==0){
-            res.send({code:400});
+            res.send({code:200});
         }
         else{
-            res.send({code:200});
+            res.send({code:400});
         }
     }
     catch(err){

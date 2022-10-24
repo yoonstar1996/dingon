@@ -5,14 +5,18 @@
   display: inline-block;
   /* margin-right: 20px; */
   margin-bottom: 30px;
-  
+  border-radius: 10px;
+  overflow-y: hidden;
 }
 
 .boxPost {
-  margin-bottom: 5px;
+  /* border: 0.5px solid black; */
+  margin : 0px 0px 5px 10px; 
+  /* 위오아왼 */
   font-size: 15px;
-  text-align: center;
-
+  overflow-x: auto;
+  white-space: nowrap;
+  /* text-align: left; */
 }
 .boardTitle {
   text-align: center;
@@ -22,4 +26,16 @@
   background-color: rgb(69, 69, 172);
   color: white;
   width: 380px;
+}
+.clicked{
+  font-size: 10px;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.clicked{
+  font-size: 10px;
+}
+::-webkit-scrollbar {
+  display: none;
 }
