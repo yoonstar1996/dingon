@@ -21,7 +21,7 @@
     text-align: right;
     position: absolute;
     top: 30px;
-    left: 200px;
+    left: 50px;
 }
 .searchengine input{
     width: 450px;
@@ -34,9 +34,15 @@
 .searchengine button{
     position: relative;
     right: 80px;
-      background-color: rgb(69, 69, 172);
-  color: white;
-  border-radius: 10px;
-  width: 50px;
-  padding: 8px 4px;
+    background-color: rgb(69, 69, 172);
+    color: white;
+    border-radius: 10px;
+    width: 50px;
+    padding: 8px 4px;
+    border: none;
+    cursor: pointer;
+}
+.searchengine button:hover{
+    background-color: wheat;
+    color: black;
 }

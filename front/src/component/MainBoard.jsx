@@ -1,5 +1,6 @@
 import React from "react";
 import "../css/MainBoard.css";
+import { Link } from "react-router-dom"
 const MainBoard = ({ title, className, data }) => {
   if (data) {
     var list = data.posts.map((value) => {

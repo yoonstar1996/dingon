@@ -6,22 +6,18 @@
     padding: 15px;
     width: 100%;
     height: 100%;
-  
 }
-
 #delete{
-    margin: 10px;
-    border: none;
-    width: 60px;
-    height: 60px;
-    background-color: crimson;
+    margin: 5px;
     cursor: pointer;
+}
+.warning{
+    font-size: 10px;
 }
 #modify{
-    margin: 10px;
-    border: none;
-    width: 60px;
-    height: 60px;
-    background-color: paleturquoise;
+    margin: 5px;
     cursor: pointer;
+}
+.modify_btn{
+    float: right;
 }
