@@ -1,0 +1,16 @@
+.mypage-wrapper {
+  display: flex;
+}
+
+.mypage-left {
+  float: left;
+  width: 20%;
+}
+.mypage-right {
+  float: right;
+  width: 80%;
+}
+.right-title > hr {
+  width: 99%;
+  margin: 5px 0;
+}

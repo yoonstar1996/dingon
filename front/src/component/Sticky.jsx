@@ -7,19 +7,27 @@ import ScrollToTop from "./ScrollToTop";
 import "../css/Sticky.css";
 import "../css/IsLogined.css";
 
-export default function Sticky({ isLogin, setIsLogin, nickname, setNickname }) {
+export default function Sticky({
+  isLogin,
+  setIsLogin,
+  nickname,
+  setNickname,
+  userId,
+  setUserId,
+}) {
   const [onAssign, setOnAssign] = useState(false);
 
-  console.log(onAssign);
   return (
     <>
       {onAssign ? <AssignModal senddata={setOnAssign} /> : <></>}
       <div className="content-right">
-        {isLogin!= false ? (
+        {isLogin != false ? (
           <IsLogined
             isLogin={isLogin}
             setIsLogin={setIsLogin}
             nickname={nickname}
+            userId={userId}
+            setUserId={setUserId}
           />
         ) : (
           <Loginbox
@@ -27,6 +35,8 @@ export default function Sticky({ isLogin, setIsLogin, nickname, setNickname }) {
             setIsLogin={setIsLogin}
             setNickname={setNickname}
             setOnAssign={setOnAssign}
+            userId={userId}
+            setUserId={setUserId}
           />
         )}
         <div className="hitgall">
