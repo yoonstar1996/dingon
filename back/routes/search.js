@@ -34,7 +34,7 @@ router.get("/top4",async(req,res,next)=>{
         const data = await sequelize.query(query,{type:QueryTypes.SELECT});
         // console.log("실행")
         for (let i=0; i< data.length; i++){
-            const query2 = `select posts.createdAt, posts.userId, posts.clicked, posts.title, posts.id from posts where boardId ="${data[i].id} LIMIT 10"`;
+            const query2 = `select posts.createdAt, posts.userId, posts.clicked, posts.title, posts.id from posts where boardId ="${data[i].id} ORDER BY createdAt DESC LIMIT 10"`;
             const data2 = await sequelize.query(query2,{type:QueryTypes.SELECT});
             console.log(data2);
             for (let j=0 ;j <data2.length; j++){
