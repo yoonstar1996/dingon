@@ -3,7 +3,18 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import Pagination from "react-js-pagination";
 import styled from "styled-components";
+import Table from '@mui/material/Table';
+import { withStyles, makeStyles } from "@material-ui/core/styles";
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import "../css/Board.css"
 const PaginationBox = styled.div`
+  a:link{
+    color:black;
+  }
   .pagination {
     display: flex;
     justify-content: center;
@@ -46,6 +57,43 @@ const PaginationBox = styled.div`
   }
 `;
 export const Board = (props) => {
+  const StyledTableRow = withStyles((theme) => ({
+    root: {
+      height: 30
+    }
+  }))(TableRow);
+  const columns = [
+    { id: 'number', label: '번호', minWidth: 100 },
+    { id: 'title', label: '제목', minWidth: 300 },
+    {
+      id: 'name',
+      label: "이름",
+      minWidth: 10,
+      align: 'center',
+      format: (value) => value.toLocaleString('en-US'),
+    },
+    {
+      id: 'time',
+      label: "작성일",
+      minWidth: 50,
+      align: 'center',
+      format: (value) => value.toLocaleString('en-US'),
+    },
+    {
+      id: 'clicked',
+      label: '조회수',
+      minWidth: 5,
+      align: 'center',
+      format: (value) => value.toFixed(2),
+    },
+    {
+      id: 'like',
+      label: '추천',
+      minWidth: 5,
+      align: 'center',
+      format: (value) => value.toFixed(2),
+    },
+  ];
   const { name } = useParams();
   const [err, setErr] = useState(false);
   const [page, setPage] = useState(1);
@@ -102,16 +150,56 @@ export const Board = (props) => {
           ) : (
             ""
           )}
-          {list.length !== 0 &&
-            list.map((v) => {
-              return (
-                <Link to={"/post/" + name + "/" + v.postId}>
-                  <div>
-                    제목:{v.title} 조회수:{v.clicked} 생성일:{v.createdAt}{" "}
-                  </div>
-                </Link>
-              );
-            })}
+          <TableContainer sx={{ maxHeight: 800 }}>
+            <Table size="small">
+              <TableHead>
+                <TableRow>
+                  {columns.map((column) => (
+                    <TableCell
+                      key={column.id}
+                      align={column.align}
+                      style={{ minWidth: column.minWidth }}
+                    >
+                      {column.label}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {list.length !== 0 &&
+                  list.map((v, key) => {
+                    let date = new Date(v.createdAt);
+                    return (
+                      <TableRow align="center" hover role="checkbox" tabIndex={-1} key={v.id}>
+                        <TableCell>
+                          {v.id}
+                        </TableCell>
+                          <TableCell>
+                          <Link style={{ textDecoration: 'none'}} to={"/post/"+name+"/"+v.postId}>
+                            {v.title}
+                            </Link>
+                          </TableCell>
+                        
+                        <TableCell align="center" >
+                          {v.nickName}
+                        </TableCell>
+                        <TableCell>
+                          {date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay() + " " + date.getHours() + ":" + date.getMinutes()}
+                        </TableCell>
+                        <TableCell align="center">
+                          {v.clicked}
+                        </TableCell>
+                        <TableCell align="center">
+                          200
+                        </TableCell>
+                      </TableRow>
+
+
+                    );
+                  })}
+              </TableBody>
+            </Table>
+          </TableContainer>
           <PaginationBox>
             <Pagination
               activePage={page}
