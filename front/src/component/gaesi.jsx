@@ -164,7 +164,7 @@ const Gaesi = () => {
             color="error"
             id="delete"
             onClick={() => {
-              console.log("해윙");
+              // console.log("해윙");
             }}
           >
             삭제
