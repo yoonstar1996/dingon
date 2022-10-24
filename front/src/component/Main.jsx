@@ -27,7 +27,7 @@ const Main = memo((props) => {
           element={<Board isLogin={props.isLogin}></Board>}
         ></Route>
         {props.isLogin ? <Route path="/gallery/made/:postid" element={<Gaesi></Gaesi>}></Route>:<></>}
-        <Route path="/gallery/create" element={<NewBoard></NewBoard>}></Route>
+        <Route path="/create" element={<NewBoard></NewBoard>}></Route>
       </Routes>
     </>
   );
