@@ -13,7 +13,6 @@ const MainBoards = () => {
       data: "",
       withCredentials: true
     }).then((response) => {
-      console.log(response.data)
       setHot(response.data.list);
     })
 
