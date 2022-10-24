@@ -13,6 +13,7 @@ import Footer from "./component/Footer";
 import Gaesi from "./component/gaesi";
 import Allgall from "./component/Allgall";
 const App = (props) => {
+  const [userId, setUserId] = useState("");
   const [nickName, setNickName] = useState("");
   const [value, setValue] = useState("");
   const [isLogin, setIsLogin] = useState(false);
@@ -46,7 +47,7 @@ const App = (props) => {
           <div className="dividebar"></div>
           <div className="container">
             <div className="main">
-              <Main isLogin={isLogin} setIsLogin={setIsLogin} />
+              <Main isLogin={isLogin} setIsLogin={setIsLogin} userId={userId} />
             </div>
             <div className="sticky">
               <Sticky
@@ -54,6 +55,8 @@ const App = (props) => {
                 setIsLogin={setIsLogin}
                 nickname={nickName}
                 setNickname={setNickName}
+                userId={userId}
+                setUserId={setUserId}
               />
             </div>
           </div>

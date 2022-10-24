@@ -7,6 +7,8 @@ export default function Loginbox({
   isLogin,
   setIsLogin,
   setNickname,
+  userId,
+  setUserId,
 }) {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
@@ -17,7 +19,6 @@ export default function Loginbox({
       email: id,
       password: pw,
     };
-    console.log(data);
 
     axios({
       url: "http://localhost:8050/auth/login",
@@ -25,11 +26,11 @@ export default function Loginbox({
       data: data,
       withCredentials: true,
     }).then((response) => {
-      console.log(response.data);
       if (response.data.code === 200) {
         alert("성공");
-        setIsLogin(response.data.user.userId);
+        setUserId(response.data.user.email);
         setNickname(response.data.user.nickName);
+        setIsLogin(response.data.user.userId);
       } else {
         alert("로그인 실패~");
       }
