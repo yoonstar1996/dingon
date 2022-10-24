@@ -18,6 +18,7 @@ const Show = ({ isLogin }) => {
       setUserId(response.data.userId);
       let new_div = document.createElement("div");
       new_div.innerHTML = response.data.content;
+
       content.current.innerHTML = response.data.content;
       let userNickname = response.data.userId;
       content.current.innerHTML += `<input

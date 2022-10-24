@@ -1,7 +1,7 @@
 import "../css/Gaesi.css";
 import { useState, useRef, useMemo, useEffect } from "react";
 import React from "react";
-import { TextField, Button } from "@mui/material";
+import { TextField, Button, Typography } from "@mui/material";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -107,6 +107,10 @@ const Gaesi = () => {
     <>
       <div className="wrap">
         <div className="content">
+          <h2 variant="h2" style={{ color: "#4545AC" }}>
+            야구갤러리
+          </h2>
+          <hr></hr>
           <div className="title_head">
             <h2>작성글 수정</h2>
           </div>
