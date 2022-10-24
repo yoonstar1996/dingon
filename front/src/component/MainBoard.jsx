@@ -12,8 +12,9 @@ const MainBoard = ({ title, className, data }) => {
   }
   return (
     <>
-      <div className={`mainBoardsBox ${className} boardTitle`}>
-        {title}  갤러리
+      <div className={`mainBoardsBox ${className} `}>
+        <div className="boardTitle"> {title} {data.name}갤러리</div>
+
         {list}
       </div>
     </>
