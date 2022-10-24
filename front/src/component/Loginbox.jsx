@@ -28,10 +28,6 @@ export default function Loginbox({
       console.log(response.data);
       if (response.data.code === 200) {
         alert("성공");
-<<<<<<< HEAD
-        console.log(response.data);
-=======
->>>>>>> 21904d888ccf10451c7281eef50d7adae2281a21
         setIsLogin(response.data.user.userId);
         setNickname(response.data.user.nickName);
       } else {
