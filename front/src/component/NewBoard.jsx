@@ -8,15 +8,11 @@ function NewBoard(){
     const [Name, setName] = useState("");
 
     const create = () => {
-        let data = {
-            name: Name
-        };
         axios({
             url: "http://localhost:8050/gallery/add",
             method: "post",
-            data : data
+            data : {name : Name}
         }).then((result) => {
-            console.log(result.data);
     
             if(result.data.code === 200){
                 alert("갤러리 생성이 완료됐습니다!")
@@ -28,15 +24,11 @@ function NewBoard(){
         }); 
     };
     const checkBoardName = () => {
-        let data = {
-            name : encodeURI(Name)
-        }
         axios({
             url: "http://localhost:8050/gallery/check",
             method: "get",
-            data : data
+            data : {name : encodeURI(Name) }
         }).then((result) => {
-            console.log(result.data)
             if (result.data.code === 400){
                 alert("이미 존재하는 갤러리이름입니다.")
             }
