@@ -17,6 +17,7 @@
 }
 .newBoardTitle{
     height: 40px;
+    width: 100%;
     background-color: rgb(69, 69, 172);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;  
