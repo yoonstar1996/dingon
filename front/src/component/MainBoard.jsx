@@ -18,7 +18,7 @@ const MainBoard = ({ title, className, data }) => {
     <>
       <div className={`mainBoardsBox ${className} `}>
         <Link to={"/gallery/" + title} style={{ textDecoration: 'none'}}>
-          <div className="boardTitle"> {title} {data.name}갤러리</div>
+          <div className="boardTitle"> {title} 갤러리</div>
         </Link>
         {list}
       </div>
