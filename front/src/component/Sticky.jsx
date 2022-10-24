@@ -6,6 +6,7 @@ import IsLogined from "./IsLogined";
 import ScrollToTop from "./ScrollToTop";
 import "../css/Sticky.css";
 import "../css/IsLogined.css";
+// import styles from "./Module.module.css";
 
 export default function Sticky({
   isLogin,
@@ -21,7 +22,7 @@ export default function Sticky({
     <>
       {onAssign ? <AssignModal senddata={setOnAssign} /> : <></>}
       <div className="content-right">
-        {isLogin!= false ? (
+        {isLogin != false ? (
           <IsLogined
             isLogin={isLogin}
             setIsLogin={setIsLogin}

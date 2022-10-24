@@ -1,10 +1,9 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../css/Fix.css";
 
 export default function Fix({ userId }) {
-  const [idInput, setIdInput] = useState(userId);
   const [nickChange, setNickChange] = useState("");
   const [pwChange, setPwChange] = useState("");
 
@@ -23,6 +22,10 @@ export default function Fix({ userId }) {
       console.log(response);
     });
   }
+  //   useEffect(() => {
+  //     const id = document.querySelector("#id");
+  //     console.log("하이");
+  //   }, [fixBtn]);
   return (
     <>
       <div className="mypage-wrapper">
@@ -53,8 +56,9 @@ export default function Fix({ userId }) {
                   disabled
                   type="text"
                   id="id"
+                  className="fixid"
                   name="id"
-                  value={idInput}
+                  value={userId}
                 ></input>
                 <br />
 
@@ -64,6 +68,7 @@ export default function Fix({ userId }) {
                 <input
                   type="text"
                   id="nickname"
+                  className="fixnick"
                   name="nickname"
                   value={nickChange}
                   onChange={(e) => {
@@ -78,6 +83,7 @@ export default function Fix({ userId }) {
                 <input
                   type="password"
                   id="password"
+                  className="fixpw"
                   name="password"
                   value={pwChange}
                   onChange={(e) => {

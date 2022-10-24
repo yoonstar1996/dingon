@@ -27,6 +27,7 @@ const App = (props) => {
           console.log("success");
           setIsLogin(data.data.userId);
           setNickName(data.data.nickName);
+          setUserId(data.data.email);
         }
       });
   });

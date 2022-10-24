@@ -30,9 +30,9 @@
 .nick {
   margin-right: 36px;
 }
-#id,
-#nickname,
-#password {
+.fixid,
+.fixnick,
+.fixpw {
   margin: 10px 0;
   height: 20px;
   width: 300px;
