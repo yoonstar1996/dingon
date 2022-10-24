@@ -35,6 +35,7 @@ const searchRouter = require("./routes/search");
 const postRouter = require("./routes/post");
 const galleryRouter = require("./routes/gallery");
 const commentRouter = require("./routes/comment");
+const profileRouter = require("./routes/profile");
 passportConfig();
 app.use(morgan("dev"));
 app.use(express.json());
@@ -63,6 +64,7 @@ app.use("/search",searchRouter);
 app.use("/post",postRouter);
 app.use("/gallery",galleryRouter);
 app.use("/comment",commentRouter);
+app.use("/profile",profileRouter);
 app.use((req, res, next) => {
   res.send({ code: 404 });
 });
