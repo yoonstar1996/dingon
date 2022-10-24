@@ -167,7 +167,7 @@ export const Board = (props) => {
                     return (
                       <TableRow align="center" hover role="checkbox" tabIndex={-1} key={v.id}>
                         <TableCell>
-                          {v.id}
+                          {v.postId}
                         </TableCell>
                           <TableCell>
                           <Link style={{ textDecoration: 'none'}} to={"/post/"+name+"/"+v.postId}>
