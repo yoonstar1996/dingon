@@ -6,7 +6,8 @@ export default function IsLogined({ isLogin, setIsLogin, nickname }) {
   const logout = () => {
     axios({
       url: "http://localhost:8050/auth/logout",
-      method: "post",withCredentials: true 
+      method: "post",
+      withCredentials: true,
     }).then((response) => {
       console.log(response.data);
       if (response.data) {
@@ -18,6 +19,7 @@ export default function IsLogined({ isLogin, setIsLogin, nickname }) {
       }
     });
   };
+
   return (
     <>
       <div className="loginedbox">

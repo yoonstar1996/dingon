@@ -25,6 +25,8 @@ router.post("/signup",isNotLoggedIn,async(req,res,next)=>{
 });
 router.post("/login",isNotLoggedIn,async(req,res,next)=>{
     passport.authenticate("local", (authError, user, info) => {
+      console.log(authError);
+      console.log(user);
         if (authError) {
           console.error(authError);
           return res.send({ code: 400 });
@@ -37,8 +39,7 @@ router.post("/login",isNotLoggedIn,async(req,res,next)=>{
             console.error(loginError);
             return res.send({ code: 400 });
           }
-          console.log(req.session);
-          return res.send({ code: 200,user:{nickName:req.user.nickName, email:req.user.email} });
+          return res.send({ code: 200,user:{nickName:req.user.nickName, email:req.user.email,userId:req.user.id} });
         });
       })(req, res, next);
 });
@@ -79,8 +80,9 @@ router.post("/nickNameCheck",isNotLoggedIn,async(req,res,next)=>{
     }
 });
 router.get("/isLoggedIn",(req,res,next)=>{
+  // console.log(req.user);
   if(req.user){
-    res.send({code:200,nickName:req.user.nickName});
+    res.send({code:200,nickName:req.user.nickName,userId:req.user.dataValues.id});
   }
   else{
     res.send({code:400});

@@ -5,7 +5,6 @@ module.exports.isLoggedIn = (req,res,next)=>{
         next();
     }
     else{
-        console.log("sdasd");
         res.send({code:400});
     }
 }

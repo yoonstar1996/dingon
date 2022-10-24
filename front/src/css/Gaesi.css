@@ -8,23 +8,14 @@
     height: 100%;
   
 }
-.title_head h2{
-    position: relative;
-    bottom: 20px;
-}
-.warning{
-    font-size: 15px;
-    display: flex;
-}
-.modify_btn{
-    float: right;
-}
+
 #delete{
     margin: 10px;
     border: none;
     width: 60px;
     height: 60px;
     background-color: crimson;
+    cursor: pointer;
 }
 #modify{
     margin: 10px;
@@ -32,4 +23,5 @@
     width: 60px;
     height: 60px;
     background-color: paleturquoise;
+    cursor: pointer;
 }
