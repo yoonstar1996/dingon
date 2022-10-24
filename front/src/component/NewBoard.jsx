@@ -38,9 +38,6 @@ function NewBoard(){
             if (result.data.code === 400){
                 alert("이미 존재하는 갤러리이름입니다.")
             }
-            // else if (result.data.code === 400 && Name == ""){
-            //     alert("내용을 입력해주세요.")
-            // }
             else if (result.data.code === 500){
                 alert("서버상 문제가 발생했습니다")
             }
@@ -68,10 +65,6 @@ function NewBoard(){
                         placeholder="만들고자 하는 갤러리 제목을 입력해주세요" 
                         onChange={(e)=>{
                             setName(e.target.value);
-                            console.log(Name);
-                            // if(e.target.value == ""){
-                            //     console.log("내용을 입력해주세요")
-                            // }
                         }}>
                     </input>
                     <button className="checkBtn" onClick={()=>{
