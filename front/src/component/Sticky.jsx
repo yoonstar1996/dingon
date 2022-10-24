@@ -6,7 +6,6 @@ import IsLogined from "./IsLogined";
 import ScrollToTop from "./ScrollToTop";
 import "../css/Sticky.css";
 import "../css/IsLogined.css";
-// import styles from "./Module.module.css";
 
 export default function Sticky({
   isLogin,

@@ -33,7 +33,11 @@ const Main = memo((props) => {
         ></Route>
         <Route path="/mypage" element={<Mypage></Mypage>}></Route>
         <Route path="/fix" element={<Fix userId={props.userId}></Fix>}></Route>
-        <Route path="/gallery/made/:postid" element={<Gaesi></Gaesi>}></Route>
+        {props.isLogin ? (
+          <Route path="/gallery/made/:postid" element={<Gaesi></Gaesi>}></Route>
+        ) : (
+          <></>
+        )}
         <Route path="/gallery/create*" element={<NewBoard></NewBoard>}></Route>
       </Routes>
     </>

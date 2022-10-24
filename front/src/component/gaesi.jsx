@@ -159,10 +159,20 @@ const Gaesi = () => {
             startIcon={<DeleteIcon></DeleteIcon>}
             color="error"
             id="delete"
+            onClick={() => {
+              console.log("해윙");
+            }}
           >
             삭제
           </Button>
-          <Button variant="outlined" color="success" id="modify">
+          <Button
+            variant="outlined"
+            color="success"
+            id="modify"
+            onClick={() => {
+              console.log("배윙");
+            }}
+          >
             수정
           </Button>
         </div>
