@@ -94,6 +94,10 @@ function PostMade() {
           title:title,
           content:quillRef.current.value
         }
+        if(title.length===0){
+          alert("제목은 비면 안되용!");
+          return;
+        }
         const result = await axios({
           url: "http://localhost:8050/post/uploads",
           method: "post",
@@ -138,7 +142,7 @@ function PostMade() {
                     />
                 </div>
                 <div style={{width:"100%",marginTop:"50px",display:"flex",justifyContent:"flex-end",marginRight:"170px"}}>
-                  <Button onClick={sendData} variant="contained">글 작성 하기</Button>
+                  <Button style={{background:"#4545AC"}} onClick={sendData} variant="contained">글 작성 하기</Button>
                 </div>
             </div>
         </div>

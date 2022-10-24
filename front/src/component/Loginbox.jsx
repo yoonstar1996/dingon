@@ -70,12 +70,11 @@ export default function Loginbox({
               placeholder="Password"
             ></input>
           </div>
-          <Button variant="contained">로그인</Button>
-        </form>
-        <div className="btnBox">
-          <button onClick={login} className="loginBtn">
+          <button className="loginBtn" onClick={login}>
             로그인
           </button>
+        </form>
+        <div className="btnBox">
           <button
             className="signupBtn"
             onClick={() => {
