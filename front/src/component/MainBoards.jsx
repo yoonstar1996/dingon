@@ -30,7 +30,7 @@ const MainBoards = () => {
           return (<MainBoard
             key={i}
             className={"box" + (i + 1)}
-            title={hot[0].name}
+            title={hot[i].name}
             data={hot.length !== 0 && hot[0]}
           />)
         })}
