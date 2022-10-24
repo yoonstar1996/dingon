@@ -6,17 +6,18 @@
   /* margin-right: 20px; */
   margin-bottom: 30px;
   border-radius: 10px;
-  /* overflow-y: hidden; */
-  /* overflow-x: auto; */
-  
+  overflow-y: hidden;
+
 }
 
 .boxPost {
   /* border: 0.5px solid black; */
-  margin-bottom: 5px;
+  margin : 0px 0px 5px 10px; 
+  /* 위오아왼 */
   font-size: 15px;
-  text-align: center;
-
+  overflow-x: auto;
+  white-space: nowrap;
+  /* text-align: left; */
 }
 .boardTitle {
   text-align: center;
@@ -28,4 +29,10 @@
   width: 380px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;  
+}
+.clicked{
+  font-size: 10px;
+}
+::-webkit-scrollbar {
+  display: none;
 }

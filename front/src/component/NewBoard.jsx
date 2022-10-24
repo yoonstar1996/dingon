@@ -6,17 +6,17 @@ import "../css/NewBoard.css";
 function NewBoard(){
     // const [Id, setId] = useState("");
     const [Name, setName] = useState("");
-
     const create = () => {
         axios({
             url: "http://localhost:8050/gallery/add",
             method: "post",
+            withCredentials: true,
             data : {name : Name}
         }).then((result) => {
     
             if(result.data.code === 200){
                 alert("갤러리 생성이 완료됐습니다!")
-                window.location.replace("/게시판링크")
+                window.location.replace(`/gallery/${Name}`)
             }
             else{
                 alert("갤러리 생성에 실패했습니다.")
@@ -27,8 +27,10 @@ function NewBoard(){
         axios({
             url: "http://localhost:8050/gallery/check",
             method: "get",
-            data : {name : encodeURI(Name) }
+            withCredentials: true,
+            params : {name : encodeURI(Name)}
         }).then((result) => {
+            console.log("resultData : ", result.data);
             if (result.data.code === 400){
                 alert("이미 존재하는 갤러리이름입니다.")
             }
@@ -45,15 +47,33 @@ function NewBoard(){
                     <div className="newBoardTitle">
                         <h2>갤러리 생성하기</h2></div>
                         <hr></hr>
-                        <br></br>
-                        <div>갤러리 생성 규칙 </div>
-                        <br></br>
+                        <div className="newBoardRule">
+                            <h3>갤러리 생성 규칙 </h3>
+                            <div className="theRule">1. 음란물 배포 및 불순한 목적의 갤러리는 운영진에 의해 삭제될 수 있습니다.</div>
+                            <div className="theRule">2. 반복적으로 동일한 목적의 갤러리를 만들 시 제재를 받을 수 있습니다.</div>
+                        <hr></hr>
+
+                        </div>
+                        {/* <br></br> */}
                     <span>갤러리 제목 : </span>
-                    <input  className="boardName" placeholder="만들고자 하는 갤러리 제목을 입력해주세요" onChange={(e)=>{setName(e.target.value);}}></input>
-                    <button className="checkBtn" onClick={checkBoardName}>중복확인</button>
+                    <input  
+                        className="boardName" 
+                        placeholder="만들고자 하는 갤러리 제목을 입력해주세요" 
+                        onChange={(e)=>{
+                            setName(e.target.value);
+                        }}>
+                    </input>
+                    <button className="checkBtn" onClick={()=>{
+                        checkBoardName();
+                    }}>중복확인</button>
                     <br></br>
-                    {/* <input placeholder="갤러리 제목을 입력해주세요"></input>   */}
-                    <button className="createBtn" onClick={create}>갤러리 생성</button>
+                    <button 
+                        className="createBtn" 
+                        onClick={()=>{
+                        create();
+                        }}>
+                    갤러리 생성
+                    </button>
                 </div>
             </div>
         </>

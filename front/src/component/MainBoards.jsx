@@ -4,10 +4,6 @@ import "../css/MainBoards.css";
 import axios from "axios";
 
 const MainBoards = () => {
-  // const [nick, setNick] = useState("");
-  // const [name, setName] = useState(""); //board name
-  // const [createdat, setCreatedat] = useState("");
-  // const [clicked, setClicked] = useState("");
 
   let [hot, setHot] = useState([]);
   useEffect(() => {

@@ -5,8 +5,8 @@ const MainBoard = ({ title, className, data }) => {
     var list = data.posts.map((value) => {
       return (
         <div key={value.id} className="boxPost">
-         작성자 : {value.nickName} {value.title} {value.createdAt}
-          <hr></hr>
+          <span className="clicked">조회수{value.clicked}</span> {value.title} {value.createdAt}
+          {/* <hr></hr> */}
         </div>
         // 작성자 : {value.nickName}
       );
