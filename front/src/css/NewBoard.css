@@ -1,12 +1,12 @@
 .newBoardBox{
     width: 620px;
-    height: 300px;
+    height: 350px;
     margin: 0px;
     padding: 0px;
     border: 1px solid black;
     position: relative;
     left: 100px;
-    top : 40px;
+    top : 20px;
     border-radius: 10px;
 }
 .theContent{
@@ -28,6 +28,7 @@
 }
 .theContent > span{
     font-size: 25px;
+    margin-left: 10px;
 }
 .newBoardTitle > h2{
     text-align: center;
@@ -45,7 +46,7 @@ hr{
 .createBtn{
     position: relative;
     left: 490px;
-    top: 65px
+    top: 120px
 }
 .checkBtn, .createBtn{
     font-size: 20px;
