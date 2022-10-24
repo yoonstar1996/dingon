@@ -126,7 +126,7 @@ export const Board = (props) => {
     if (total == 0) {
       setList([]);
     }
-  }, [page, total]);
+  }, [page, total,name]);
   return (
     <>
       {!err ? (
@@ -183,7 +183,7 @@ export const Board = (props) => {
                         </TableCell>
                         <TableCell>
                           <Link style={{ textDecoration: 'none' }} to={"/post/" + name + "/" + v.postId}>
-                            {v.title}
+                            {v.title} <span style={{color:"purple"}}>[{v.commentCount}]</span>
                           </Link>
                         </TableCell>
 

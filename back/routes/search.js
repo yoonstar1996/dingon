@@ -41,9 +41,13 @@ router.get("/top4",async(req,res,next)=>{
             });
             console.log(data2);
             for (let j=0 ;j <data2.length; j++){
-            
                 const temp = await User.findOne({where:{id:data2[j].userId}});
                 data2[j].nickName = temp.nickName;
+                const query = `select count(*) as count from comments where postId="${data2[j].id}"`;
+                const response = await sequelize.query(query,{type:QueryTypes.SELECT});
+                const query2 = `select count(*) as count from subcomments where postId="${data2[j].id}"`;
+                const response2 = await sequelize.query(query2,{type:QueryTypes.SELECT});
+                data2[j].commentCount = response[0].count + response2[0].count;
             }
             data[i].posts=[];
             for (let j=0 ; j<data2.length;j++){
