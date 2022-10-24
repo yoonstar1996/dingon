@@ -1,12 +1,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+import Button from "@mui/material/Button";
 export default function Loginbox({
   setOnAssign,
   isLogin,
   setIsLogin,
   setNickname,
+  userId,
+  setUserId,
 }) {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
@@ -17,7 +19,6 @@ export default function Loginbox({
       email: id,
       password: pw,
     };
-    console.log(data);
 
     axios({
       url: "http://localhost:8050/auth/login",
@@ -25,11 +26,11 @@ export default function Loginbox({
       data: data,
       withCredentials: true,
     }).then((response) => {
-      console.log(response.data);
       if (response.data.code === 200) {
         alert("성공");
-        setIsLogin(response.data.user.userId);
+        setUserId(response.data.user.email);
         setNickname(response.data.user.nickName);
+        setIsLogin(response.data.user.userId);
       } else {
         alert("로그인 실패~");
       }
@@ -40,41 +41,43 @@ export default function Loginbox({
     <>
       <div className="loginbox">
         <form className="formbox">
-          <input
-            type="text"
-            value={id}
-            onChange={(e) => {
-              setId(e.target.value);
-            }}
-            name="id"
-            id="id"
-            className="idInput"
-            placeholder="ID"
-          ></input>
-          <input
-            type="password"
-            value={pw}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                login();
-              }
-            }}
-            onChange={(e) => {
-              setPw(e.target.value);
-            }}
-            name="pw"
-            id="pw"
-            className="pwInput"
-            placeholder="PW"
-          ></input>
+          <div className="inputbox">
+            <input
+              type="text"
+              value={id}
+              onChange={(e) => {
+                setId(e.target.value);
+              }}
+              name="id"
+              id="id"
+              className="idInput"
+              placeholder="ID"
+            ></input>
+            <input
+              type="password"
+              value={pw}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  login();
+                }
+              }}
+              onChange={(e) => {
+                setPw(e.target.value);
+              }}
+              name="pw"
+              id="pw"
+              className="pwInput"
+              placeholder="Password"
+            ></input>
+          </div>
+          <Button variant="contained">로그인</Button>
         </form>
-        <div>
+        <div className="btnBox">
           <button onClick={login} className="loginBtn">
             로그인
           </button>
-        </div>
-        <div>
           <button
+            className="signupBtn"
             onClick={() => {
               setOnAssign(true);
             }}
