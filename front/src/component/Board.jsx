@@ -9,6 +9,8 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import Button from '@mui/material/Button';
+
 import "../css/Board.css"
 const PaginationBox = styled.div`
   a:link{
@@ -41,28 +43,27 @@ const PaginationBox = styled.div`
   }
   ul.pagination li a {
     text-decoration: none;
-    color: #337ab7;
+    color: #4545AC;
     font-size: 1rem;
   }
   ul.pagination li.active a {
     color: white;
   }
   ul.pagination li.active {
-    background-color: #337ab7;
+    background-color: #4545AC;
   }
   ul.pagination li a:hover,
   ul.pagination li a.active {
-    color: blue;
+    color: white;
   }
 `;
 export const Board = (props) => {
- 
   const columns = [
     { id: 'number', label: '번호', minWidth: 100 },
     { id: 'title', label: '제목', minWidth: 300 },
     {
       id: 'name',
-     label: "이름",
+      label: "이름",
       minWidth: 10,
       align: 'center',
       format: (value) => value.toLocaleString('en-US'),
@@ -134,9 +135,11 @@ export const Board = (props) => {
             {name} 갤러리에 오신 것을 환영합니다
           </h1>
           {props.isLogin ? (
-            <Link to={"/postmade/" + name}>
-              <span>글작성</span>
-            </Link>
+            <div style={{ textAlign: "right" }}>
+              <Link style={{ textDecoration: 'none' }} to={"/postmade/" + name}>
+                <Button style={{ background: "#4545AC" }} variant="contained" >글 작성</Button>
+              </Link>
+            </div>
           ) : null}
           {total == 0 ? (
             <div style={{ backgroundColor: "white", textAlign: "center" }}>
@@ -164,22 +167,31 @@ export const Board = (props) => {
                 {list.length !== 0 &&
                   list.map((v, key) => {
                     let date = new Date(v.createdAt);
+                    let sendDate = date.getFullYear() + "-" + (parseInt(date.getMonth()) + 1) + "-" + date.getDate() + " ";
+                    if (date.getHours() < 12) {
+                      sendDate +=  date.getHours() + ":";
+                    }
+                    else {
+                      sendDate +=   (parseInt(date.getHours()) - 12) + ":";
+                    }
+                    sendDate += +date.getMinutes() ;
+                    console.log(date.getDate());
                     return (
                       <TableRow align="center" hover role="checkbox" tabIndex={-1} key={v.id}>
                         <TableCell>
-                          {v.id}
+                          {v.postId}
                         </TableCell>
-                          <TableCell>
-                          <Link style={{ textDecoration: 'none'}} to={"/post/"+name+"/"+v.postId}>
+                        <TableCell>
+                          <Link style={{ textDecoration: 'none' }} to={"/post/" + name + "/" + v.postId}>
                             {v.title}
-                            </Link>
-                          </TableCell>
-                        
+                          </Link>
+                        </TableCell>
+
                         <TableCell align="center" >
                           {v.nickName}
                         </TableCell>
                         <TableCell>
-                          {date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay() + " " + date.getHours() + ":" + date.getMinutes()}
+                          {sendDate}
                         </TableCell>
                         <TableCell align="center">
                           {v.clicked}
@@ -197,6 +209,7 @@ export const Board = (props) => {
           </TableContainer>
           <PaginationBox>
             <Pagination
+              
               activePage={page}
               itemsCountPerPage={10}
               totalItemsCount={total}
