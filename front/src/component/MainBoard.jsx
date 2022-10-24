@@ -1,20 +1,25 @@
 import React from "react";
 import "../css/MainBoard.css";
+import { Link } from "react-router-dom"
 const MainBoard = ({ title, className, data }) => {
   if (data) {
     var list = data.posts.map((value) => {
       return (
-        <div key={value.id} className="boxPost">
-        작성자 : {value.nickName}ㅣ {value.title} {value.createdAt}
-        </div>
+        <Link to={"/post/"+title+"/"+value.id} style={{ textDecoration: 'none'}}>
+          <div key={value.id} className="boxPost">
+            작성자 : {value.nickName}ㅣ {value.title} {value.createdAt}
+          </div>
+        </Link>
+
       );
     });
   }
   return (
     <>
       <div className={`mainBoardsBox ${className} `}>
-        <div className="boardTitle"> {title} {data.name}갤러리</div>
-
+        <Link to={"/gallery/" + title} style={{ textDecoration: 'none'}}>
+          <div className="boardTitle"> {title} {data.name}갤러리</div>
+        </Link>
         {list}
       </div>
     </>
