@@ -5,9 +5,10 @@ const MainBoard = ({ title, className, data }) => {
     var list = data.posts.map((value) => {
       return (
         <div key={value.id} className="boxPost">
-        작성자 : {value.nickName} {value.title} {value.createdAt}
+         작성자 : {value.nickName} {value.title} {value.createdAt}
           <hr></hr>
         </div>
+        // 작성자 : {value.nickName}
       );
     });
   }
