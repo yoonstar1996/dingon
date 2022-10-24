@@ -39,7 +39,7 @@ const Main = memo((props) => {
         ) : (
           <></>
         )}
-        <Route path="/create*" element={<NewBoard></NewBoard>}></Route>
+        <Route path="/create" element={<NewBoard></NewBoard>}></Route>
       </Routes>
     </>
   );
