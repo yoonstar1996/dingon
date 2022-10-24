@@ -144,7 +144,7 @@ const Gaesi = () => {
               ref={quillRef}
               placeholder="게시글 수정"
               theme="snow"
-              style={{ height: "450px", overflow: "scroll" }}
+              style={{ height: "650px", overflow: "scroll" }}
               onChange={Setcontent}
               value={content}
               modules={modules}
@@ -155,7 +155,7 @@ const Gaesi = () => {
         </div>
         <div className="modify_btn">
           <Button
-            variant="outlined"
+            variant="contained"
             startIcon={<DeleteIcon></DeleteIcon>}
             color="error"
             id="delete"
@@ -166,7 +166,7 @@ const Gaesi = () => {
             삭제
           </Button>
           <Button
-            variant="outlined"
+            variant="contained"
             color="success"
             id="modify"
             onClick={() => {
