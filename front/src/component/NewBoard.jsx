@@ -6,6 +6,7 @@ import "../css/NewBoard.css";
 function NewBoard(){
     // const [Id, setId] = useState("");
     const [Name, setName] = useState("");
+    const [BtnAble, setBtnAble ] = useState(false);
     const create = () => {
         axios({
             url: "http://localhost:8050/gallery/add",
@@ -36,12 +37,17 @@ function NewBoard(){
         }).then((result) => {
             console.log("resultData : ", result.data);
             if (result.data.code === 400){
-                alert("이미 존재하는 갤러리이름입니다.")
+                alert("이미 존재하는 갤러리이름입니다.");
+                setBtnAble(false);
             }
             else if (result.data.code === 500){
-                alert("서버상 문제가 발생했습니다")
+                alert("서버상 문제가 발생했습니다");
+                setBtnAble(false);
             }
-            else alert("등록 가능한 갤러리 이름입니다!")
+            else {
+                alert("등록 가능한 갤러리 이름입니다!");
+                setBtnAble(true);
+            }
         })
     }
     return (
@@ -74,7 +80,7 @@ function NewBoard(){
                         className="createBtn" 
                         onClick={()=>{
                         create();
-                        }}>
+                        }} disabled={!BtnAble}>
                     갤러리 생성
                     </button>
                 </div>
