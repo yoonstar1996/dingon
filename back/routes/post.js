@@ -78,4 +78,15 @@ router.delete("/delete",isLoggedIn,async(req,res,next)=>{
         next(err);
     }
 });
+router.get("/my",isLoggedIn,async(req,res,next)=>{
+    try{
+        //list:{title, clicked, createdAt, gallery(게시판 이름)
+        const query = `select posts.id, posts.title, posts.clicked, posts.createdAt, boards.name as gallery from posts inner join boards on posts.boardId=boards.id where posts.userId="${req.user.id}"`;
+        const data =await sequelize.query(query,{type:QueryTypes.SELECT});
+        res.send({code:200,list:data});
+    }
+    catch(err){
+        next(err);
+    }
+});
 module.exports = router;
