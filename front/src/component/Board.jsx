@@ -4,7 +4,6 @@ import axios from "axios";
 import Pagination from "react-js-pagination";
 import styled from "styled-components";
 import Table from '@mui/material/Table';
-import { withStyles, makeStyles } from "@material-ui/core/styles";
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
@@ -57,17 +56,13 @@ const PaginationBox = styled.div`
   }
 `;
 export const Board = (props) => {
-  const StyledTableRow = withStyles((theme) => ({
-    root: {
-      height: 30
-    }
-  }))(TableRow);
+ 
   const columns = [
     { id: 'number', label: '번호', minWidth: 100 },
     { id: 'title', label: '제목', minWidth: 300 },
     {
       id: 'name',
-      label: "이름",
+     label: "이름",
       minWidth: 10,
       align: 'center',
       format: (value) => value.toLocaleString('en-US'),
