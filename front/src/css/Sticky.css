@@ -25,16 +25,19 @@
 }
 .loginbox {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   width: 260px;
-  height: 85px;
-  padding: 15px;
+  padding: 10px;
   border: 1px solid blue;
   margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
+    rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
 }
 .formbox {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 .hitgall {
   display: flex;
@@ -42,7 +45,10 @@
   width: 260px;
   padding: 15px;
   border: 1px solid brown;
-  margin: 7px 0;
+  margin: 50px 0;
+  border-radius: 10px;
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
+    rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
 }
 .First {
   border: 1px solid coral;
@@ -64,23 +70,50 @@
   height: 30px;
   border: none;
   background-color: #eeeeee;
-  margin: 5px;
-  padding-left: 5px;
+  margin: 6px 0;
+  padding: 0 0 0 10px;
+  border-radius: 10px;
+  border: none;
+  width: 150px;
+  overflow-x: auto;
 }
 .loginBtn {
-  margin: 48px 0 0 5px;
-  height: 30px;
   background-color: rgb(69, 69, 172);
   color: white;
   font-weight: bold;
   border: 1px solid black;
+  /* width: 100px; */
+  margin: 6px 0;
+  height: 32px;
+  border-radius: 10px;
+  border: none;
+}
+.signupBtn {
+  background-color: rgb(69, 69, 172);
+  color: white;
+  font-weight: bold;
+  border: 1px solid black;
+  /* width: 100px; */
+  margin: 6px 0;
+  height: 32px;
+  border-radius: 10px;
+  border: none;
 }
 .loginBtn:hover {
   cursor: pointer;
 }
+.signupBtn:hover {
+  cursor: pointer;
+}
+.btnBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .refresh {
   display: flex;
   justify-content: space-between;
+  padding: 0 5px;
 }
 .refresh > button {
   background-color: transparent;
@@ -102,4 +135,8 @@
 
 .HitList > a:hover {
   color: rgb(69, 69, 172);
+}
+
+.form-upbox {
+  display: flex;
 }

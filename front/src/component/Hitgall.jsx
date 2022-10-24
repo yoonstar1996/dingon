@@ -33,6 +33,7 @@ export default function Hitgall() {
           <RefreshIcon />
         </button>
       </div>
+      <hr />
       <ol className="HitList">
         {hit.map((item) => (
           <Link key={item.name} to={`/gallery/${item.name}`}>

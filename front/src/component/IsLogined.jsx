@@ -29,9 +29,11 @@ export default function IsLogined({ setIsLogin, nickname, userId }) {
           <span>{nickname}님 안녕하세요</span>
           <button onClick={logout}>로그아웃</button>
         </div>
-
         <Link to={"/mypage"}>
           <button>마이 페이지</button>
+        </Link>
+        <Link to={"/create"}>
+          <button>갤러리 작성</button>
         </Link>
       </div>
     </>
