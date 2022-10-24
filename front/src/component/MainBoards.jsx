@@ -4,10 +4,6 @@ import "../css/MainBoards.css";
 import axios from "axios";
 
 const MainBoards = () => {
-  // const [nick, setNick] = useState("");
-  // const [name, setName] = useState(""); //board name
-  // const [createdat, setCreatedat] = useState("");
-  // const [clicked, setClicked] = useState("");
 
   let [hot, setHot] = useState([]);
   useEffect(() => {
@@ -31,7 +27,7 @@ const MainBoards = () => {
             key={i}
             className={"box" + (i + 1)}
             title={hot[i].name}
-            data={hot.length !== 0 && hot[0]}
+            data={hot.length !== 0 && hot[i]}
           />)
         })}
       </div>
