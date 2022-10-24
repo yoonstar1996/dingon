@@ -3,11 +3,11 @@ import "../css/MainBoard.css";
 import { Link } from "react-router-dom"
 const MainBoard = ({ title, className, data }) => {
   if (data) {
-    var list = data.posts.map((value) => {
+    var list = data.posts.map((value,i) => {
       return (
         <Link to={"/post/"+title+"/"+value.id} style={{ textDecoration: 'none'}}>
-          <div key={value.id} className="boxPost">
-            작성자 : {value.nickName}ㅣ {value.title} {value.createdAt}
+          <div style={{marginLeft:"10px",textAlign:"left",marginBottom:"0px"}} key={value.id} className="boxPost">
+             <span style={{fontSize:"11px",color:"black"}}>닉네임:<span style={{fontWeight:"700"}}>{value.nickName}</span></span> <span style={{fontSize:"11px",color:"black"}}>제목:{value.title}</span>{value.createdAt}
           </div>
         </Link>
 

@@ -63,7 +63,7 @@ export const Board = (props) => {
     { id: 'title', label: '제목', minWidth: 300 },
     {
       id: 'name',
-      label: "이름",
+     label: "이름",
       minWidth: 10,
       align: 'center',
       format: (value) => value.toLocaleString('en-US'),
