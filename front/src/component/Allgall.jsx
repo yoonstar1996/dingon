@@ -23,10 +23,97 @@ export default function Allgall() {
         </div>
         <div className="mid-div">
           {all.map((item) => (
-            <Link key={item.name} to={`/gallery/${item.name}`}>
-              <div>{item.name}</div>
-            </Link>
+            <div key={item.name}>
+              <Link to={`/gallery/${item.name}`}>
+                <span>{item.name}</span>
+              </Link>
+            </div>
           ))}
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱55555555555555555555555555</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
         </div>
       </div>
     </>
