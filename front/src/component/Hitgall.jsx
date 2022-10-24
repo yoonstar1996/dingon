@@ -30,7 +30,7 @@ export default function Hitgall() {
             });
           }}
         >
-          <RefreshIcon />
+          <RefreshIcon className="refreshicon" />
         </button>
       </div>
       <hr />
