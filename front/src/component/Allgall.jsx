@@ -1,10 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "../css/Allgall.css";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 export default function Allgall() {
   const [all, setAll] = useState([]);
-  const { id } = useParams();
 
   useEffect(() => {
     axios({
