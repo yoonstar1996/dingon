@@ -6,7 +6,7 @@ const { QueryTypes } = require('sequelize');
 const { sequelize } = require("../models");
 router.get("/list",async(req,res,next)=>{
     try{
-        const query = `select  comments.id ,users.id as userId, comments.content, comments.createdAt, users.nickName from comments inner join posts on posts.id = comments.postId inner join users on users.id = comments.userId where posts.id="${req.query.postId}" ORDER BY posts.createdAt DESC LIMIT 10 OFFSET ${(req.query.page-1)*20}`;
+        const query = `select  comments.id ,users.id as userId, comments.content, comments.createdAt, users.nickName from comments inner join posts on posts.id = comments.postId inner join users on users.id = userId where posts.id="${req.query.postId}" ORDER BY posts.createdAt DESC LIMIT 10 OFFSET ${(req.query.page-1)*20}`;
         const data = await sequelize.query(query,{type:QueryTypes.SELECT});
         res.send({code:200,list:data});
     }
