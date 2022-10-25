@@ -7,6 +7,7 @@ const { sequelize } = require("./models");
 const { User,UserCount} = require("./models");
 const bcrypt = require("bcrypt");
 const app = express();
+const webSocket = require("./socket.js");
 dotenv.config();
 const cors = require("cors");
 const sessionMiddleware = session({
@@ -65,6 +66,10 @@ app.use("/post",postRouter);
 app.use("/gallery",galleryRouter);
 app.use("/comment",commentRouter);
 app.use("/profile",profileRouter);
+const server = app.listen(8050, async () => {
+  await UserCount.destroy({where:{}});
+});
+webSocket(server, app, sessionMiddleware);
 app.use((req, res, next) => {
   res.send({ code: 404 });
 });
@@ -73,6 +78,5 @@ app.use((err, req, res, next) => {
   res.send({ code: 500 });
 });
 
-const server = app.listen(8050, async () => {
-  await UserCount.destroy({where:{}});
-});
+
+

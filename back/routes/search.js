@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {Board, User} = require("../models");
+const {Board, User,UserCount} = require("../models");
 const { QueryTypes } = require('sequelize');
 const { sequelize } = require("../models");
 
@@ -62,5 +62,13 @@ router.get("/top4",async(req,res,next)=>{
         next(err);
     }
 });
-
+router.get("/count",async(req,res,next)=>{
+    try{
+        const data = await UserCount.findAll({where:{}});
+        res.send({code:200,count:data.length});
+    }
+    catch(err){
+        next(err);
+    }
+});
 module.exports = router;
