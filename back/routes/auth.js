@@ -19,7 +19,7 @@ router.post("/signup", isNotLoggedIn, async (req, res, next) => {
     });
     return res.send({ code: 200 }); //성공
   } catch (error) {
-    console.error(error);
+  
     return next(error);
   }
 });
