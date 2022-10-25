@@ -10,6 +10,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Button from "@mui/material/Button";
+import ErrorPage from "./ErrorPage";
 
 import "../css/Board.css";
 const PaginationBox = styled.div`
@@ -158,7 +159,14 @@ export const Board = (props) => {
           ) : (
             ""
           )}
-          <hr style={{background:"#4545AC",height:"1px",marginTop:"8px",width:"100%"}} />
+          <hr
+            style={{
+              background: "#4545AC",
+              height: "1px",
+              marginTop: "8px",
+              width: "100%",
+            }}
+          />
           <TableContainer sx={{ maxHeight: 800 }}>
             <Table size="small">
               <TableHead>
@@ -243,13 +251,7 @@ export const Board = (props) => {
           </PaginationBox>
         </div>
       ) : (
-        <div
-          style={{ height: "100%", width: "100%", textAlign: "center" }}
-          className="errorBox"
-        >
-          {" "}
-          <h1 style={{ textAlign: "center" }}>게이야 그런 건 없다... </h1>
-        </div>
+        <ErrorPage></ErrorPage>
       )}
     </>
   );
