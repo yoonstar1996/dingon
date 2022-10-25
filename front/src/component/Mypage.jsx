@@ -170,6 +170,7 @@ export default function Mypage(userId, setUserId, nickname) {
                 <TableBody>
                   {list.length !== 0 &&
                     list.map((v, key) => {
+                      console.log(v);
                       let date = new Date(v.createdAt);
                       return (
                         <TableRow
@@ -193,7 +194,7 @@ export default function Mypage(userId, setUserId, nickname) {
                                 style={{
                                   textDecoration: "none",
                                 }}
-                                to={"/post/" + name + "/" + v.postId}
+                                to={"/post/" + v.gallery + "/" + v.id}
                               >
                                 {v.title}
                               </Link>
