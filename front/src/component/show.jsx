@@ -53,10 +53,14 @@ const Show = ({ isLogin }) => {
         <div className="content">
           <div className="headBar">
             <h1 className="t">
+<<<<<<< HEAD
               <Link
                 style={{ textDecoration: "none" }}
                 to={"/gallery/made/" + id}
               >
+=======
+              <Link style={{ textDecoration: 'none' }} to={"/gallery/" + name}>
+>>>>>>> upstream/develop
                 {name} 갤러리
               </Link>
             </h1>
