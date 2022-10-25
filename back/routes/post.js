@@ -4,7 +4,7 @@ const multer = require("multer");
 const path = require("path");
 const {isLoggedIn,isNotLoggedIn} = require("./middlewares");
 const {v4:uuidv4} = require("uuid");
-const {Post,User,Postmedia,Board} = require("../models");
+const {Post,User,Postmedia,Board,Like, Dislike,Concept} = require("../models");
 const { QueryTypes } = require('sequelize');
 const { sequelize } = require("../models");
 const upload = multer({
@@ -94,5 +94,39 @@ router.get("/my",isLoggedIn,async(req,res,next)=>{
         next(err);
     }
 });
-
+router.post("/like",isLoggedIn,async(req,res,next)=>{
+    try{
+        const data = await Like.findAll({where:{UserId:req.user.id,PostId:req.body.postId}});
+        if (data.length!=0){
+            return res.send({code:400});
+        }
+        await Like.create({UserId:req.user.id,PostId:req.body.postId});
+        
+        const response = await Like.findAll({raw:true,where:{PostId:req.body.postId}});
+        if(response.length>=5){
+            const flag = await  Concept.findAll({raw:true,where:{PostId:req.body.postId}});
+            if (flag.length==0){
+                const info = await Post.findOne({raw:true,where:{id:req.body.postId}});
+                await Concept.create({BoardId:info.boardId,PostId:req.body.postId});
+            }
+        }
+        res. send({code:200});
+    }
+    catch(err){
+        next(err);
+    }
+});
+router.post("/dislike",isLoggedIn,async(req,res,next)=>{
+    try{
+        const data = await Dislike.findAll({where:{UserId:req.user.id,PostId:req.body.postId}});
+        if (data.length!=0){
+            return res.send({code:400});
+        }
+        await Dislike.create({UserId:req.user.id,PostId:req.body.postId});
+        res. send({code:200});
+    }
+    catch(err){
+        next(err);
+    }
+});
 module.exports = router;
