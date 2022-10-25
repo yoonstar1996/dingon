@@ -46,6 +46,11 @@ router.get("/content",async(req,res,next)=>{
         await Post.update({clicked:num.clicked+1},{where:{id:req.query.postId}});
         const query = `select posts.title, posts.content, posts.clicked, posts.createdAt, users.nickName, users.id as userId from posts inner join users on posts.userId=users.id where posts.id="${req.query.postId}"`;
         const data = await sequelize.query(query,QueryTypes.SELECT);
+        const query2 = `select count(*) as count from comments where postId="${req.query.postId}}"`;
+        const response = await sequelize.query(query2,{type:QueryTypes.SELECT});
+        const query3 = `select count(*) as count from subcomments where postId="${req.query.postId}"`;
+        const response2 = await sequelize.query(query3,{type:QueryTypes.SELECT});
+        data[0][0].commentCount = response[0].count + response2[0].count;
         res.send(data[0][0]);
     }
     catch(err){
@@ -89,4 +94,5 @@ router.get("/my",isLoggedIn,async(req,res,next)=>{
         next(err);
     }
 });
+
 module.exports = router;
