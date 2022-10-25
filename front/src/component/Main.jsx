@@ -35,7 +35,7 @@ const Main = memo((props) => {
         <Route path="/mypage" element={<Mypage></Mypage>}></Route>
         <Route path="/fix" element={<Fix userId={props.userId}></Fix>}></Route>
         {props.isLogin ? (
-          <Route path="/gallery/made/:postid" element={<Gaesi></Gaesi>}></Route>
+          <Route path="/gallery/made/:name/:postid" element={<Gaesi></Gaesi>}></Route>
         ) : (
           <></>
         )}

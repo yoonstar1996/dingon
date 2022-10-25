@@ -135,7 +135,7 @@ const Show = ({ isLogin }) => {
               {isLogin === userId ? (
                 <Link
                   style={{ textDecoration: "none" }}
-                  to={"/gallery/made/" + id}
+                  to={"/gallery/made/"+name +"/"+ id}
                 >
                   <Button style={{ background: "#4545AC" }} variant="contained">
                     수정

@@ -12,7 +12,7 @@ const Gaesi = () => {
   const [title, Settitle] = useState(""); // 콘텐츠 타이틀
   const [content, Setcontent] = useState(""); // 콘텐츠 저장하기
   const quillRef = useRef();
-  const { postid } = useParams();
+  const { postid, name } = useParams();
   console.log(title);
   console.log(content);
   const imageHandler = () => {
@@ -167,7 +167,7 @@ const Gaesi = () => {
             onClick={() => {
               console.log(postid);
               // console.log("해윙");
-
+              
               axios({
                 url: "http://localhost:8050/post/delete",
                 method: "delete",
@@ -176,7 +176,7 @@ const Gaesi = () => {
               }).then((response) => {
                 if (response.data.code == 200) {
                   alert("삭제 가버렷!!!!!!");
-                  window.location = "/";
+                  window.location = `/gallery/${name}`;
                 }
               });
             }}
@@ -189,6 +189,7 @@ const Gaesi = () => {
             id="modify"
             onClick={() => {
               let data = {
+                name: name,
                 postId: postid,
                 title: title,
                 content: quillRef.current.value,
@@ -208,7 +209,7 @@ const Gaesi = () => {
               }).then((response) => {
                 if (response.data.code == 200) {
                   alert("수정성공");
-                  window.location = `/`;
+                  window.location = `/post/${name}/${postid}`;
                 } else {
                   alert("수정불가");
                 }
