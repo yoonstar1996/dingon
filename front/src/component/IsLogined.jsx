@@ -35,7 +35,7 @@ export default function IsLogined({ setIsLogin, nickname, userId }) {
           마이 페이지
         </Link>
         <Link className="create" to={"/create"}>
-          갤러리 작성
+          갤러리 생성
         </Link>
       </div>
     </>

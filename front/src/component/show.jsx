@@ -45,7 +45,7 @@ const Show = ({ isLogin }) => {
         <div className="content">
           <div className="headBar">
             <h1 className="t">
-              <Link style={{ textDecoration: 'none' }} to={"/gallery/made/" + id}>
+              <Link style={{ textDecoration: 'none' }} to={"/gallery/" + name}>
                 {name} 갤러리
               </Link>
             </h1>

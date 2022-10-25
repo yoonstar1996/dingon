@@ -132,7 +132,7 @@ export const Board = (props) => {
       {!err ? (
         <div style={{ width: "100%" }} className="boardBox">
           <h1 style={{ textAlign: "center" }}>
-            {name} 갤러리에 오신 것을 환영합니다
+          <Link onClick={()=>{setPage(1)}} style={{textDecoration:"none"}}to={"/gallery/"+name}>{name} 갤러리</Link>
           </h1>
           {props.isLogin ? (
             <div style={{ textAlign: "right" }}>
