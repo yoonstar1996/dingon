@@ -35,7 +35,7 @@ Board.associate(db);
 
 db.Concept = sequelize.models.concepts;
 db.Like = sequelize.models.likes;
-
+db.Dislike = sequelize.models.dislikes;
 
 
 module.exports = db;
