@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const session = require("express-session");
 const dotenv = require("dotenv");
 const { sequelize } = require("./models");
-const { User } = require("./models");
+const { User,UserCount} = require("./models");
 const bcrypt = require("bcrypt");
 const app = express();
 dotenv.config();
@@ -21,7 +21,7 @@ const sessionMiddleware = session({
 });
 const passport = require("passport");
 sequelize
-  .sync({ force: false })
+  .sync({ alter: true })
   .then(() => {
     console.log("데이터베이스 연결 성공했습니다");
   })
@@ -73,6 +73,6 @@ app.use((err, req, res, next) => {
   res.send({ code: 500 });
 });
 
-app.listen(8050, async () => {
-  console.log("실행");
+const server = app.listen(8050, async () => {
+  await UserCount.destroy({where:{}});
 });

@@ -106,7 +106,7 @@ const Show = ({ isLogin }) => {
       params: {page:page, postId: id },
       withCredentials: true,
     }).then((response) => {
-      console.log("댓글정보",response.data);
+      console.log(response.data);
       setComment(response.data.list)
     });
   }, [page]);
@@ -150,7 +150,7 @@ const Show = ({ isLogin }) => {
               </div>
             </div>
           </div>
-          <div ref={content} className="get_content">
+          <div ref={(c)=>{return content.current=c;}} className="get_content">
           </div>
           <div>
             전체 댓글  {cont.commentCount}개

@@ -39,7 +39,7 @@ router.get("/top4",async(req,res,next)=>{
             data2.sort((a,b)=>{
                 return b.createdAt-a.createdAt;
             });
-            console.log(data2);
+          
             for (let j=0 ;j <data2.length; j++){
                 const temp = await User.findOne({where:{id:data2[j].userId}});
                 data2[j].nickName = temp.nickName;
@@ -54,7 +54,7 @@ router.get("/top4",async(req,res,next)=>{
                 data[i].posts.push(data2[j]);
             }
         }
-        console.log(data);
+      
         res.send({list:data,code:200});
 
     }
