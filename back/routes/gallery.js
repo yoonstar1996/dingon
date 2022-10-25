@@ -37,6 +37,14 @@ router.get("/list",async(req,res,next)=>{
                 ele.img=true;
             }
         });
+        for (let i=0; i<data.length; i++){
+            const query = `select count(*) as count from comments where postId="${data[i].postId}"`;
+            const response = await sequelize.query(query,{type:QueryTypes.SELECT});
+            const query2 = `select count(*) as count from subcomments where postId="${data[i].postId}"`;
+            const response2 = await sequelize.query(query2,{type:QueryTypes.SELECT});
+            console.log(response,response2);
+            data[i].commentCount = response[0].count+response2[0].count;
+        }
         res.send({code:200,list:data});
     }
     catch(err){

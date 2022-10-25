@@ -70,9 +70,12 @@ function NewBoard(){
                         placeholder="만들고자 하는 갤러리 제목을 입력해주세요" 
                         onChange={(e)=>{
                             setName(e.target.value);
+                            setBtnAble(false);
                         }}>
                     </input>
-                    <button className="checkBtn" onClick={()=>{
+                    <button 
+                        className="checkBtn" 
+                        onClick={()=>{
                         checkBoardName();
                     }}>중복확인</button>
                     <br></br>
@@ -80,7 +83,8 @@ function NewBoard(){
                         className="createBtn" 
                         onClick={()=>{
                         create();
-                        }} disabled={!BtnAble}>
+                        }} 
+                        disabled={!BtnAble}>
                     갤러리 생성
                     </button>
                 </div>
