@@ -70,11 +70,11 @@ function NewBoard(){
                             setName(e.target.value);
                             setBtnAble(false);
                             setTxtLength(e.target.value.length);
-                            if(e.target.value.length > 500){
-                                alert("최대 500자까지 입력 가능합니다")
+                            if(e.target.value.length > 6){
+                                alert("최대 6자까지 입력 가능합니다")
                             }
                         }}
-                        maxLength={500}
+                        maxLength={6}
                         >
                     </input>
                     <button 
@@ -86,7 +86,7 @@ function NewBoard(){
                     <div className="maxTxt">
                         <span>{TxtLength}</span>
                         /
-                        <span>500</span>
+                        <span>6</span>
                     </div>
                     <br></br>
                     <button 

@@ -28,6 +28,87 @@ export default function Allgall() {
               </Link>
             </div>
           ))}
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
+
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/gallery/`}>
+              <span>메롱</span>
+            </Link>
+          </div>
         </div>
       </div>
     </>
