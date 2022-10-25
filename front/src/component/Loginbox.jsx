@@ -40,7 +40,12 @@ export default function Loginbox({
   return (
     <>
       <div className="loginbox">
-        <form className="formbox">
+        <form
+          className="formbox"
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+        >
           <div className="inputbox">
             <input
               type="text"
