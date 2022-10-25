@@ -1,11 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import RefreshIcon from "@mui/icons-material/Refresh";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Hitgall() {
   const [hit, setHit] = useState([]);
-  const { id } = useParams();
 
   useEffect(() => {
     axios({
