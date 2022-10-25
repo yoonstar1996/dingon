@@ -1,13 +1,46 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import "../css/subComment.css"
+import { TextField ,Button } from "@mui/material";
+import axios from "axios";
+const SubComment = ({postId, commentId ,isLogin}) => {
 
-const SubComment = ({comment}) => {
-    return(
+    const [subComment,setSubComment]=useState("");
+
+    const submit=()=>{
+        if(isLogin){
+            axios({
+                url: "http://localhost:8050/comment/sub",
+                method: "post",
+                data: { commentId: commentId, postId: postId,comment:subComment},
+                withCredentials: true,
+              }).then((response) => {
+                console.log("대댓글정보", response.data);
+                window.location.reload();
+              });
+        }else{
+            alert("댓글 절---대 안된다")
+        }
+    }
+
+    return (
         <>
             <div className="subCommentFrame">
-                
+                <div>
+                    <TextField
+                        onChange={(e)=>{
+                            setSubComment(e.target.value);
+                        }}
+                        fullWidth
+                        multiline
+                        rows={4}
+                        placeholder="댓글을 입력하세요"
+                    />
+                </div>
+                <div className="buttonFrame">
+                    <Button onClick={submit}>댓글 쓰기</Button>
+                </div>
             </div>
-            
+
         </>
     );
 

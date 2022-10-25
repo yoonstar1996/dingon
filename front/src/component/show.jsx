@@ -12,6 +12,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import ButtonGroup from "@mui/material/ButtonGroup";
 import { Hidden } from "@mui/material";
 import  SubComment  from "./SubComment";
+import  SubCommentUi  from "./SubCommentUi";
 const Show = ({ isLogin }) => {
   const PaginationBox = styled.div`
     a:link {
@@ -72,6 +73,7 @@ const Show = ({ isLogin }) => {
   const [err, setErr] = useState(false);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
+  const [sublist, setSubList] = useState([]);
   const handlePageChange = (page) => {
     setPage(page);
   };
@@ -83,7 +85,7 @@ const Show = ({ isLogin }) => {
       withCredentials: true,
     }).then((response) => {
       console.log(response.data);
-      console.log(response.data.postId);
+      // console.log(response.data.postId);
       setUserId(response.data.userId);
       let date = new Date(response.data.createdAt);
       let sendDate =
@@ -104,7 +106,7 @@ const Show = ({ isLogin }) => {
 
       let new_div = document.createElement("div");
       new_div.innerHTML = response.data.content;
-
+      console.log(content);
       content.current.innerHTML = response.data.content;
       let userNickname = response.data.userId;
       content.current.innerHTML += `<input
@@ -120,11 +122,12 @@ const Show = ({ isLogin }) => {
       params: { page: page, postId: id },
       withCredentials: true,
     }).then((response) => {
-      console.log("댓글정보", response.data.list);
+      // console.log("댓글정보", response.data.list);
       setComment(response.data.list);
       setTotal(response.data.list.length)
     });
   }, [page]);
+  
   return (
     <>
       <div className="wrap">
@@ -156,6 +159,9 @@ const Show = ({ isLogin }) => {
                 <h4 style={{ marginTop: 0, marginBottom: "10px" }}>
                   {cont.title}
                 </h4>
+                <div>
+                  닉네임: {cont.nickName +" | "+time}
+                </div>
               </div>
               <div className="info">
                 <div
@@ -191,10 +197,12 @@ const Show = ({ isLogin }) => {
               </div>
             </div>
           </div>
-          <div ref={content} className="get_content"></div>
+          <div ref={(c)=>{
+            content.current=c;} }className="get_content"></div>
           <div>전체 댓글 {cont.commentCount}개</div>
           <div className="comment">
             {comment.map((value, key) => {
+              
               let date = new Date(value.createdAt);
               let sendDate =
                 date.getFullYear() +
@@ -225,13 +233,14 @@ const Show = ({ isLogin }) => {
                       {value.content}
                     </div>
                     <div style={{ width: "15%", display: "flex" ,justifyContent:"flex-end" }}>
-                      {isLogin ? <Button style={{color:"black"}} variant="text"><DeleteIcon/></Button>:<></>}
+                      {isLogin === value.userId ? <Button style={{color:"black"}} variant="text"><DeleteIcon/></Button>:<></>}
                     </div>
                     <div style={{ width: "15%", display: "flex"  }}>
                       {sendDate}
                     </div>
                   </div>
-                    {value.id === subComment ? <SubComment comment={value.id}/>:<></>}
+                    {value.id === subComment ? <SubComment commentId={value.id} postId={id} isLogin={isLogin} comment={value.id}/>:<></>}
+                    <SubCommentUi sublist={sublist} isLogin={isLogin} commentId={value.id}/>
                   <hr style={{ backgroundColor: "#e2e2e2" }} />
                 </>
               );
