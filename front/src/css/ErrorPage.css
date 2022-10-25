@@ -30,7 +30,8 @@
 }
 .backHomeBtn{
     position: relative;
-    left: 300px;
+    top: 15px;
+    left: 280px;
     background-color: rgb(69, 69, 172);
     color: white;
     border-radius: 10px;
