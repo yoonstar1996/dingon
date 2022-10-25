@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
-
+import Pagination from "react-js-pagination";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -9,6 +9,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import "../css/Mypage.css";
+import styled from "styled-components";
 
 export default function Mypage(userId, setUserId, nickname) {
   useEffect(() => {
@@ -173,6 +174,15 @@ export default function Mypage(userId, setUserId, nickname) {
                 </TableBody>
               </Table>
             </TableContainer>
+            <PaginationBox>
+              <Pagination
+                activePage={page}
+                itemsCountPerPage={10}
+                totalItemsCount={total}
+                pageRangeDisplayed={5}
+                onChange={handlePageChange}
+              ></Pagination>
+            </PaginationBox>
           </div>
         </div>
       </div>

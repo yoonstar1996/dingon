@@ -158,6 +158,7 @@ export const Board = (props) => {
           ) : (
             ""
           )}
+          <hr style={{background:"#4545AC",height:"1px",marginTop:"8px",width:"100%"}} />
           <TableContainer sx={{ maxHeight: 800 }}>
             <Table size="small">
               <TableHead>
