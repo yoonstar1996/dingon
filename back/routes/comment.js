@@ -22,7 +22,7 @@ router.get("/sublist",async(req,res,next)=>{
             res.send({code:200,list:data});
         }
         else{
-            res.send({code:400});
+            res.send({code:200,list:[]});
         }
     }
     catch(err){
