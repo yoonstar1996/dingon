@@ -4,7 +4,6 @@ import "../css/NewBoard.css";
 
 
 function NewBoard(){
-    // const [Id, setId] = useState("");
     const [Name, setName] = useState("");
     const [BtnAble, setBtnAble ] = useState(false);
     const create = () => {
@@ -14,7 +13,6 @@ function NewBoard(){
             withCredentials: true,
             data : {name : Name}
         }).then((result) => {
-    
             if(result.data.code === 200){
                 alert("갤러리 생성이 완료됐습니다!")
                 window.location.replace(`/gallery/${Name}`)
@@ -60,10 +58,8 @@ function NewBoard(){
                             <h3>갤러리 생성 규칙 </h3>
                             <div className="theRule">1. 음란물 배포 및 불순한 목적의 갤러리는 운영진에 의해 삭제될 수 있습니다.</div>
                             <div className="theRule">2. 반복적으로 동일한 목적의 갤러리를 만들 시 제재를 받을 수 있습니다.</div>
-                        <hr></hr>
-
+                            <hr></hr>
                         </div>
-                        {/* <br></br> */}
                     <span>갤러리 제목 : </span>
                     <input  
                         className="boardName" 

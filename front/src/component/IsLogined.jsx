@@ -33,7 +33,7 @@ export default function IsLogined({ setIsLogin, nickname, userId }) {
           <button>마이 페이지</button>
         </Link>
         <Link to={"/create"}>
-          <button>갤러리 작성</button>
+          <button>갤러리 생성</button>
         </Link>
       </div>
     </>
