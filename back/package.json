@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "start": "nodemon app.js",
-    "coverage":"jest --coverage"
+    "coverage": "jest --coverage"
   },
   "author": "",
   "license": "ISC",
@@ -27,6 +27,7 @@
     "passport-local": "^1.0.0",
     "sequelize": "^6.25.2",
     "sequelize-cli": "^6.5.1",
+    "socket.io": "^4.5.3",
     "uuid": "^9.0.0"
   },
   "devDependencies": {

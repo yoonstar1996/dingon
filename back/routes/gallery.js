@@ -29,7 +29,7 @@ router.get("/list",async(req,res,next)=>{
         data.forEach(ele=>{
             let flag;
             flag = ele.content.search(/.*?<img.*?/g);
-            console.log(ele.content);
+        
             if (flag==-1){
                 ele.img=false;
             }
@@ -42,7 +42,7 @@ router.get("/list",async(req,res,next)=>{
             const response = await sequelize.query(query,{type:QueryTypes.SELECT});
             const query2 = `select count(*) as count from subcomments where postId="${data[i].postId}"`;
             const response2 = await sequelize.query(query2,{type:QueryTypes.SELECT});
-            console.log(response,response2);
+        
             data[i].commentCount = response[0].count+response2[0].count;
         }
         res.send({code:200,list:data});
@@ -64,12 +64,11 @@ router.get("/all",async(req,res)=>{
 });
 
 router.get("/check", isLoggedIn, async(req,res)=>{
-    console.log("aaaaaa")
+   
     try{
         const name = decodeURI(req.query.name);
-        console.log("name:",name);
         const data = await Board.findAll({where:{name:name}});
-        console.log(data);
+    
         if(data.length==0){
             res.send({code:200});
         }
