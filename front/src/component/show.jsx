@@ -99,17 +99,17 @@ const Show = ({ isLogin }) => {
     });
   }, []);
   useEffect(() => {
+    setPage(1)
     axios({
-      url: "http://localhost:8050/post/content",
+      url: "http://localhost:8050/comment/list",
       method: "get",
-      params: { postId: id },
+      params: {page:page, postId: id },
       withCredentials: true,
     }).then((response) => {
-      console.log(response.data);
-      setUserId(response.data.userId)
-      
+      console.log("댓글정보",response.data);
+      setComment(response.data.list)
     });
-  }, []);
+  }, [page]);
   return (
     <>
       <div className="wrap">
@@ -159,7 +159,7 @@ const Show = ({ isLogin }) => {
             {comment.map((value, key) => {
               return (
                 <>
-                  <div style={{fontSize:"small", padding: "8px", paddingRight: 0, paddingLeft: 0, display: "flex",alignItems:"center" }}>
+                  <div style={{fontSize:"small", padding: "2px", paddingRight: 0, paddingLeft: 0, display: "flex",alignItems:"center" }}>
                     <div style={{ width: "30%" }}>
                       {value.name}
                     </div>
