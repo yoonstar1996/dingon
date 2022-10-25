@@ -11,37 +11,38 @@ import TableRow from "@mui/material/TableRow";
 import "../css/Mypage.css";
 
 export default function Mypage(userId, setUserId, nickname) {
-  const listload = () => {
+  useEffect(() => {
     axios({
       url: "http://localhost:8050/post/my",
-      meethod: "get",
+      method: "get",
       withCredentials: true,
-    }).then((response) => {
-      console.log(response);
+    }).then((data) => {
+      setList(data.data.list);
+      console.log(data.data.list);
     });
-  };
+  }, []);
 
   const columns = [
-    { id: "number", label: "번호", minWidth: 100 },
-    { id: "title", label: "제목", minWidth: 300 },
+    { id: "number", label: "번호", minWidth: 40 },
+    { id: "title", label: "제목", minWidth: 200 },
     {
       id: "time",
       label: "작성일",
-      minWidth: 50,
+      minWidth: 100,
       align: "center",
       format: (value) => value.toLocaleString("en-US"),
     },
     {
       id: "clicked",
       label: "조회수",
-      minWidth: 5,
+      minWidth: 50,
       align: "center",
       format: (value) => value.toFixed(2),
     },
     {
       id: "like",
       label: "추천",
-      minWidth: 5,
+      minWidth: 30,
       align: "center",
       format: (value) => value.toFixed(2),
     },
@@ -113,6 +114,7 @@ export default function Mypage(userId, setUserId, nickname) {
                         key={column.id}
                         align={column.align}
                         style={{ minWidth: column.minWidth }}
+                        overflow={column.overflow}
                       >
                         {column.label}
                       </TableCell>
@@ -133,12 +135,23 @@ export default function Mypage(userId, setUserId, nickname) {
                         >
                           <TableCell>{v.id}</TableCell>
                           <TableCell>
-                            <Link
-                              style={{ textDecoration: "none" }}
-                              to={"/post/" + name + "/" + v.postId}
+                            <div
+                              style={{
+                                whiteSpace: "nowrap",
+                                textOverflow: "ellipsis",
+                                width: "300px",
+                                overflow: "hidden",
+                              }}
                             >
-                              {v.title}
-                            </Link>
+                              <Link
+                                style={{
+                                  textDecoration: "none",
+                                }}
+                                to={"/post/" + name + "/" + v.postId}
+                              >
+                                {v.title}
+                              </Link>
+                            </div>
                           </TableCell>
 
                           <TableCell>

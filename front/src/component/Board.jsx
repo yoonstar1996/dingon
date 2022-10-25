@@ -3,18 +3,18 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import Pagination from "react-js-pagination";
 import styled from "styled-components";
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Button from '@mui/material/Button';
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Button from "@mui/material/Button";
 
-import "../css/Board.css"
+import "../css/Board.css";
 const PaginationBox = styled.div`
-  a:link{
-    color:black;
+  a:link {
+    color: black;
   }
   .pagination {
     display: flex;
@@ -43,14 +43,14 @@ const PaginationBox = styled.div`
   }
   ul.pagination li a {
     text-decoration: none;
-    color: #4545AC;
+    color: #4545ac;
     font-size: 1rem;
   }
   ul.pagination li.active a {
     color: white;
   }
   ul.pagination li.active {
-    background-color: #4545AC;
+    background-color: #4545ac;
   }
   ul.pagination li a:hover,
   ul.pagination li a.active {
@@ -59,34 +59,34 @@ const PaginationBox = styled.div`
 `;
 export const Board = (props) => {
   const columns = [
-    { id: 'number', label: '번호', minWidth: 100 },
-    { id: 'title', label: '제목', minWidth: 300 },
+    { id: "number", label: "번호", minWidth: 100 },
+    { id: "title", label: "제목", minWidth: 300 },
     {
-      id: 'name',
+      id: "name",
       label: "이름",
       minWidth: 10,
-      align: 'center',
-      format: (value) => value.toLocaleString('en-US'),
+      align: "center",
+      format: (value) => value.toLocaleString("en-US"),
     },
     {
-      id: 'time',
+      id: "time",
       label: "작성일",
       minWidth: 50,
-      align: 'center',
-      format: (value) => value.toLocaleString('en-US'),
+      align: "center",
+      format: (value) => value.toLocaleString("en-US"),
     },
     {
-      id: 'clicked',
-      label: '조회수',
+      id: "clicked",
+      label: "조회수",
       minWidth: 5,
-      align: 'center',
+      align: "center",
       format: (value) => value.toFixed(2),
     },
     {
-      id: 'like',
-      label: '추천',
+      id: "like",
+      label: "추천",
       minWidth: 5,
-      align: 'center',
+      align: "center",
       format: (value) => value.toFixed(2),
     },
   ];
@@ -126,7 +126,7 @@ export const Board = (props) => {
     if (total == 0) {
       setList([]);
     }
-  }, [page, total,name]);
+  }, [page, total, name]);
   return (
     <>
       {!err ? (
@@ -136,8 +136,10 @@ export const Board = (props) => {
           </h1>
           {props.isLogin ? (
             <div style={{ textAlign: "right" }}>
-              <Link style={{ textDecoration: 'none' }} to={"/postmade/" + name}>
-                <Button style={{ background: "#4545AC" }} variant="contained" >글 작성</Button>
+              <Link style={{ textDecoration: "none" }} to={"/postmade/" + name}>
+                <Button style={{ background: "#4545AC" }} variant="contained">
+                  글 작성
+                </Button>
               </Link>
             </div>
           ) : null}
@@ -167,41 +169,46 @@ export const Board = (props) => {
                 {list.length !== 0 &&
                   list.map((v, key) => {
                     let date = new Date(v.createdAt);
-                    let sendDate = date.getFullYear() + "-" + (parseInt(date.getMonth()) + 1) + "-" + date.getDate() + " ";
+                    let sendDate =
+                      date.getFullYear() +
+                      "-" +
+                      (parseInt(date.getMonth()) + 1) +
+                      "-" +
+                      date.getDate() +
+                      " ";
                     if (date.getHours() < 12) {
-                      sendDate +=  date.getHours() + ":";
+                      sendDate += date.getHours() + ":";
+                    } else {
+                      sendDate += parseInt(date.getHours()) - 12 + ":";
                     }
-                    else {
-                      sendDate +=   (parseInt(date.getHours()) - 12) + ":";
-                    }
-                    sendDate += +date.getMinutes() ;
+                    sendDate += +date.getMinutes();
                     console.log(date.getDate());
                     return (
-                      <TableRow align="center" hover role="checkbox" tabIndex={-1} key={v.id}>
+                      <TableRow
+                        align="center"
+                        hover
+                        role="checkbox"
+                        tabIndex={-1}
+                        key={v.id}
+                      >
+                        <TableCell>{v.postId}</TableCell>
                         <TableCell>
-                          {v.postId}
-                        </TableCell>
-                        <TableCell>
-                          <Link style={{ textDecoration: 'none' }} to={"/post/" + name + "/" + v.postId}>
-                            {v.title} <span style={{color:"purple"}}>[{v.commentCount}]</span>
+                          <Link
+                            style={{ textDecoration: "none" }}
+                            to={"/post/" + name + "/" + v.postId}
+                          >
+                            {v.title}{" "}
+                            <span style={{ color: "purple" }}>
+                              [{v.commentCount}]
+                            </span>
                           </Link>
                         </TableCell>
 
-                        <TableCell align="center" >
-                          {v.nickName}
-                        </TableCell>
-                        <TableCell>
-                          {sendDate}
-                        </TableCell>
-                        <TableCell align="center">
-                          {v.clicked}
-                        </TableCell>
-                        <TableCell align="center">
-                          200
-                        </TableCell>
+                        <TableCell align="center">{v.nickName}</TableCell>
+                        <TableCell>{sendDate}</TableCell>
+                        <TableCell align="center">{v.clicked}</TableCell>
+                        <TableCell align="center">200</TableCell>
                       </TableRow>
-
-
                     );
                   })}
               </TableBody>
@@ -209,7 +216,6 @@ export const Board = (props) => {
           </TableContainer>
           <PaginationBox>
             <Pagination
-              
               activePage={page}
               itemsCountPerPage={10}
               totalItemsCount={total}

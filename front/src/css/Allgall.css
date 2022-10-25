@@ -36,6 +36,12 @@
   margin: 10px 22px;
   display: inline;
   color: black;
+  width: 200px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mid-div > div > a {
   text-decoration: none;
 }
 .mid-div > div:hover {
