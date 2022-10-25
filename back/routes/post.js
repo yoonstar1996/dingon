@@ -32,7 +32,7 @@ router.post("/uploads",isLoggedIn,async(req,res,next)=>{
 });
 router.post("/img",isLoggedIn,upload.single("files"),async(req,res,next)=>{
     try{
-        console.log(req.file);
+     
         res.send({code:200, url:"http://localhost:8050/"+req.file.path});
     }
     catch(err){

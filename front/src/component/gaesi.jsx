@@ -1,7 +1,9 @@
+
+
 import "../css/Gaesi.css";
 import { useState, useRef, useMemo, useEffect } from "react";
 import React from "react";
-import { TextField, Button } from "@mui/material";
+import { TextField, Button, Typography } from "@mui/material";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -103,10 +105,15 @@ const Gaesi = () => {
       editor.clipboard.dangerouslyPasteHTML(0, result.data.content);
     });
   }, []);
+  console.log(postid);
   return (
     <>
       <div className="wrap">
         <div className="content">
+          {/* <h2 variant="h2" style={{ color: "#4545AC" }}>
+            야구갤러리
+          </h2>
+          <hr></hr> */}
           <div className="title_head">
             <h2>작성글 수정</h2>
           </div>
@@ -144,7 +151,7 @@ const Gaesi = () => {
               ref={quillRef}
               placeholder="게시글 수정"
               theme="snow"
-              style={{ height: "450px", overflow: "scroll" }}
+              style={{ height: "650px", overflow: "scroll" }}
               onChange={Setcontent}
               value={content}
               modules={modules}
@@ -155,22 +162,59 @@ const Gaesi = () => {
         </div>
         <div className="modify_btn">
           <Button
-            variant="outlined"
+            variant="contained"
             startIcon={<DeleteIcon></DeleteIcon>}
             color="error"
             id="delete"
             onClick={() => {
-              console.log("해윙");
+              console.log(postid);
+              // console.log("해윙");
+
+              axios({
+                url: "http://localhost:8050/post/delete",
+                method: "delete",
+                params: { postId: postid },
+                withCredentials: true,
+              }).then((response) => {
+                if (response.data.code == 200) {
+                  alert("삭제 가버렷!!!!!!");
+                  window.location = "/";
+                }
+              });
             }}
           >
             삭제
           </Button>
           <Button
-            variant="outlined"
+            variant="contained"
             color="success"
             id="modify"
             onClick={() => {
-              console.log("배윙");
+              let data = {
+                postId: postid,
+                title: title,
+                content: quillRef.current.value,
+              };
+              if (title.length === 0) {
+                alert("믿을 수 없을만큼 돌아버린거냐? 제목 써라");
+                return;
+              } else if (content.length == "" || null) {
+                alert("두부외상 이라 내용 쓰는거 까먹음?");
+                return;
+              }
+              axios({
+                url: "http://localhost:8050/post/update",
+                method: "PATCH",
+                data: data,
+                withCredentials: true,
+              }).then((response) => {
+                if (response.data.code == 200) {
+                  alert("수정성공");
+                  window.location = `/`;
+                } else {
+                  alert("수정불가");
+                }
+              });
             }}
           >
             수정
