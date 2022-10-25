@@ -31,6 +31,7 @@ const Main = memo((props) => {
           path="/gallery/:name"
           element={<Board isLogin={props.isLogin}></Board>}
         ></Route>
+
         <Route path="/mypage" element={<Mypage></Mypage>}></Route>
         <Route path="/fix" element={<Fix userId={props.userId}></Fix>}></Route>
         {props.isLogin ? (
@@ -38,7 +39,7 @@ const Main = memo((props) => {
         ) : (
           <></>
         )}
-        <Route path="/gallery/create*" element={<NewBoard></NewBoard>}></Route>
+        <Route path="/create" element={<NewBoard></NewBoard>}></Route>
       </Routes>
     </>
   );

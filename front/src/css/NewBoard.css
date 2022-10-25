@@ -3,11 +3,13 @@
     height: 350px;
     margin: 0px;
     padding: 0px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     position: relative;
     left: 100px;
     top : 20px;
     border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 5px 4px 12px;
+
 }
 .theContent{
     width: 100%;
@@ -20,8 +22,14 @@
     bottom: 5px;
 }
 .newBoardTitle{
+    width: 620px;
     height: 40px;
-    width: 100%;
+    font-size: 25px;
+    text-align: center;
+    /* width: 100%; */
+    margin-top: 0;
+    margin-bottom: 0;
+    color: white;
     background-color: rgb(69, 69, 172);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;  
@@ -30,18 +38,13 @@
     font-size: 25px;
     margin-left: 10px;
 }
-.newBoardTitle > h2{
-    text-align: center;
-    margin:0px;
-    color: white;
-}
 hr{
     width: 95%;
     margin: 0%;
 }
 .checkBtn{
     position: relative;
-    left: 10px;
+    left: 20px;
 }
 .createBtn{
     position: relative;
@@ -56,7 +59,8 @@ hr{
     text-align: center;
 }
 .newBoardRule > h3{
-    margin: 5px 0px 5px 0px;
+    margin: 5px 0px 5px 5px;
+    text-align: left;
 }
 .theRule{
     text-align: left;

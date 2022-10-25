@@ -13,7 +13,7 @@
   margin-left: 5px;
 }
 .allSelect {
-  background-color: rgb(69, 69, 172);
+  background-color: #4545ac;
   color: white;
   border-radius: 10px;
   width: 150px;
@@ -22,7 +22,7 @@
   justify-content: center;
 }
 .mid-div {
-  border: 1px solid blue;
+  border: 1px solid #4545ac;
   width: 1187px;
   height: 450px;
   margin: 20px 0 0 0;
@@ -32,12 +32,12 @@
   align-content: flex-start;
   overflow-x: scroll;
 }
-.mid-div > a {
+.mid-div > div {
   margin: 10px 22px;
   display: inline;
   color: black;
   text-decoration: none;
 }
-.mid-div > a:hover {
-  color: rgb(69, 69, 172);
+.mid-div > div:hover {
+  color: #4545ac;
 }
