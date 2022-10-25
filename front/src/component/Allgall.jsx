@@ -33,11 +33,7 @@ export default function Allgall() {
               <span>메롱</span>
             </Link>
           </div>
-          <div>
-            <Link to={`/gallery/`}>
-              <span>메롱55555555555555555555555555</span>
-            </Link>
-          </div>
+
           <div>
             <Link to={`/gallery/`}>
               <span>메롱</span>
