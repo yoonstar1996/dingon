@@ -69,7 +69,8 @@ function PostMade() {
             container: [
               ['image'],
               [{ header: [1, 2, 3, false] }],
-              ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+              [{color:["orange","black"]}],
+              ["size",'bold', 'italic', 'underline', 'strike', 'blockquote'],
             ],
             handlers: {
               // 이미지 처리는 우리가 직접 imageHandler라는 함수로 처리할 것이다.

@@ -148,6 +148,7 @@ export const Board = (props) => {
           ) : (
             ""
           )}
+          <hr style={{background:"#4545AC",height:"1px",marginTop:"8px",width:"100%"}} />
           <TableContainer sx={{ maxHeight: 800 }}>
             <Table size="small">
               <TableHead>
@@ -209,7 +210,6 @@ export const Board = (props) => {
           </TableContainer>
           <PaginationBox>
             <Pagination
-              
               activePage={page}
               itemsCountPerPage={10}
               totalItemsCount={total}
