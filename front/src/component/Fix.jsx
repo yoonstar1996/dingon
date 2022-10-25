@@ -6,12 +6,29 @@ import "../css/Fix.css";
 export default function Fix({ userId }) {
   const [nickChange, setNickChange] = useState("");
   const [pwChange, setPwChange] = useState("");
+  const [length, setLength] = useState(true);
 
   function fixBtn() {
     var data = {
       nickName: nickChange,
       password: pwChange,
     };
+    if (nickChange === "") {
+      alert("닉네임을 입력하세용");
+      return;
+    } else if (nickChange.length <= 10) {
+      console.log("10자 이하");
+    } else if (nickChange.length > 10) {
+      return;
+    }
+    if (pwChange === "") {
+      alert("비밀번호를 입력하세용");
+      return;
+    } else if (pwChange.length < 8) {
+      console.log("8자 이하");
+    } else if (pwChange.length > 8) {
+      return;
+    }
 
     axios({
       url: "http://localhost:8050/profile",
@@ -22,28 +39,25 @@ export default function Fix({ userId }) {
       console.log(response);
     });
   }
-  //   useEffect(() => {
-  //     const id = document.querySelector("#id");
-  //     console.log("하이");
-  //   }, [fixBtn]);
+
   return (
     <>
       <div className="mypage-wrapper">
         <div className="mypage-left">
-          <div className="left-mypage">
+          <div>
             <Link to={"/mypage"}>
-              <button>나의 게시글</button>
+              <button className="left-mypage">나의 게시글</button>
             </Link>
           </div>
-          <div className="left-fix">
+          <div>
             <Link to={"/fix"}>
-              <button>회원 정보 수정</button>
+              <button className="left-fix">회원 정보 수정</button>
             </Link>
           </div>
         </div>
         <div className="mypage-right">
           <div className="right-title">
-            <div>회원 정보 수정</div>
+            <div className="my-fix">회원 정보 수정</div>
             <hr />
           </div>
           <div className="right-list">
@@ -67,21 +81,34 @@ export default function Fix({ userId }) {
                 </label>
                 <input
                   type="text"
+                  placeholder="10자 이하로 입력"
                   id="nickname"
                   className="fixnick"
                   name="nickname"
                   value={nickChange}
                   onChange={(e) => {
                     setNickChange(e.target.value);
+                    if (e.target.value.length < 10) {
+                      setLength(true);
+                    } else {
+                      setLength(false);
+                    }
                   }}
                 ></input>
+
+                <button className="nickConfirm">중복확인</button>
+
+                <div className={length ? "d-none" : "color"}>
+                  10자 이하로 입력
+                </div>
                 <br />
 
-                <label htmlFor="password" className="label">
+                <label htmlFor="password" className="label password">
                   비밀번호 :
                 </label>
                 <input
                   type="password"
+                  placeholder="변경 할 비밀번호"
                   id="password"
                   className="fixpw"
                   name="password"
@@ -90,12 +117,13 @@ export default function Fix({ userId }) {
                     setPwChange(e.target.value);
                   }}
                 ></input>
-                <br />
               </form>
             </div>
             <hr />
             <div className="right-button">
-              <button onClick={fixBtn}>수정하기</button>
+              <button onClick={fixBtn} className="fixBtn">
+                수정하기
+              </button>
             </div>
           </div>
         </div>

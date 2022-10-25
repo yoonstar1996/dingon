@@ -8,6 +8,7 @@ import NewBoard from "./NewBoard";
 import Show from "./show";
 import Mypage from "./Mypage";
 import Fix from "./Fix";
+import ErrorPage from "./ErrorPage"
 
 const Main = memo((props) => {
   return (
@@ -32,10 +33,21 @@ const Main = memo((props) => {
           element={<Board isLogin={props.isLogin}></Board>}
         ></Route>
 
-        <Route path="/mypage" element={<Mypage></Mypage>}></Route>
-        <Route path="/fix" element={<Fix userId={props.userId}></Fix>}></Route>
         {props.isLogin ? (
-          <Route path="/gallery/made/:postid" element={<Gaesi></Gaesi>}></Route>
+          <Route path="/mypage" element={<Mypage></Mypage>}></Route>
+        ) : (
+          <></>
+        )}
+        {props.isLogin ? (
+          <Route
+            path="/fix"
+            element={<Fix userId={props.userId}></Fix>}
+          ></Route>
+        ) : (
+          <></>
+        )}
+        {props.isLogin ? (
+          <Route path="/gallery/made/:name/:postid" element={<Gaesi></Gaesi>}></Route>
         ) : (
           <></>
         )}
@@ -45,7 +57,7 @@ const Main = memo((props) => {
           <></>
         )      
         }
-        <Route path="/*" element={<div>머하러 이까지 쳐기어 들오노 병신아</div>}></Route>
+        <Route path="/*" element={<ErrorPage></ErrorPage>}></Route>
 
       </Routes>
     </>

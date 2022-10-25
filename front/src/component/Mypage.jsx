@@ -12,82 +12,83 @@ import "../css/Mypage.css";
 import styled from "styled-components";
 
 export default function Mypage(userId, setUserId, nickname) {
-  const PaginationBox = styled.div`
-  a:link{
-    color:black;
-  }
-  .pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 15px;
-  }
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  ul.pagination li {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    border: 1px solid #e2e2e2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1rem;
-  }
-  ul.pagination li:first-child {
-    border-radius: 5px 0 0 5px;
-  }
-  ul.pagination li:last-child {
-    border-radius: 0 5px 5px 0;
-  }
-  ul.pagination li a {
-    text-decoration: none;
-    color: #4545AC;
-    font-size: 1rem;
-  }
-  ul.pagination li.active a {
-    color: white;
-  }
-  ul.pagination li.active {
-    background-color: #4545AC;
-  }
-  ul.pagination li a:hover,
-  ul.pagination li a.active {
-    color: white;
-  }
-`;
-  const listload = () => {
+  useEffect(() => {
     axios({
       url: "http://localhost:8050/post/my",
-      meethod: "get",
+      method: "get",
       withCredentials: true,
-    }).then((response) => {
-      console.log(response);
+    }).then((data) => {
+      setList(data.data.list);
+      console.log(data.data.list);
     });
-  };
+  }, []);
+  const PaginationBox = styled.div`
+    a:link {
+      color: black;
+    }
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul.pagination li {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      border: 1px solid #e2e2e2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1rem;
+    }
+    ul.pagination li:first-child {
+      border-radius: 5px 0 0 5px;
+    }
+    ul.pagination li:last-child {
+      border-radius: 0 5px 5px 0;
+    }
+    ul.pagination li a {
+      text-decoration: none;
+      color: #4545ac;
+      font-size: 1rem;
+    }
+    ul.pagination li.active a {
+      color: white;
+    }
+    ul.pagination li.active {
+      background-color: #4545ac;
+    }
+    ul.pagination li a:hover,
+    ul.pagination li a.active {
+      color: white;
+    }
+  `;
 
   const columns = [
-    { id: "number", label: "번호", minWidth: 100 },
-    { id: "title", label: "제목", minWidth: 300 },
+    { id: "number", label: "번호", minWidth: 40 },
+    { id: "title", label: "제목", minWidth: 200 },
     {
       id: "time",
       label: "작성일",
-      minWidth: 50,
+      minWidth: 100,
       align: "center",
       format: (value) => value.toLocaleString("en-US"),
     },
     {
       id: "clicked",
       label: "조회수",
-      minWidth: 5,
+      minWidth: 50,
       align: "center",
       format: (value) => value.toFixed(2),
     },
     {
       id: "like",
       label: "추천",
-      minWidth: 5,
+      minWidth: 30,
       align: "center",
       format: (value) => value.toFixed(2),
     },
@@ -133,20 +134,20 @@ export default function Mypage(userId, setUserId, nickname) {
     <>
       <div className="mypage-wrapper">
         <div className="mypage-left">
-          <div className="left-mypage">
+          <div>
             <Link to={"/mypage"}>
-              <button>나의 게시글</button>
+              <button className="left-mypage">나의 게시글</button>
             </Link>
           </div>
-          <div className="left-fix">
+          <div>
             <Link to={"/fix"}>
-              <button>회원 정보 수정</button>
+              <button className="left-fix">회원 정보 수정</button>
             </Link>
           </div>
         </div>
         <div className="mypage-right">
           <div className="right-title">
-            <div>나의 게시글</div>
+            <div className="my-title">나의 게시글</div>
             <hr />
           </div>
           <div className="right-list">
@@ -159,6 +160,7 @@ export default function Mypage(userId, setUserId, nickname) {
                         key={column.id}
                         align={column.align}
                         style={{ minWidth: column.minWidth }}
+                        overflow={column.overflow}
                       >
                         {column.label}
                       </TableCell>
@@ -168,6 +170,7 @@ export default function Mypage(userId, setUserId, nickname) {
                 <TableBody>
                   {list.length !== 0 &&
                     list.map((v, key) => {
+                      console.log(v);
                       let date = new Date(v.createdAt);
                       return (
                         <TableRow
@@ -179,12 +182,23 @@ export default function Mypage(userId, setUserId, nickname) {
                         >
                           <TableCell>{v.id}</TableCell>
                           <TableCell>
-                            <Link
-                              style={{ textDecoration: "none" }}
-                              to={"/post/" + name + "/" + v.postId}
+                            <div
+                              style={{
+                                whiteSpace: "nowrap",
+                                textOverflow: "ellipsis",
+                                width: "300px",
+                                overflow: "hidden",
+                              }}
                             >
-                              {v.title}
-                            </Link>
+                              <Link
+                                style={{
+                                  textDecoration: "none",
+                                }}
+                                to={"/post/" + v.gallery + "/" + v.id}
+                              >
+                                {v.title}
+                              </Link>
+                            </div>
                           </TableCell>
 
                           <TableCell>
