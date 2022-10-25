@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {Board} = require("../models");
+const {Board,Comment,SubComment, User} = require("../models");
 const {isLoggedIn,isNotLoggedIn} = require("./middlewares");
 const { QueryTypes } = require('sequelize');
 const { sequelize } = require("../models");
@@ -29,7 +29,54 @@ router.get("/sublist",async(req,res,next)=>{
         next(err);
     }
 });
-
+router.post("/",isLoggedIn,async(req,res,next)=>{
+    try{
+        await Comment.create({content:req.body.comment,userId:req.user.id,postId:req.body.postId});
+        res.send({code:200});
+    }
+    catch(err){
+        next(err);
+    }
+});
+router.post("/sub",isLoggedIn,async(req,res,next)=>{
+    try{
+        await SubComment.create({content:req.body.comment, userId:req.user.id, postId:req.body.postId,commentId:req.body.commentId});
+        res.send({code:200});
+    }
+    catch(err){
+        next(err);
+    }
+});
+router.delete("/",isLoggedIn,async(req,res,next)=>{
+    try{
+        const data = await Comment.findAll({where:{userId:req.user.id, id:req.query.commentId }});
+        if (data.length==0){
+            res.send({code:400});
+        }
+        else{
+            await Comment.destroy({where:{id:req.query.commentId}});
+            res.send({code:200});
+        }
+    }
+    catch(err){
+        next(err);
+    }
+});
+router.delete("/sub",isLoggedIn,async(req,res,next)=>{
+    try{
+        const data = await SubComment.findAll({where:{userId:req.user.id, id:req.query.commentId}});
+        if(data.length==0){
+            res.send({code:400 });
+        }
+        else{
+            await SubComment.destroy({where:{id:req.query.commentId}});
+            res.send({code:200});
+        }
+    }
+    catch(err){
+        next(err);
+    }
+});
 
 
 
