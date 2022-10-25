@@ -197,7 +197,7 @@ const Gaesi = () => {
               if (title.length === 0) {
                 alert("믿을 수 없을만큼 돌아버린거냐? 제목 써라");
                 return;
-              } else if (content.length == "" || null) {
+              } else if (content.length == "" || 0 ) {
                 alert("두부외상 이라 내용 쓰는거 까먹음?");
                 return;
               }
