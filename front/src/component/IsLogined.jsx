@@ -26,14 +26,18 @@ export default function IsLogined({ setIsLogin, nickname, userId }) {
     <>
       <div className="loginedbox">
         <div className="user-info">
-          <span>{nickname}님 안녕하세요</span>
-          <button onClick={logout}>로그아웃</button>
+          <span>
+            <strong>{nickname}</strong>님 안녕하세요..
+          </span>
+          <button onClick={logout} className="logoutBtn">
+            로그아웃
+          </button>
         </div>
-        <Link to={"/mypage"}>
-          <button>마이 페이지</button>
+        <Link className="create" to={"/mypage"}>
+          마이 페이지
         </Link>
-        <Link to={"/create"}>
-          <button>갤러리 생성</button>
+        <Link className="create" to={"/create"}>
+          갤러리 생성
         </Link>
       </div>
     </>
