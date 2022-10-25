@@ -28,8 +28,9 @@
   flex-direction: column;
   justify-content: center;
   width: 260px;
-  padding: 10px;
-  border: 1px solid blue;
+  height: 170px;
+  padding: 15px;
+  border: 1px solid #eaeaea;
   margin: 20px 0;
   border-radius: 10px;
   box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
@@ -38,14 +39,15 @@
 .formbox {
   display: flex;
   flex-direction: row;
+  margin-bottom: 10px;
 }
 .hitgall {
   display: flex;
   flex-direction: column;
   width: 260px;
   padding: 15px;
-  border: 1px solid brown;
-  margin: 50px 0;
+  border: 1px solid #eaeaea;
+  margin: 50px 0 0 0;
   border-radius: 10px;
   box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
     rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;

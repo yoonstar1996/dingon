@@ -27,7 +27,6 @@ export default function Loginbox({
       withCredentials: true,
     }).then((response) => {
       if (response.data.code === 200) {
-        alert("성공");
         setUserId(response.data.user.email);
         setNickname(response.data.user.nickName);
         setIsLogin(response.data.user.userId);
@@ -56,7 +55,7 @@ export default function Loginbox({
               name="id"
               id="id"
               className="idInput"
-              placeholder="ID"
+              placeholder="E-mail"
             ></input>
             <input
               type="password"
