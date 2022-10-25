@@ -18,7 +18,7 @@ const Show = ({ isLogin }) => {
       withCredentials: true,
     }).then((response) => {
       console.log(response.data);
-
+      console.log(response.data.postId);
       setUserId(response.data.userId);
       let date = new Date(response.data.createdAt);
       let sendDate =
@@ -53,14 +53,7 @@ const Show = ({ isLogin }) => {
         <div className="content">
           <div className="headBar">
             <h1 className="t">
-<<<<<<< HEAD
-              <Link
-                style={{ textDecoration: "none" }}
-                to={"/gallery/made/" + id}
-              >
-=======
-              <Link style={{ textDecoration: 'none' }} to={"/gallery/" + name}>
->>>>>>> upstream/develop
+              <Link style={{ textDecoration: "none" }} to={"/gallery/" + name}>
                 {name} 갤러리
               </Link>
             </h1>
