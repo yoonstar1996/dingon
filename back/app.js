@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const session = require("express-session");
 const dotenv = require("dotenv");
 const { sequelize } = require("./models");
-const { User,UserCount} = require("./models");
+const { User, UserCount } = require("./models");
 const bcrypt = require("bcrypt");
 const app = express();
 const webSocket = require("./socket.js");
@@ -22,7 +22,7 @@ const sessionMiddleware = session({
 });
 const passport = require("passport");
 sequelize
-  .sync({ alter: true })
+  .sync({ force: false })
   .then(() => {
     console.log("데이터베이스 연결 성공했습니다");
   })
@@ -60,14 +60,14 @@ app.use(
 app.get("/", (req, res) => {
   // res.send({ code: "안녕하세요 저는 우석우 입니다" });
 });
-app.use("/auth",authRouter);
-app.use("/search",searchRouter);
-app.use("/post",postRouter);
-app.use("/gallery",galleryRouter);
-app.use("/comment",commentRouter);
-app.use("/profile",profileRouter);
+app.use("/auth", authRouter);
+app.use("/search", searchRouter);
+app.use("/post", postRouter);
+app.use("/gallery", galleryRouter);
+app.use("/comment", commentRouter);
+app.use("/profile", profileRouter);
 const server = app.listen(8050, async () => {
-  await UserCount.destroy({where:{}});
+  await UserCount.destroy({ where: {} });
 });
 webSocket(server, app, sessionMiddleware);
 app.use((req, res, next) => {
@@ -77,6 +77,3 @@ app.use((err, req, res, next) => {
   console.error(err);
   res.send({ code: 500 });
 });
-
-
-

@@ -21,13 +21,27 @@
   margin-right: 52px;
 }
 .fixid,
-.fixnick,
 .fixpw,
 .refixpw {
   padding-left: 5px;
   margin: 10px 0;
   height: 30px;
-  width: 250px;
+  width: 276px;
+}
+.fixnick {
+  padding-left: 5px;
+  margin: 10px 0;
+  height: 30px;
+  width: 200px;
+}
+.nickConfirm {
+  height: 34px;
+  border: 1px solid blue;
+  background-color: transparent;
+  margin: 0 10px;
+}
+.nickConfirm:hover {
+  cursor: pointer;
 }
 .right-button {
   display: flex;
@@ -80,7 +94,7 @@
 .d-none {
   display: none;
 }
-.colors {
+.color {
   color: red;
   font-size: 0.8rem;
   margin-left: 130px;

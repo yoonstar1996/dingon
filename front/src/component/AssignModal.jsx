@@ -25,7 +25,7 @@ function AssignModal({ senddata }) {
     }
   };
   const namevalidate = () => {
-    let check = /^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,8}$/;
+    let check = /^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,10}$/;
     if (!IwriteState) {
       return false;
     } else {
