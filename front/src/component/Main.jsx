@@ -8,6 +8,7 @@ import NewBoard from "./NewBoard";
 import Show from "./show";
 import Mypage from "./Mypage";
 import Fix from "./Fix";
+import ErrorPage from "./ErrorPage"
 
 const Main = memo((props) => {
   return (
@@ -45,7 +46,7 @@ const Main = memo((props) => {
           <></>
         )      
         }
-        <Route path="/*" element={<div>머하러 이까지 쳐기어 들오노 병신아</div>}></Route>
+        <Route path="/*" element={<ErrorPage></ErrorPage>}></Route>
 
       </Routes>
     </>
