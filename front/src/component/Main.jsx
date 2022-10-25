@@ -39,7 +39,12 @@ const Main = memo((props) => {
         ) : (
           <></>
         )}
-        <Route path="/create" element={<NewBoard></NewBoard>}></Route>
+        {props.isLogin ?(
+          <Route path="/create" element={<NewBoard></NewBoard>}></Route>          
+        ) : (
+          <></>
+        )      
+}
       </Routes>
     </>
   );
