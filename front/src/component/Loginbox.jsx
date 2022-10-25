@@ -55,7 +55,7 @@ export default function Loginbox({
               name="id"
               id="id"
               className="idInput"
-              placeholder="ID"
+              placeholder="E-mail"
             ></input>
             <input
               type="password"

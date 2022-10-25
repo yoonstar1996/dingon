@@ -22,28 +22,25 @@ export default function Fix({ userId }) {
       console.log(response);
     });
   }
-  //   useEffect(() => {
-  //     const id = document.querySelector("#id");
-  //     console.log("하이");
-  //   }, [fixBtn]);
+
   return (
     <>
       <div className="mypage-wrapper">
         <div className="mypage-left">
-          <div className="left-mypage">
+          <div>
             <Link to={"/mypage"}>
-              <button>나의 게시글</button>
+              <button className="left-mypage">나의 게시글</button>
             </Link>
           </div>
-          <div className="left-fix">
+          <div>
             <Link to={"/fix"}>
-              <button>회원 정보 수정</button>
+              <button className="left-fix">회원 정보 수정</button>
             </Link>
           </div>
         </div>
         <div className="mypage-right">
           <div className="right-title">
-            <div>회원 정보 수정</div>
+            <div className="my-fix">회원 정보 수정</div>
             <hr />
           </div>
           <div className="right-list">
@@ -67,17 +64,23 @@ export default function Fix({ userId }) {
                 </label>
                 <input
                   type="text"
+                  placeholder="10자 이하로 입력"
                   id="nickname"
                   className="fixnick"
                   name="nickname"
                   value={nickChange}
                   onChange={(e) => {
                     setNickChange(e.target.value);
+                    console.log(nickChange);
+                    if (nickChange == 12345) {
+                      console.log("확인");
+                    }
                   }}
                 ></input>
+                <div className="validnick d-none colors">10자 이하로 입력</div>
                 <br />
 
-                <label htmlFor="password" className="label">
+                <label htmlFor="password" className="label password">
                   비밀번호 :
                 </label>
                 <input
@@ -88,14 +91,16 @@ export default function Fix({ userId }) {
                   value={pwChange}
                   onChange={(e) => {
                     setPwChange(e.target.value);
+                    console.log(pwChange);
                   }}
                 ></input>
-                <br />
               </form>
             </div>
             <hr />
             <div className="right-button">
-              <button onClick={fixBtn}>수정하기</button>
+              <button onClick={fixBtn} className="fixBtn">
+                수정하기
+              </button>
             </div>
           </div>
         </div>
