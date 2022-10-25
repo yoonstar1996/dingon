@@ -120,7 +120,11 @@ function PostMade() {
             </div>
             <hr />
             <div className="titlename">
-                <TextField onChange={(e)=>{setTitle(e.target.value)}} fullWidth type="text" placeholder="제목" />
+                <TextField onChange={(e)=>{setTitle(e.target.value)
+                if(e.target.value.length >= 15){
+                  alert("제목 그만좀 늘려라");
+                  e.target.value = " "
+                }}} fullWidth type="text" placeholder="제목" />
             </div>
             <div className="alertstory">
                 <ErrorOutlineIcon />{"절대절대 부적절한 이미지 혹은 내용을 담으면 안됩니다!"}
