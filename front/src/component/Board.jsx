@@ -132,7 +132,15 @@ export const Board = (props) => {
       {!err ? (
         <div style={{ width: "100%" }} className="boardBox">
           <h1 style={{ textAlign: "center" }}>
-          <Link onClick={()=>{setPage(1)}} style={{textDecoration:"none"}}to={"/gallery/"+name}>{name} 갤러리</Link>
+            <Link
+              onClick={() => {
+                setPage(1);
+              }}
+              style={{ textDecoration: "none" }}
+              to={"/gallery/" + name}
+            >
+              {name} 갤러리
+            </Link>
           </h1>
           {props.isLogin ? (
             <div style={{ textAlign: "right" }}>
@@ -193,15 +201,24 @@ export const Board = (props) => {
                       >
                         <TableCell>{v.postId}</TableCell>
                         <TableCell>
-                          <Link
-                            style={{ textDecoration: "none" }}
-                            to={"/post/" + name + "/" + v.postId}
+                          <div
+                            style={{
+                              whiteSpace: "nowrap",
+                              textOverflow: "ellipsis",
+                              width: "300px",
+                              overflow: "hidden",
+                            }}
                           >
-                            {v.title}{" "}
-                            <span style={{ color: "purple" }}>
-                              [{v.commentCount}]
-                            </span>
-                          </Link>
+                            <Link
+                              style={{ textDecoration: "none" }}
+                              to={"/post/" + name + "/" + v.postId}
+                            >
+                              {v.title}{" "}
+                              <span style={{ color: "purple" }}>
+                                [{v.commentCount}]
+                              </span>
+                            </Link>
+                          </div>
                         </TableCell>
 
                         <TableCell align="center">{v.nickName}</TableCell>

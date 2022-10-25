@@ -26,7 +26,9 @@ export default function IsLogined({ setIsLogin, nickname, userId }) {
     <>
       <div className="loginedbox">
         <div className="user-info">
-          <span>{nickname}님 안녕하세요</span>
+          <span>
+            <strong>{nickname}</strong>님 안녕하세요..
+          </span>
           <button onClick={logout} className="logoutBtn">
             로그아웃
           </button>

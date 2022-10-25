@@ -88,20 +88,20 @@ export default function Mypage(userId, setUserId, nickname) {
     <>
       <div className="mypage-wrapper">
         <div className="mypage-left">
-          <div className="left-mypage">
+          <div>
             <Link to={"/mypage"}>
-              <button>나의 게시글</button>
+              <button className="left-mypage">나의 게시글</button>
             </Link>
           </div>
-          <div className="left-fix">
+          <div>
             <Link to={"/fix"}>
-              <button>회원 정보 수정</button>
+              <button className="left-fix">회원 정보 수정</button>
             </Link>
           </div>
         </div>
         <div className="mypage-right">
           <div className="right-title">
-            <div>나의 게시글</div>
+            <div className="my-title">나의 게시글</div>
             <hr />
           </div>
           <div className="right-list">
