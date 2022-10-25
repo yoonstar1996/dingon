@@ -14,3 +14,20 @@
   width: 99%;
   margin: 5px 0;
 }
+.left-mypage,
+.left-fix {
+  border: none;
+  padding: 15px 20px;
+  width: 150px;
+  background-color: transparent;
+  border-bottom: 1px solid #eaeaeaea;
+  font-weight: bold;
+}
+.left-mypage:hover,
+.left-fix:hover {
+  cursor: pointer;
+}
+.my-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
