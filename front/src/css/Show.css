@@ -44,3 +44,20 @@
 a:visited{
     color: black;
 }
+
+.info{
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    display: flex;
+}
+
+.comment{
+    border-top: 2px solid #4545AC;
+    padding: 2px;
+    padding-left: 0;
+    padding-right: 0;
+}
+hr{
+    width: 100%;
+}

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
-
+import Pagination from "react-js-pagination";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -9,8 +9,54 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import "../css/Mypage.css";
+import styled from "styled-components";
 
 export default function Mypage(userId, setUserId, nickname) {
+  const PaginationBox = styled.div`
+  a:link{
+    color:black;
+  }
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  ul.pagination li {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #e2e2e2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+  }
+  ul.pagination li:first-child {
+    border-radius: 5px 0 0 5px;
+  }
+  ul.pagination li:last-child {
+    border-radius: 0 5px 5px 0;
+  }
+  ul.pagination li a {
+    text-decoration: none;
+    color: #4545AC;
+    font-size: 1rem;
+  }
+  ul.pagination li.active a {
+    color: white;
+  }
+  ul.pagination li.active {
+    background-color: #4545AC;
+  }
+  ul.pagination li a:hover,
+  ul.pagination li a.active {
+    color: white;
+  }
+`;
   const listload = () => {
     axios({
       url: "http://localhost:8050/post/my",
@@ -160,6 +206,15 @@ export default function Mypage(userId, setUserId, nickname) {
                 </TableBody>
               </Table>
             </TableContainer>
+            <PaginationBox>
+              <Pagination
+                activePage={page}
+                itemsCountPerPage={10}
+                totalItemsCount={total}
+                pageRangeDisplayed={5}
+                onChange={handlePageChange}
+              ></Pagination>
+            </PaginationBox>
           </div>
         </div>
       </div>

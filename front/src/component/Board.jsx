@@ -210,7 +210,6 @@ export const Board = (props) => {
           </TableContainer>
           <PaginationBox>
             <Pagination
-              
               activePage={page}
               itemsCountPerPage={10}
               totalItemsCount={total}
