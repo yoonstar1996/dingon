@@ -107,10 +107,10 @@ const Gaesi = () => {
     <>
       <div className="wrap">
         <div className="content">
-          <h2 variant="h2" style={{ color: "#4545AC" }}>
+          {/* <h2 variant="h2" style={{ color: "#4545AC" }}>
             야구갤러리
           </h2>
-          <hr></hr>
+          <hr></hr> */}
           <div className="title_head">
             <h2>작성글 수정</h2>
           </div>
@@ -165,6 +165,14 @@ const Gaesi = () => {
             id="delete"
             onClick={() => {
               // console.log("해윙");
+              axios({
+                url: "http://localhost:8050/post/delete",
+                method: "DELETE",
+                data: { postid },
+                withCredentials: true,
+              }).then((response) => {
+                console.log(response.data);
+              });
             }}
           >
             삭제
@@ -174,7 +182,27 @@ const Gaesi = () => {
             color="success"
             id="modify"
             onClick={() => {
-              console.log("배윙");
+              let data = {
+                postId: postid,
+                title: title,
+                content: quillRef.current.value,
+              };
+              if (title.length === 0) {
+                alert("돌아버린거냐? 제목 써라");
+                return;
+              }
+              axios({
+                url: "http://localhost:8050/post/update",
+                method: "PATCH",
+                data: data,
+                withCredentials: true,
+              }).then((response) => {
+                if (response.data.code == 200) {
+                  alert("수정성공");
+                } else {
+                  alert("수정불가");
+                }
+              });
             }}
           >
             수정
