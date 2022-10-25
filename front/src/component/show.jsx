@@ -160,17 +160,17 @@ const Show = ({ isLogin }) => {
               return (
                 <>
                   <div style={{fontSize:"small", padding: "2px", paddingRight: 0, paddingLeft: 0, display: "flex",alignItems:"center" }}>
-                    <div style={{ width: "30%" }}>
-                      {value.name}
+                    <div style={{ width: "20%" }}>
+                      {value.nickName}
                     </div>
-                    <div style={{ width: "60%", overflow: "hidden", wordBreak: "break-all" }}>
-                      {value.comment}
+                    <div style={{ width: "50%", overflow: "hidden", wordBreak: "break-all" }}>
+                      {value.content}
                     </div>
-                    <div style={{ width: "10%", display: "flex" }}>
-                      {isLogin ? <ButtonGroup size="small">
-                        <Button variant="text">수정</Button>
-                        <Button variant="text">삭제</Button>
-                      </ButtonGroup>:<></>}
+                    <div style={{ width: "15%", display: "flex" }}>
+
+                    </div>
+                    <div style={{ width: "5%", display: "flex" }}>
+                      {isLogin ? <Button variant="text">삭제</Button>:<></>}
                     </div>
                   </div>
                   <hr style={{ backgroundColor: "#e2e2e2" }} />
