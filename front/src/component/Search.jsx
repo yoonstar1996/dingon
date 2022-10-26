@@ -4,8 +4,10 @@ import { useState } from "react";
 import Input from "@mui/material/Input";
 import { LinearProgress } from "@mui/material";
 import { Link } from "react-router-dom";
+
 const Search = () => {
   const [name, setText] = useState("");
+
   return (
     <>
       <div className="wrap">
@@ -37,6 +39,9 @@ const Search = () => {
                 검색
               </button>
             </form>
+          </div>
+          <div className="logo2">
+                <img src="/img/guel.png"></img>
           </div>
         </div>
       </div>
