@@ -65,7 +65,7 @@ const Main = memo((props) => {
           <></>
         )}
         <Route path="/*" element={<ErrorPage></ErrorPage>}></Route>
-        {/* <Route path="/Best" element={<Best></Best>}></Route> */}
+        <Route path="/Best" element={<Best></Best>}></Route>
         <Route path="/Good" element={<GoodBtn></GoodBtn>}></Route>
       </Routes>
     </>
