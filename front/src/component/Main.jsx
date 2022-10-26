@@ -9,7 +9,8 @@ import Show from "./show";
 import Mypage from "./Mypage";
 import Fix from "./Fix";
 import ErrorPage from "./ErrorPage"
-import Best from "./Best";
+import Best from "./Button/Best";
+import GoodBtn from "./Button/Good";
 
 const Main = memo((props) => {
   return (
@@ -60,6 +61,7 @@ const Main = memo((props) => {
         }
         <Route path="/*" element={<ErrorPage></ErrorPage>}></Route>
         <Route path="/Best" element={<Best></Best>}></Route>
+        <Route path="/Good" element={<GoodBtn></GoodBtn>}></Route>
       </Routes>
     </>
   );
