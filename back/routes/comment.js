@@ -20,22 +20,6 @@ router.get("/list",async(req,res,next)=>{
     }
 });
 
-router.get("/sublist",async(req,res,next)=>{
-    try{
-        console.log(req.query.commentId);
-        const query = `select users.id as userId, subcomments.content, subcomments.createdAt, subcomments.id, users.nickName from subcomments inner join users on users.id=subcomments.userId  where subcomments.commentId = "${req.query.commentId}" order by subcomments.createdAt DESC  `;
-        const data = await sequelize.query(query,{type:QueryTypes.SELECT});
-        if(data.length>=1){
-            res.send({code:200,list:data});
-        }
-        else{
-            res.send({code:200,list:[]});
-        }
-    }
-    catch(err){
-        next(err);
-    }
-});
 router.post("/",isLoggedIn,async(req,res,next)=>{
     try{
         await Comment.create({content:req.body.comment,userId:req.user.id,postId:req.body.postId});
