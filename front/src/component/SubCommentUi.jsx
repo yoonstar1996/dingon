@@ -4,8 +4,9 @@ import { TextField, Button } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useEffect, useState } from "react";
-const SubCommentUi = ({isLogin, commentId,sublist }) => {
-
+const SubCommentUi = ({isLogin, commentId ,sublist}) => {
+    
+    
     return (
         <>
             {sublist.length>0 ?<div className="subcommentframe">

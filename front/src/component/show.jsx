@@ -84,8 +84,8 @@ const Show = ({ isLogin }) => {
       params: { postId: id },
       withCredentials: true,
     }).then((response) => {
-      console.log(response.data);
-      // console.log(response.data.postId);
+      //console.log(response.data);
+      // //console.log(response.data.postId);
       setUserId(response.data.userId);
       let date = new Date(response.data.createdAt);
       let sendDate =
@@ -106,7 +106,7 @@ const Show = ({ isLogin }) => {
 
       let new_div = document.createElement("div");
       new_div.innerHTML = response.data.content;
-      console.log(content);
+      //console.log(content);
       content.current.innerHTML = response.data.content;
       let userNickname = response.data.userId;
       content.current.innerHTML += `<input
@@ -115,14 +115,13 @@ const Show = ({ isLogin }) => {
     });
   }, []);
   useEffect(() => {
-    setPage(1);
     axios({
       url: "http://localhost:8050/comment/list",
       method: "get",
       params: { page: page, postId: id },
       withCredentials: true,
     }).then((response) => {
-      // console.log("댓글정보", response.data.list);
+      // //console.log("댓글정보", response.data.list);
       setComment(response.data.list);
       setTotal(response.data.list.length)
     });
@@ -197,12 +196,11 @@ const Show = ({ isLogin }) => {
               </div>
             </div>
           </div>
-          <div ref={(c)=>{
-            content.current=c;} }className="get_content"></div>
+          <div ref={content} className="get_content"></div>
           <div>전체 댓글 {cont.commentCount}개</div>
           <div className="comment">
             {comment.map((value, key) => {
-              
+              //console.log("key", key);
               let date = new Date(value.createdAt);
               let sendDate =
                 date.getFullYear() +
@@ -240,7 +238,7 @@ const Show = ({ isLogin }) => {
                     </div>
                   </div>
                     {value.id === subComment ? <SubComment commentId={value.id} postId={id} isLogin={isLogin} comment={value.id}/>:<></>}
-                    <SubCommentUi sublist={sublist} isLogin={isLogin} commentId={value.id}/>
+                    <SubCommentUi sublist={[]} isLogin={isLogin} commentId={value.id}/>
                   <hr style={{ backgroundColor: "#e2e2e2" }} />
                 </>
               );
