@@ -20,7 +20,6 @@ const Search = () => {
 
   useEffect(() => {
     document.addEventListener("mousemove", (e) => {
-      console.log("aaaa");
       mouse(e);
     });
   }, []);
