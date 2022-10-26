@@ -40,6 +40,9 @@ const Search = () => {
               </button>
             </form>
           </div>
+          <div className="logo2">
+            <img src="/public/img/guel.png" />
+          </div>
         </div>
       </div>
     </>
