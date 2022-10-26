@@ -30,10 +30,7 @@ export default function GoodBtn({isLogin,postId,setDisLike,dislike,like,setLike}
             ></StarIcon>
           }
           onClick={() => {
-
-
             if(isLogin){
-
             document.getElementById("Icon").style.color = "yellow";
             axios({
               url: "http://localhost:8050/post/like",
