@@ -34,6 +34,11 @@ const SubComment = ({postId, commentId ,isLogin}) => {
                         multiline
                         rows={4}
                         placeholder="댓글을 입력하세요"
+                        onKeyDown={(e)=>{
+                            if (e.key === "Enter") {
+                              submit();
+                            }
+                          }}
                     />
                 </div>
                 <div className="buttonFrame">

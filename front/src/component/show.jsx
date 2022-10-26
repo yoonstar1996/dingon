@@ -13,6 +13,7 @@ import ButtonGroup from "@mui/material/ButtonGroup";
 import { Hidden } from "@mui/material";
 import SubComment from "./SubComment";
 import SubCommentUi from "./SubCommentUi";
+import {TextField} from "@mui/material";
 const Show = ({ isLogin }) => {
   const PaginationBox = styled.div`
     a:link {
@@ -71,6 +72,7 @@ const Show = ({ isLogin }) => {
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
   const [sublist, setSubList] = useState([]);
+  const [writeC,setWriteC]=useState("")
   const handlePageChange = (page) => {
     setPage(page);
   };
@@ -123,7 +125,17 @@ const Show = ({ isLogin }) => {
       setTotal(response.data.list.length)
     });
   }, [page]);
-
+  const submit=()=>{
+    axios({
+      url: "http://localhost:8050/comment",
+      method: "post",
+      data: { postId: id,comment:writeC},
+      withCredentials: true,
+    }).then((response) => {
+      window.location.reload()
+      console.log(response.data.code);
+    })
+  }
   return (
     <>
       <div className="wrap">
@@ -236,7 +248,7 @@ const Show = ({ isLogin }) => {
                   </div>
                   {value.id === subComment ? <SubComment commentId={value.id} postId={id} isLogin={isLogin} comment={value.id}/>:<></>}
                   {value.subcomment && value.subcomment.length > 0 && <div className="subcommentframe">
-                    <div style={{ marginBottom: "5px", fontSize: "small", paddingRight: 0, paddingLeft: 0, display: "flex", alignItems: "center" }}>
+                    <div style={{ marginBottom: "5px", fontSize: "small", paddingRight: 0, paddingLeft: 0, display: "flex", justifyContent: "center",flexDirection:"column" }}>
                       {value.subcomment.map((v, key) => {
                         let date = new Date(v.createdAt);
                         let sendDate =
@@ -254,23 +266,26 @@ const Show = ({ isLogin }) => {
                         sendDate += +date.getMinutes();
                         return (
                           <>
+                          <div style={{display:"flex" ,marginBottom:"5px",marginTop:"5px" ,alignItems:"center"}}>
                             <div style={{ width: "25%" }}>
-                              {v.nickName}
+                              ㄴ{v.nickName}
                             </div>
                             <div style={{ width: "80%", overflow: "hidden", wordBreak: "break-all" }}>
-                              ㄴ{v.content}
+                              {v.content}
                             </div>
                             <div style={{ width: "15%", display: "flex", justifyContent: "flex-end" }}>
-                              {isLogin ? <Button style={{ color: "black" }} variant="text"><DeleteIcon /></Button> : <></>}
+                              {isLogin ? <Button style={{ marginTop:0,color: "black" }} variant="text"><DeleteIcon /></Button> : <></>}
                             </div>
                             <div style={{ width: "20%", display: "flex" }}>
                               {sendDate}
                             </div>
+                          </div>
+                          <hr style={{ marginBottom: 0, width: "100%", backgroundColor: "#ffffff" }} />
                           </>
                         )
                       })}
                     </div>
-                    <hr style={{ marginBottom: 0, width: "100%", backgroundColor: "#e2e2e2" }} />
+                    
                   </div>}
                   
                   <hr style={{ backgroundColor: "#e2e2e2" }} />
@@ -289,6 +304,27 @@ const Show = ({ isLogin }) => {
           ></Pagination>
         </PaginationBox>
       </div>
+      <div className="subCommentFrame" style={{width:"100%"}}>
+                <div>
+                    <TextField
+                        onChange={(e)=>{
+                          setWriteC(e.target.value);
+                        }}
+                        fullWidth
+                        multiline
+                        rows={4}
+                        placeholder="댓글을 입력하세요"
+                        onKeyDown={(e)=>{
+                          if (e.key === "Enter") {
+                            submit();
+                          }
+                        }}
+                    />
+                </div>
+                <div className="buttonFrame">
+                    <Button onClick={submit}>댓글 쓰기</Button>
+                </div>
+            </div>
     </>
   );
 };
