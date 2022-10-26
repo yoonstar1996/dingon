@@ -7,7 +7,7 @@ export default function Fix({ userId }) {
   const [nickChange, setNickChange] = useState("");
   const [pwChange, setPwChange] = useState("");
   const [length, setLength] = useState(true);
-
+  const [fixBtnAble, setFixBtnAble] =useState(false);
   function fixBtn() {
     var data = {
       nickName: nickChange,
@@ -36,8 +36,36 @@ export default function Fix({ userId }) {
       data: data,
       withCredentials: true,
     }).then((response) => {
-      console.log(response);
+      console.log("수정완료", response.data);
     });
+  }
+
+  const nickConfirm = ()=>{
+    if(nickChange === ""){
+      alert("내용을 입력해주세요.");
+      return false;
+    }
+    axios({
+      url: "http://localhost:8050/auth/nickNameCheck",
+      method: "post",
+      withCredentials: true,
+      data : {nickName: nickChange }
+    }).then((result)=>{
+      console.log(result.data);
+      console.log("code", result.data.code);
+      if(result.data.code === 400){
+        alert("이미 존재하는 닉네임입니다.")
+        setFixBtnAble(false);
+      }
+      else if(result.data.code === 500){
+        alert("서버상 문제가 발생했습니다.")
+        setFixBtnAble(false);
+      }
+      else {
+        alert("사용 가능한 닉네임입니다.")
+        setFixBtnAble(true);
+      }
+    })
   }
 
   return (
@@ -80,6 +108,7 @@ export default function Fix({ userId }) {
                   닉네임 :
                 </label>
                 <input
+                  maxLength={10}
                   type="text"
                   placeholder="10자 이하로 입력"
                   id="nickname"
@@ -93,10 +122,16 @@ export default function Fix({ userId }) {
                     } else {
                       setLength(false);
                     }
-                  }}
+                  }
+                  
+                }
                 ></input>
 
-                <button className="nickConfirm">중복확인</button>
+                <button 
+                  className="nickConfirm"
+                  onClick={nickConfirm} 
+                  type="button" 
+                >중복확인</button>
 
                 <div className={length ? "d-none" : "color"}>
                   10자 이하로 입력
@@ -121,7 +156,10 @@ export default function Fix({ userId }) {
             </div>
             <hr />
             <div className="right-button">
-              <button onClick={fixBtn} className="fixBtn">
+              <button 
+              onClick={fixBtn} className="fixBtn"
+              disabled={!fixBtnAble}
+              >
                 수정하기
               </button>
             </div>
