@@ -82,12 +82,12 @@ const App = (props) => {
                 {count}명
               </span>
             </div>{" "}
-            최근방문갤러리{" "}
+            <div className="recentGall">최근방문갤러리{" "}</div>
             {recent.map((v) => {
               return (
-                <span>
+                <span className="theRecentGallSpan">
                   <Link
-                    style={{ color: "white", textDecoration: "none" }}
+                    style={recentStyle}
                     to={"/gallery/" + v}
                   >
                     {v}
