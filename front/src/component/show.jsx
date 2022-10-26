@@ -9,10 +9,7 @@ import InsertCommentIcon from "@mui/icons-material/InsertComment";
 import SentimentVerySatisfiedIcon from "@mui/icons-material/SentimentVerySatisfied";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import DeleteIcon from '@mui/icons-material/Delete';
-import ButtonGroup from "@mui/material/ButtonGroup";
-import { Hidden } from "@mui/material";
 import SubComment from "./SubComment";
-import SubCommentUi from "./SubCommentUi";
 import {TextField} from "@mui/material";
 const Show = ({ isLogin }) => {
   const PaginationBox = styled.div`
@@ -238,6 +235,11 @@ const Show = ({ isLogin }) => {
             </div>
           </div>
           <div ref={content} className="get_content"></div>
+          <div className="LikeViewFrame">
+            <div className="LikeView">
+
+            </div>
+          </div>
           <div>전체 댓글 {cont.commentCount}개</div>
           <div className="comment">
             {comment.map((value, key) => {
@@ -279,6 +281,7 @@ const Show = ({ isLogin }) => {
                     </div>
                   </div>
                   {value.id === subComment ? <SubComment commentId={value.id} postId={id} isLogin={isLogin} comment={value.id}/>:<></>}
+                  <div>
                   {value.subcomment && value.subcomment.length > 0 && <div className="subcommentframe">
                     <div style={{ marginBottom: "5px", fontSize: "small", paddingRight: 0, paddingLeft: 0, display: "flex", justifyContent: "center",flexDirection:"column" }}>
                       {value.subcomment.map((v, key) => {
@@ -319,6 +322,7 @@ const Show = ({ isLogin }) => {
                     </div>
                     
                   </div>}
+                  </div>
                   
                   <hr style={{ backgroundColor: "#e2e2e2" }} />
                 </>
