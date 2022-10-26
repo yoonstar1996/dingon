@@ -11,6 +11,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import DeleteIcon from '@mui/icons-material/Delete';
 import ButtonGroup from "@mui/material/ButtonGroup";
 import { Hidden } from "@mui/material";
+import Good from "./Button/Good"
 import SubComment from "./SubComment";
 import SubCommentUi from "./SubCommentUi";
 import {TextField} from "@mui/material";
@@ -319,6 +320,7 @@ const Show = ({ isLogin }) => {
                 </>
               );
             })}
+            <Good></Good>
           </div>
         </div>
         <PaginationBox>
