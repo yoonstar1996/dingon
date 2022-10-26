@@ -25,12 +25,12 @@ export default function Fix({ userId }) {
     if (pwChange === "") {
       alert("비밀번호를 입력하세용");
       return;
-    } else if (pwChange.length < 8) {
-      console.log("8자 이하");
-    } else if (pwChange.length > 8) {
+    } else if (pwChange.length <  8) {
       return;
+    } else if (pwChange.length >= 8) {
+      console.log("헤위");
     }
-
+    
     axios({
       url: "http://localhost:8050/profile",
       method: "patch",

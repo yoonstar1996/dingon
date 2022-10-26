@@ -23,6 +23,14 @@ const App = (props) => {
   const [value, setValue] = useState("");
   const [isLogin, setIsLogin] = useState(false);
   const [count, setCount] = useState(0);
+  const [recent, setRecent] = useState([]);
+  useEffect(() => {
+    if (!localStorage.getItem("list")) {
+      localStorage.setItem("list", JSON.stringify([]));
+    } else {
+      setRecent(JSON.parse(localStorage.getItem("list")));
+    }
+  }, []);
   useEffect(() => {
     axios
       .get("http://localhost:8050/auth/isLoggedIn", { withCredentials: true })
@@ -70,11 +78,29 @@ const App = (props) => {
                 {" "}
                 {count}명
               </span>
-            </div>
+            </div>{" "}
+            최근방문갤러리{" "}
+            {recent.map((v) => {
+              return (
+                <span>
+                  <Link
+                    style={{ color: "white", textDecoration: "none" }}
+                    to={"/gallery/" + v}
+                  >
+                    {v}
+                  </Link>{" "}
+                </span>
+              );
+            })}
           </div>
           <div className="container">
             <div className="main">
-              <Main isLogin={isLogin} setIsLogin={setIsLogin} userId={userId} />
+              <Main
+                isLogin={isLogin}
+                setRecent={setRecent}
+                setIsLogin={setIsLogin}
+                userId={userId}
+              />
             </div>
             <div className="sticky">
               <Sticky
