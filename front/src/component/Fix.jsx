@@ -20,17 +20,19 @@ export default function Fix({ userId }) {
     } else if (nickChange.length <= 10) {
       console.log("10자 이하");
     } else if (nickChange.length > 10) {
+      alert("10글자 이하로 입력하세용");
       return;
     }
     if (pwChange === "") {
       alert("비밀번호를 입력하세용");
       return;
-    } else if (pwChange.length <  8) {
+    } else if (pwChange.length < 8) {
+      alert("8글자 이상 입력하세용");
       return;
     } else if (pwChange.length >= 8) {
       console.log("헤위");
     }
-    
+
     axios({
       url: "http://localhost:8050/profile",
       method: "patch",
