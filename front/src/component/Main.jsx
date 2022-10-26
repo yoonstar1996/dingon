@@ -31,7 +31,7 @@ const Main = memo((props) => {
         ></Route>
         <Route
           path="/gallery/:name"
-          element={<Board isLogin={props.isLogin}></Board>}
+          element={<Board setRecent={props.setRecent} isLogin={props.isLogin}></Board>}
         ></Route>
 
         {props.isLogin ? (
