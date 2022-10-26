@@ -50,6 +50,12 @@ router.get("/content",async(req,res,next)=>{
         const response = await sequelize.query(query2,{type:QueryTypes.SELECT});
         const query3 = `select count(*) as count from subcomments where postId="${req.query.postId}"`;
         const response2 = await sequelize.query(query3,{type:QueryTypes.SELECT});
+        let newQuery = `select count(*) as count from likes where PostId="${req.query.postId}"`;
+        let newResponse = await sequelize.query(newQuery,{type:QueryTypes.SELECT});
+        data[0][0].like = newResponse[0].count;
+        newQuery = `select count(*) as count from dislikes where PostId="${req.query.postId}"`;
+        newResponse = await sequelize.query(newQuery,{type:QueryTypes.SELECT});
+        data[0][0].dislike = newResponse[0].count;
         data[0][0].commentCount = response[0].count + response2[0].count;
         data[0][0].total = response[0].count;
         res.send(data[0][0]);
@@ -149,7 +155,11 @@ router.get("/concept",async(req,res,next)=>{
             const response = await sequelize.query(query,{type:QueryTypes.SELECT});
             const query2 = `select count(*) as count from subcomments where postId="${data[i].postId}"`;
             const response2 = await sequelize.query(query2,{type:QueryTypes.SELECT});
+            const query3 = `select count(*) as count from likes where PostId="${data[i].postId}"`;
+            const response3 = await sequelize.query(query3,{type:QueryTypes.SELECT});
+            data[i].like= response3[0].count;
             data[i].commentCount = response[0].count+response2[0].count;
+            
         }
         res.send({code:200,list:data});
     }

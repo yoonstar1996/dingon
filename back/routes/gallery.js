@@ -42,7 +42,9 @@ router.get("/list",async(req,res,next)=>{
             const response = await sequelize.query(query,{type:QueryTypes.SELECT});
             const query2 = `select count(*) as count from subcomments where postId="${data[i].postId}"`;
             const response2 = await sequelize.query(query2,{type:QueryTypes.SELECT});
-        
+            const query3 = `select count(*) as count from likes where PostId="${data[i].postId}"`;
+            const response3 = await sequelize.query(query3,{type:QueryTypes.SELECT});
+            data[i].like= response3[0].count;
             data[i].commentCount = response[0].count+response2[0].count;
         }
         res.send({code:200,list:data});
