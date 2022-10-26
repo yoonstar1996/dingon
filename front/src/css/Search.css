@@ -50,14 +50,11 @@
 }
 .logo2 {
   position: relative;
-  right: 150px;
+  right: 110px;
+  top: 5px;
 }
 .logo2 img {
   width: 300px;
-  height: auto;
-}
-.logo2 img {
-  width: 500px;
   height: auto;
 }
 .glasses {

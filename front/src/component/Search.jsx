@@ -42,8 +42,8 @@ const Search = () => {
       xdiff = (xdiff * width) / distn / 2.5;
       ydiff = (ydiff * width) / distn / 2.5;
     }
-    lefteye.current.style.top = ydiff - width / 2 + "px";
-    lefteye.current.style.left = xdiff - 1.6 * width + "px";
+    lefteye.current.style.top = ydiff + width / 3 + "px";
+    lefteye.current.style.left = xdiff + 30 - width + "px";
 
     xdiff = x - 1.1 * width - swide * 0.5;
     ydiff = y - shigh / 2;
@@ -52,8 +52,8 @@ const Search = () => {
       xdiff = (xdiff * width) / distn / 2.5;
       ydiff = (ydiff * width) / distn / 2.5;
     }
-    righteye.current.style.top = ydiff - width / 2 + "px";
-    righteye.current.style.left = xdiff + 0.6 * width + "px";
+    righteye.current.style.top = ydiff + width / 3 + "px";
+    righteye.current.style.left = xdiff + 30 - width + "px";
   }
 
   return (
