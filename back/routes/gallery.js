@@ -14,7 +14,9 @@ router.get("/",async (req,res,next)=>{
         else{
             const query = `select * from posts inner join boards on posts.boardId = boards.id where boards.name="${decodeURI(req.query.name)}" `;
             const data = await sequelize.query(query,{type:QueryTypes.SELECT});
-            res.send({code:200,cnt:data.length});
+            const query2 = `select * from concepts where BoardId="${decodeURI(req.query.name)}"`;
+            const data2 = await sequelize.query(query2,{type:QueryTypes.SELECT});
+            res.send({code:200,cnt:data.length,concept:data2.length});
         }
     }
     catch(err){
