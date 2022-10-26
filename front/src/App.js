@@ -9,7 +9,6 @@ import Search from "./component/Search";
 import ScrollToTop from "./component/ScrollToTop";
 import io from "socket.io-client";
 import Footer from "./component/Footer";
-import Mouse from "./component/Mouse";
 
 import Gaesi from "./component/gaesi";
 import Allgall from "./component/Allgall";
@@ -58,7 +57,6 @@ const App = (props) => {
   // },[]);
   return (
     <>
-      <Mouse></Mouse>
       <BrowserRouter>
         <div className="body">
           <div className="searchandLogo">
