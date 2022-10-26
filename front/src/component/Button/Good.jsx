@@ -7,9 +7,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 
-export default function GoodBtn(){
-  const [like, setLike] = useState(0);
-  const [dislike ,setDislike] =useState(0);
+export default function GoodBtn({isLogin,postId,setDisLike,dislike,like,setLike}){
   const {postid} = useParams();
     return (
       <>
@@ -32,16 +30,27 @@ export default function GoodBtn(){
             ></StarIcon>
           }
           onClick={() => {
-            setLike(like +1);
+
+
+            if(isLogin){
+
             document.getElementById("Icon").style.color = "yellow";
             axios({
               url: "http://localhost:8050/post/like",
               method: "post",
-              data: postid,
+              data:{postId:postId},
               withCredentials: true,
             }).then((response)=>{
               console.log(response.data)
+              if(response.data.code===400){
+                alert("이미 했잖아 시발")
+              }else{
+                setLike(like +1)
+              }
             });
+            }else{
+              alert("로그인부터 쳐하셈 병신새끼야")
+            }
           }}
         >개추 {like}</Button>
         <Button 
@@ -50,15 +59,24 @@ export default function GoodBtn(){
         style={{margin:"10px"}}
         startIcon={<ThumbDownIcon></ThumbDownIcon>}
         onClick={()=>{
-          setDislike(dislike +1)
+          if(isLogin){
+            
           axios({
             url: "http://localhost:8050/post/dislike",
             method: "post",
-            data: postid,
+            data:{postId:postId},
             withCredentials: true,
           }).then((response)=>{
             console.log(response.data)
+            if(response.data.code===400){
+              alert("이미 했잖아 시발")
+            }else{
+              setDisLike(dislike +1)
+            }
           });
+          }else{
+            alert("로그인부터 쳐하셈 병신새끼야")
+          }
         }}
         >비추 {dislike}</Button>
       </>

@@ -32,20 +32,42 @@
   align-content: flex-start;
   overflow-x: scroll;
   border-radius: 12px;
+  background: radial-gradient(white, #d6d6ff);
+  background-repeat: repeat-x;
 }
 .mid-div > div {
   margin: 10px 22px;
   display: inline;
   color: black;
-  width: 200px;
+  font-weight: bold;
+  width: 150px;
   overflow-x: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 .mid-div > div > a {
   text-decoration: none;
-  color: gray;
+  color: rgba(56, 50, 50, 0.887);
 }
 .mid-div > div:hover {
   color: #4545ac;
+}
+.circle {
+
+  position: absolute;
+
+  top: 0; 
+
+  left: 0;
+
+  width: 150px; 
+
+  height: 150px; 
+
+  border-radius: 50%;
+
+  background-color: #9bf50b; 
+
+  transform: translate(-50%, -50%); 
+
 }

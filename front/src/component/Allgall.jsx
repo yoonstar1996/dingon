@@ -9,19 +9,21 @@ export default function Allgall() {
     axios({
       url: "http://localhost:8050/gallery/all",
       method: "get",
-    }).then((response) => {
+    }).then(response => {
       setAll(response.data.list);
     });
   }, []);
-  return (
-    <>
+
+
+    return (
+      <>
       <div className="wrapper">
         <div className="top-div">
           <div className="allSelect">갤러리 전체보기</div>
-          <div className="namesort">ㄱㄴㄷ순</div>
+          {/* <div className="namesort">ㄱㄴㄷ순</div> */}
         </div>
         <div className="mid-div">
-          {all.map((item) => (
+          {all.map(item => (
             <div key={item.name}>
               <Link to={`/gallery/${item.name}`}>
                 <span>{item.name}</span>
