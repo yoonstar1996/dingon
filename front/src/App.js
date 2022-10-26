@@ -12,6 +12,7 @@ import Footer from "./component/Footer";
 
 import Gaesi from "./component/gaesi";
 import Allgall from "./component/Allgall";
+import { display } from "@mui/system";
 const socket = io.connect('http://localhost:8050/count',{path: "/socket.io", cors: { origin: '*' }});
 const App = (props) => {
   const [userId, setUserId] = useState("");
@@ -20,6 +21,12 @@ const App = (props) => {
   const [isLogin, setIsLogin] = useState(false);
   const [count,setCount] = useState(0);
   const [recent,setRecent] = useState([]);
+  const recentStyle = {
+    color: "white",
+    textDecoration: "none",
+  }
+
+
   useEffect(()=>{
     if (!localStorage.getItem("list")){
       localStorage.setItem("list",JSON.stringify([]));
@@ -61,7 +68,14 @@ const App = (props) => {
           <div className="searchandLogo">
             <Search />
           </div>
-          <div className="dividebar"><div style={{marginTop:"15px",marginLeft:"15px",display:"inline-block",fontWeight:"500"}}>동시접속자<span style={{fontWeight:"600",color:"rgb(154,222,237)"}}>     {count}명</span></div> 최근방문갤러리 {recent.map((v)=>{return <span><Link  style={{color:"white",textDecoration:"none"}} to={"/gallery/"+v}>{v}</Link>     </span>})}</div>
+          <div className="dividebar">
+            <div style={{marginTop:"15px",marginLeft:"15px",display:"inline-block",fontWeight:"500"}}>동시접속자
+              <span style={{fontWeight:"600",color:"rgb(154,222,237)"}}>     {count}명</span>
+            </div> 
+            <div className="recentGall">
+              최근방문갤러리
+            </div> {recent.map((v)=>{return <span className="theRecentGallSpan"><Link style={recentStyle} to={"/gallery/"+v}>{v}</Link></span>})}
+          </div>
           <div className="container">
             <div className="main">
               <Main isLogin={isLogin} setRecent={setRecent} setIsLogin={setIsLogin} userId={userId} />
@@ -86,9 +100,6 @@ const App = (props) => {
             <Footer></Footer>
           </div>
         </div>
-        {/* <div>
-        <Gaesi></Gaesi>
-      </div> */}
       </BrowserRouter>
     </>
   );
