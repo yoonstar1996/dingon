@@ -116,6 +116,7 @@ const Show = ({ isLogin }) => {
     });
   }, []);
   useEffect(() => {
+    console.log("page",page)
     axios({
       url: "http://localhost:8050/comment/list",
       method: "get",
