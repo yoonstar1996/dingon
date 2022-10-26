@@ -8,8 +8,12 @@ import Button from "@mui/material/Button";
 import InsertCommentIcon from "@mui/icons-material/InsertComment";
 import SentimentVerySatisfiedIcon from "@mui/icons-material/SentimentVerySatisfied";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import DeleteIcon from '@mui/icons-material/Delete';
 import ButtonGroup from "@mui/material/ButtonGroup";
 import { Hidden } from "@mui/material";
+import SubComment from "./SubComment";
+import SubCommentUi from "./SubCommentUi";
+import {TextField} from "@mui/material";
 const Show = ({ isLogin }) => {
   const PaginationBox = styled.div`
     a:link {
@@ -58,17 +62,18 @@ const Show = ({ isLogin }) => {
   `;
   const { name, id } = useParams();
   const [cont, setCont] = useState("");
-  const content = useRef();
+  const content = useRef(null);
+  const submitBtn = useRef(null);
 
   const [userId, setUserId] = useState("");
   const [time, setTime] = useState("");
-  const [comment, setComment] = useState([
-    { name: "병신을보면 짖는개", comment: "wdewedwewef" },
-    { name: "재매이햄", comment: "wefwefwfewfe" },
-  ]);
+  const [comment, setComment] = useState([]);
+  const [subComment, setSubComment] = useState(-1);
   const [err, setErr] = useState(false);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
+  const [sublist, setSubList] = useState([]);
+  const [writeC,setWriteC]=useState("")
   const handlePageChange = (page) => {
     setPage(page);
   };
@@ -80,7 +85,8 @@ const Show = ({ isLogin }) => {
       withCredentials: true,
     }).then((response) => {
       console.log(response.data);
-      console.log(response.data.postId);
+      setTotal(response.data.total)
+      // //console.log(response.data.postId);
       setUserId(response.data.userId);
       let date = new Date(response.data.createdAt);
       let sendDate =
@@ -101,7 +107,7 @@ const Show = ({ isLogin }) => {
 
       let new_div = document.createElement("div");
       new_div.innerHTML = response.data.content;
-
+      //console.log(content);
       content.current.innerHTML = response.data.content;
       let userNickname = response.data.userId;
       content.current.innerHTML += `<input
@@ -110,7 +116,7 @@ const Show = ({ isLogin }) => {
     });
   }, []);
   useEffect(() => {
-    setPage(1);
+    console.log("page",page)
     axios({
       url: "http://localhost:8050/comment/list",
       method: "get",
@@ -119,8 +125,44 @@ const Show = ({ isLogin }) => {
     }).then((response) => {
       console.log("댓글정보", response.data);
       setComment(response.data.list);
+      
     });
   }, [page]);
+  const submit=()=>{
+    axios({
+      url: "http://localhost:8050/comment",
+      method: "post",
+      data: { postId: id,comment:writeC},
+      withCredentials: true,
+    }).then((response) => {
+      window.location.reload()
+      console.log(response.data.code);
+    })
+  }
+  const deletecomment=(e)=>{
+    console.log(e);
+    axios({
+      url: "http://localhost:8050/comment",
+      method: "delete",
+      params: { commentId:e},
+      withCredentials: true,
+    }).then((response) => {
+      console.log("삭제완료",response.data.code);
+      window.location.reload()
+    })
+  }
+  const deletesubcomment=(e)=>{
+    console.log(e)
+    axios({
+      url: "http://localhost:8050/comment/sub",
+      method: "delete",
+      params: { commentId:e},
+      withCredentials: true,
+    }).then((response) => {
+      console.log("대댓삭제완료",response.data.code);
+      window.location.reload()
+    })
+  }
   return (
     <>
       <div className="wrap">
@@ -135,7 +177,7 @@ const Show = ({ isLogin }) => {
               {isLogin === userId ? (
                 <Link
                   style={{ textDecoration: "none" }}
-                  to={"/gallery/made/"+name +"/"+ id}
+                  to={"/gallery/made/" + name + "/" + id}
                 >
                   <Button style={{ background: "#4545AC" }} variant="contained">
                     수정
@@ -152,6 +194,9 @@ const Show = ({ isLogin }) => {
                 <h4 style={{ marginTop: 0, marginBottom: "10px" }}>
                   {cont.title}
                 </h4>
+                <div>
+                  닉네임: {cont.nickName + " | " + time}
+                </div>
               </div>
               <div className="info">
                 <div
@@ -191,39 +236,85 @@ const Show = ({ isLogin }) => {
           <div>전체 댓글 {cont.commentCount}개</div>
           <div className="comment">
             {comment.map((value, key) => {
+              //console.log("key", key);
+              let date = new Date(value.createdAt);
+              let sendDate =
+                date.getFullYear() +
+                "." +
+                (parseInt(date.getMonth()) + 1) +
+                "." +
+                date.getDate() +
+                " ";
+              if (date.getHours() < 12) {
+                sendDate += date.getHours() + ":";
+              } else {
+                sendDate += parseInt(date.getHours()) - 12 + ":";
+              }
+              sendDate += +date.getMinutes();
               return (
                 <>
-                  <div
-                    style={{
-                      fontSize: "small",
-                      padding: "2px",
-                      paddingRight: 0,
-                      paddingLeft: 0,
-                      display: "flex",
-                      alignItems: "center",
-                    }}
-                  >
-                    <div style={{ width: "30%" }}>{value.name}</div>
-                    <div
-                      style={{
-                        width: "60%",
-                        overflow: "hidden",
-                        wordBreak: "break-all",
-                      }}
-                    >
-                      {value.comment}
+                  <div style={{ fontSize: "small", paddingRight: 0, paddingLeft: 0, display: "flex", alignItems: "center" }}>
+                    <div style={{ width: "25%" }}>
+                      {value.nickName}
                     </div>
-                    <div style={{ width: "10%", display: "flex" }}>
-                      {isLogin ? (
-                        <ButtonGroup size="small">
-                          <Button variant="text">수정</Button>
-                          <Button variant="text">삭제</Button>
-                        </ButtonGroup>
-                      ) : (
-                        <></>
-                      )}
+                    <div onClick={() => {
+                      if (subComment === -1) {
+                        setSubComment(value.id);
+                      } else {
+                        setSubComment(-1);
+                      }
+                    }} style={{ width: "80%", overflow: "hidden", wordBreak: "break-all" }}>
+                      {value.content}
+                    </div>
+                    <div style={{ width: "15%", display: "flex", justifyContent: "flex-end" }}>
+                      {isLogin === value.userId ? <Button onClick={()=>{deletecomment(value.id)}} style={{ color: "black" }} variant="text"><DeleteIcon /></Button> : <></>}
+                    </div>
+                    <div style={{ width: "20%", display: "flex" }}>
+                      {sendDate}
                     </div>
                   </div>
+                  {value.id === subComment ? <SubComment commentId={value.id} postId={id} isLogin={isLogin} comment={value.id}/>:<></>}
+                  {value.subcomment && value.subcomment.length > 0 && <div className="subcommentframe">
+                    <div style={{ marginBottom: "5px", fontSize: "small", paddingRight: 0, paddingLeft: 0, display: "flex", justifyContent: "center",flexDirection:"column" }}>
+                      {value.subcomment.map((v, key) => {
+                        let date = new Date(v.createdAt);
+                        let sendDate =
+                          date.getFullYear() +
+                          "." +
+                          (parseInt(date.getMonth()) + 1) +
+                          "." +
+                          date.getDate() +
+                          " ";
+                        if (date.getHours() < 12) {
+                          sendDate += date.getHours() + ":";
+                        } else {
+                          sendDate += parseInt(date.getHours()) - 12 + ":";
+                        }
+                        sendDate += +date.getMinutes();
+                        return (
+                          <>
+                          <div style={{display:"flex" ,marginBottom:"5px",marginTop:"5px" ,alignItems:"center"}}>
+                            <div style={{ width: "25%" }}>
+                              ㄴ{v.nickName}
+                            </div>
+                            <div style={{ width: "80%", overflow: "hidden", wordBreak: "break-all" }}>
+                              {v.content}
+                            </div>
+                            <div style={{ width: "15%", display: "flex", justifyContent: "flex-end" }}>
+                              {isLogin === v.userId ? <Button onClick={()=>{deletesubcomment(v.ID)}} style={{ marginTop:0,color: "black" }} variant="text"><DeleteIcon /></Button> : <></>}
+                            </div>
+                            <div style={{ width: "20%", display: "flex" }}>
+                              {sendDate}
+                            </div>
+                          </div>
+                          <hr style={{ marginBottom: 0, width: "100%", backgroundColor: "#ffffff" }} />
+                          </>
+                        )
+                      })}
+                    </div>
+                    
+                  </div>}
+                  
                   <hr style={{ backgroundColor: "#e2e2e2" }} />
                 </>
               );
@@ -240,6 +331,27 @@ const Show = ({ isLogin }) => {
           ></Pagination>
         </PaginationBox>
       </div>
+      <div className="subCommentFrame" style={{width:"100%"}}>
+                <div>
+                    <TextField
+                        onChange={(e)=>{
+                          setWriteC(e.target.value);
+                        }}
+                        fullWidth
+                        multiline
+                        rows={4}
+                        placeholder="댓글을 입력하세요"
+                        onKeyDown={(e)=>{
+                          if (e.key === "Enter") {
+                            submitBtn.current.click();
+                          }
+                        }}
+                    />
+                </div>
+                <div className="buttonFrame">
+                    <Button ref={submitBtn} onClick={submit}>댓글 쓰기</Button>
+                </div>
+            </div>
     </>
   );
 };
