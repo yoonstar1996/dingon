@@ -100,6 +100,17 @@ export const Board = (props) => {
     setPage(page);
   };
   useEffect(() => {
+    const arr=JSON.parse(localStorage.getItem("list"));
+    if (arr.length>=10){
+      arr.shift();
+    }
+    const b = arr.filter(v=>{
+
+      return v!=name;
+    })
+    b.push(name);
+    props.setRecent(b);
+    localStorage.setItem("list",JSON.stringify(b));
     setPage(1);
     axios
       .get(`http://localhost:8050/gallery?name=${encodeURIComponent(name)}`)
