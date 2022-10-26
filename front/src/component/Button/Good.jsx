@@ -2,10 +2,15 @@ import React from "react"
 import  Button  from "@mui/material/Button"
 import StarIcon from "@mui/icons-material/Star";
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
-import { margin } from "@mui/system";
+import axios from "axios"
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 
 export default function GoodBtn(){
+  const [like, setLike] = useState(0);
+  const [dislike ,setDislike] =useState(0);
+  const {postid} = useParams();
     return (
       <>
         <Button
@@ -27,15 +32,34 @@ export default function GoodBtn(){
             ></StarIcon>
           }
           onClick={() => {
+            setLike(like +1)
             document.getElementById("Icon").style.color = "yellow";
+            axios({
+              url: "/post/like",
+              method: "post",
+              withCredentials: true,
+
+            }).then((response)=>{
+              console.log(response.data)
+            });
           }}
-        >개추</Button>
+        >개추 {like}</Button>
         <Button 
         variant="outlined"
+        color="error"
         style={{margin:"10px"}}
         startIcon={<ThumbDownIcon></ThumbDownIcon>}
-        onClick={()=>{}}
-        >비추</Button>
+        onClick={()=>{
+          setDislike(dislike +1)
+          axios({
+            url: "/post/dislike",
+            method: "post",
+            withCredentials: true,
+          }).then((response)=>{
+            console.log(response.data)
+          });
+        }}
+        >비추 {dislike}</Button>
       </>
     );
 }

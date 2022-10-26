@@ -11,7 +11,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Button from "@mui/material/Button";
 import ErrorPage from "./ErrorPage";
-
+import ImageIcon from '@mui/icons-material/Image';
 import "../css/Board.css";
 const PaginationBox = styled.div`
   a:link {
@@ -227,8 +227,11 @@ export const Board = (props) => {
                               textOverflow: "ellipsis",
                               width: "300px",
                               overflow: "hidden",
+                              display:"flex",
+                              alignItems:"center"
                             }}
                           >
+                            {v.img && <ImageIcon/>}
                             <Link
                               style={{ textDecoration: "none" }}
                               to={"/post/" + name + "/" + v.postId}
