@@ -5,7 +5,7 @@ import axios from "axios";
 const SubComment = ({postId, commentId ,isLogin}) => {
 
     const [subComment,setSubComment]=useState("");
-
+    const btn=useRef(null);
     const submit=()=>{
         if(isLogin){
             axios({
@@ -34,15 +34,15 @@ const SubComment = ({postId, commentId ,isLogin}) => {
                         multiline
                         rows={4}
                         placeholder="댓글을 입력하세요"
-                        onKeyDown={(e)=>{
+                        onKeyUp={(e)=>{
                             if (e.key === "Enter") {
-                              submit();
+                              btn.current.click()
                             }
                           }}
                     />
                 </div>
                 <div className="buttonFrame">
-                    <Button onClick={submit}>댓글 쓰기</Button>
+                    <Button ref={btn} onClick={submit}>댓글 쓰기</Button>
                 </div>
             </div>
 

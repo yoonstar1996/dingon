@@ -63,6 +63,7 @@ const Show = ({ isLogin }) => {
   const { name, id } = useParams();
   const [cont, setCont] = useState("");
   const content = useRef(null);
+  const submitBtn = useRef(null);
 
   const [userId, setUserId] = useState("");
   const [time, setTime] = useState("");
@@ -84,6 +85,7 @@ const Show = ({ isLogin }) => {
       withCredentials: true,
     }).then((response) => {
       console.log(response.data);
+      setTotal(response.data.total)
       // //console.log(response.data.postId);
       setUserId(response.data.userId);
       let date = new Date(response.data.createdAt);
@@ -120,9 +122,9 @@ const Show = ({ isLogin }) => {
       params: { page: page, postId: id },
       withCredentials: true,
     }).then((response) => {
-      console.log("댓글정보", response.data.list);
+      console.log("댓글정보", response.data);
       setComment(response.data.list);
-      setTotal(response.data.list.length)
+      
     });
   }, [page]);
   const submit=()=>{
@@ -135,6 +137,9 @@ const Show = ({ isLogin }) => {
       window.location.reload()
       console.log(response.data.code);
     })
+  }
+  const deletecomment=()=>{
+    
   }
   return (
     <>
@@ -242,7 +247,7 @@ const Show = ({ isLogin }) => {
                     <div style={{ width: "15%", display: "flex", justifyContent: "flex-end" }}>
                       {isLogin === value.userId ? <Button style={{ color: "black" }} variant="text"><DeleteIcon /></Button> : <></>}
                     </div>
-                    <div style={{ width: "15%", display: "flex" }}>
+                    <div style={{ width: "20%", display: "flex" }}>
                       {sendDate}
                     </div>
                   </div>
@@ -316,13 +321,13 @@ const Show = ({ isLogin }) => {
                         placeholder="댓글을 입력하세요"
                         onKeyDown={(e)=>{
                           if (e.key === "Enter") {
-                            submit();
+                            submitBtn.current.click();
                           }
                         }}
                     />
                 </div>
                 <div className="buttonFrame">
-                    <Button onClick={submit}>댓글 쓰기</Button>
+                    <Button ref={submitBtn} onClick={submit}>댓글 쓰기</Button>
                 </div>
             </div>
     </>
