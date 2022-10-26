@@ -18,6 +18,9 @@
   white-space: nowrap;
   /* text-align: left; */
 }
+.boxPost::-webkit-scrollbar {
+  display: none;
+}
 .boardTitle {
   text-align: center;
   margin-top: 0;
@@ -26,12 +29,6 @@
   background-color: rgb(69, 69, 172);
   color: white;
   width: 380px;
-}
-.clicked{
-  font-size: 10px;
-}
-::-webkit-scrollbar {
-  display: none;
 }
 .clicked{
   font-size: 10px;
