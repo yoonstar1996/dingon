@@ -15,10 +15,10 @@
 }
 .id,
 .nick {
-  margin-right: 68px;
+  margin-right: 60px;
 }
 .password {
-  margin-right: 52px;
+  margin-right: 44px;
 }
 .fixid,
 .fixpw,
@@ -27,6 +27,8 @@
   margin: 10px 0;
   height: 30px;
   width: 276px;
+  border-radius: 10px;
+  border: 1px solid gray;
 }
 .fixnick {
   padding-left: 5px;
@@ -92,12 +94,19 @@
   font-size: 1.1rem;
 }
 .fixBtn {
-  background-color: #eaeaea;
+  background-color: #9797de;
   border: none;
   border-radius: 10px;
   padding: 10px 15px;
   font-weight: bold;
+  box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
 }
+.fixBtn:active {
+  box-shadow: 0px 0px 0 rgb(0, 0, 0, 0.5);
+  position: relative;
+  top: 2px;
+}
+
 .fixBtn:hover {
   cursor: pointer;
 }
