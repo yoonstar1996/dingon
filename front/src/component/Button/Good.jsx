@@ -31,7 +31,6 @@ export default function GoodBtn({isLogin,postId,setDisLike,dislike,like,setLike}
           }
           onClick={() => {
             if(isLogin){
-              setLike(like +1)
             document.getElementById("Icon").style.color = "yellow";
             axios({
               url: "http://localhost:8050/post/like",
@@ -40,6 +39,11 @@ export default function GoodBtn({isLogin,postId,setDisLike,dislike,like,setLike}
               withCredentials: true,
             }).then((response)=>{
               console.log(response.data)
+              if(response.data.code===400){
+                alert("이미 했잖아 시발")
+              }else{
+                setLike(like +1)
+              }
             });
             }else{
               alert("로그인부터 쳐하셈 병신새끼야")
@@ -53,7 +57,7 @@ export default function GoodBtn({isLogin,postId,setDisLike,dislike,like,setLike}
         startIcon={<ThumbDownIcon></ThumbDownIcon>}
         onClick={()=>{
           if(isLogin){
-            setDisLike(dislike +1)
+            
           axios({
             url: "http://localhost:8050/post/dislike",
             method: "post",
@@ -61,6 +65,11 @@ export default function GoodBtn({isLogin,postId,setDisLike,dislike,like,setLike}
             withCredentials: true,
           }).then((response)=>{
             console.log(response.data)
+            if(response.data.code===400){
+              alert("이미 했잖아 시발")
+            }else{
+              setDisLike(dislike +1)
+            }
           });
           }else{
             alert("로그인부터 쳐하셈 병신새끼야")
