@@ -40,6 +40,7 @@ router.post("/sub",isLoggedIn,async(req,res,next)=>{
 });
 router.delete("/",isLoggedIn,async(req,res,next)=>{
     try{
+        console.log(req.query.commentId)
         const data = await Comment.findAll({where:{userId:req.user.id, id:req.query.commentId }});
         if (data.length==0){
             res.send({code:400});

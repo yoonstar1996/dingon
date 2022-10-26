@@ -139,8 +139,29 @@ const Show = ({ isLogin }) => {
       console.log(response.data.code);
     })
   }
-  const deletecomment=()=>{
-    
+  const deletecomment=(e)=>{
+    console.log(e);
+    axios({
+      url: "http://localhost:8050/comment",
+      method: "delete",
+      params: { commentId:e},
+      withCredentials: true,
+    }).then((response) => {
+      console.log("삭제완료",response.data.code);
+      window.location.reload()
+    })
+  }
+  const deletesubcomment=(e)=>{
+    console.log(e)
+    axios({
+      url: "http://localhost:8050/comment/sub",
+      method: "delete",
+      params: { commentId:e},
+      withCredentials: true,
+    }).then((response) => {
+      console.log("대댓삭제완료",response.data.code);
+      window.location.reload()
+    })
   }
   return (
     <>
@@ -246,7 +267,7 @@ const Show = ({ isLogin }) => {
                       {value.content}
                     </div>
                     <div style={{ width: "15%", display: "flex", justifyContent: "flex-end" }}>
-                      {isLogin === value.userId ? <Button style={{ color: "black" }} variant="text"><DeleteIcon /></Button> : <></>}
+                      {isLogin === value.userId ? <Button onClick={()=>{deletecomment(value.id)}} style={{ color: "black" }} variant="text"><DeleteIcon /></Button> : <></>}
                     </div>
                     <div style={{ width: "20%", display: "flex" }}>
                       {sendDate}
@@ -280,7 +301,7 @@ const Show = ({ isLogin }) => {
                               {v.content}
                             </div>
                             <div style={{ width: "15%", display: "flex", justifyContent: "flex-end" }}>
-                              {isLogin ? <Button style={{ marginTop:0,color: "black" }} variant="text"><DeleteIcon /></Button> : <></>}
+                              {isLogin === v.userId ? <Button onClick={()=>{deletesubcomment(v.ID)}} style={{ marginTop:0,color: "black" }} variant="text"><DeleteIcon /></Button> : <></>}
                             </div>
                             <div style={{ width: "20%", display: "flex" }}>
                               {sendDate}
