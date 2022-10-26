@@ -45,7 +45,7 @@
   background-color: aliceblue;
 }
 .recentGall{
-  margin: 0px 10px 0px 60px;
+  margin: 0px 10px 0px 80px;
   display: inline-block;
 }
 
@@ -53,8 +53,8 @@
   display: inline-block;
   color: white;
   text-decoration: none;
-  font-size: 14px;
-  margin-left: 10px;
+  font-size: 16px;
+  margin-left: 15px;
   /* width: 84px; */
   text-align: center;
 }

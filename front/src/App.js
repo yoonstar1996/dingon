@@ -78,20 +78,21 @@ const App = (props) => {
             >
               동시접속자
               <span style={{ fontWeight: "600", color: "rgb(154,222,237)" }}>
-                {" "}
+                
                 {count}명
               </span>
-            </div>{" "}
-            <div className="recentGall">최근방문갤러리{" "}</div>
+            </div>
+            <div className="recentGall">최근방문갤러리</div>
             {recent.map((v) => {
               return (
-                <span className="theRecentGallSpan">
+                <span key={v.id} className="theRecentGallSpan">
                   <Link
+                  
                     style={recentStyle}
                     to={"/gallery/" + v}
                   >
                     {v}
-                  </Link>{" "}
+                  </Link>
                 </span>
               );
             })}
