@@ -9,16 +9,20 @@ import Search from "./component/Search";
 import ScrollToTop from "./component/ScrollToTop";
 import io from "socket.io-client";
 import Footer from "./component/Footer";
+import Mouse from "./component/Mouse";
 
 import Gaesi from "./component/gaesi";
 import Allgall from "./component/Allgall";
-const socket = io.connect('http://localhost:8050/count',{path: "/socket.io", cors: { origin: '*' }});
+const socket = io.connect("http://localhost:8050/count", {
+  path: "/socket.io",
+  cors: { origin: "*" },
+});
 const App = (props) => {
   const [userId, setUserId] = useState("");
   const [nickName, setNickName] = useState("");
   const [value, setValue] = useState("");
   const [isLogin, setIsLogin] = useState(false);
-  const [count,setCount] = useState(0);
+  const [count, setCount] = useState(0);
   useEffect(() => {
     axios
       .get("http://localhost:8050/auth/isLoggedIn", { withCredentials: true })
@@ -32,9 +36,8 @@ const App = (props) => {
         }
       });
   });
-  useEffect(()=>{
-    axios.get("http://localhost:8050/search/count").then((data)=>{
-      
+  useEffect(() => {
+    axios.get("http://localhost:8050/search/count").then((data) => {
       setCount(data.data.count);
     });
   });
@@ -47,12 +50,28 @@ const App = (props) => {
   // },[]);
   return (
     <>
+      <Mouse></Mouse>
       <BrowserRouter>
         <div className="body">
           <div className="searchandLogo">
             <Search />
           </div>
-          <div className="dividebar"><div style={{marginTop:"15px",marginLeft:"15px",display:"inline-block",fontWeight:"500"}}>동시접속자<span style={{fontWeight:"600",color:"rgb(154,222,237)"}}>     {count}명</span></div></div>
+          <div className="dividebar">
+            <div
+              style={{
+                marginTop: "15px",
+                marginLeft: "15px",
+                display: "inline-block",
+                fontWeight: "500",
+              }}
+            >
+              동시접속자
+              <span style={{ fontWeight: "600", color: "rgb(154,222,237)" }}>
+                {" "}
+                {count}명
+              </span>
+            </div>
+          </div>
           <div className="container">
             <div className="main">
               <Main isLogin={isLogin} setIsLogin={setIsLogin} userId={userId} />

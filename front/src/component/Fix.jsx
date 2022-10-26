@@ -8,6 +8,7 @@ export default function Fix({ userId }) {
   const [pwChange, setPwChange] = useState("");
   const [length, setLength] = useState(true);
   const [fixBtnAble, setFixBtnAble] = useState(false);
+
   function fixBtn() {
     var data = {
       nickName: nickChange,
@@ -55,13 +56,13 @@ export default function Fix({ userId }) {
       console.log(result.data);
       console.log("code", result.data.code);
       if (result.data.code === 400) {
-        alert("이미 먹혔다 게이야.");
+        alert("이미 존재하는 닉네임입니다.");
         setFixBtnAble(false);
       } else if (result.data.code === 500) {
         alert("서버상 문제가 발생했습니다.");
         setFixBtnAble(false);
       } else {
-        alert("사용 가능하다 게이야.");
+        alert("사용 가능한 닉네임입니다.");
         setFixBtnAble(true);
       }
     });
