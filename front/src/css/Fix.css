@@ -16,9 +16,11 @@
 .id,
 .nick {
   margin-right: 40px;
+  font-weight: bold;
 }
 .password {
   margin-right: 24px;
+  font-weight: bold;
 }
 .fixid,
 .fixpw,
@@ -28,7 +30,7 @@
   height: 30px;
   width: 281px;
   border-radius: 10px;
-  border: 1px solid gray;
+  border: 1px solid #4545ac;
 }
 .fixnick {
   padding-left: 5px;
@@ -36,16 +38,16 @@
   height: 30px;
   width: 200px;
   border-radius: 10px;
-  border: 1px solid gray;
+  border: 1px solid #4545ac;
 }
 .nickConfirm {
   height: 34px;
-  border: 1px solid #4545ac;
-  color: #4545ac;
+  border: none;
+  color: white;
+  background-color: #4545ac;
   font-weight: bold;
   padding: 8px;
   border-radius: 10px;
-  background-color: transparent;
   margin: 0 10px;
 }
 .nickConfirm:hover {
