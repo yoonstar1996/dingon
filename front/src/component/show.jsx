@@ -129,15 +129,20 @@ const Show = ({ isLogin }) => {
     });
   }, [page]);
   const submit=()=>{
-    axios({
-      url: "http://localhost:8050/comment",
-      method: "post",
-      data: { postId: id,comment:writeC},
-      withCredentials: true,
-    }).then((response) => {
-      window.location.reload()
-      console.log(response.data.code);
-    })
+    if(isLogin){
+      axios({
+        url: "http://localhost:8050/comment",
+        method: "post",
+        data: { postId: id,comment:writeC},
+        withCredentials: true,
+      }).then((response) => {
+        window.location.reload()
+        console.log(response.data.code);
+      })
+    }else{
+      alert("댓글 절---대 안된다")
+    }
+    
   }
   const deletecomment=(e)=>{
     console.log(e);
