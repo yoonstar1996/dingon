@@ -61,14 +61,11 @@ const Show = ({ isLogin }) => {
   `;
   const { name, id } = useParams();
   const [cont, setCont] = useState("");
-  const content = useRef();
+  const content = useRef(null);
 
   const [userId, setUserId] = useState("");
   const [time, setTime] = useState("");
-  const [comment, setComment] = useState([
-    { name: "병신을보면 짖는개", comment: "wdewedwewef" },
-    { name: "재매이햄", comment: "wefwefwfewfe" },
-  ]);
+  const [comment, setComment] = useState([]);
   const [subComment, setSubComment] = useState(-1);
   const [err, setErr] = useState(false);
   const [page, setPage] = useState(1);
@@ -237,7 +234,7 @@ const Show = ({ isLogin }) => {
                       {sendDate}
                     </div>
                   </div>
-                  {console.log("aaaaaaa",value.subcomment)}
+                  {value.id === subComment ? <SubComment commentId={value.id} postId={id} isLogin={isLogin} comment={value.id}/>:<></>}
                   {value.subcomment && value.subcomment.length > 0 && <div className="subcommentframe">
                     <div style={{ marginBottom: "5px", fontSize: "small", paddingRight: 0, paddingLeft: 0, display: "flex", alignItems: "center" }}>
                       {value.subcomment.map((v, key) => {
@@ -258,13 +255,13 @@ const Show = ({ isLogin }) => {
                         return (
                           <>
                             <div style={{ width: "25%" }}>
-                              
+                              {v.nickName}
                             </div>
                             <div style={{ width: "80%", overflow: "hidden", wordBreak: "break-all" }}>
                               ㄴ{v.content}
                             </div>
                             <div style={{ width: "15%", display: "flex", justifyContent: "flex-end" }}>
-                              {isLogin === v.userId ? <Button style={{ color: "black" }} variant="text"><DeleteIcon /></Button> : <></>}
+                              {isLogin ? <Button style={{ color: "black" }} variant="text"><DeleteIcon /></Button> : <></>}
                             </div>
                             <div style={{ width: "20%", display: "flex" }}>
                               {sendDate}
@@ -275,6 +272,7 @@ const Show = ({ isLogin }) => {
                     </div>
                     <hr style={{ marginBottom: 0, width: "100%", backgroundColor: "#e2e2e2" }} />
                   </div>}
+                  
                   <hr style={{ backgroundColor: "#e2e2e2" }} />
                 </>
               );
