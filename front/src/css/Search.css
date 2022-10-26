@@ -8,22 +8,24 @@
   display: flex;
   align-items: center;
 }
-.logo {
-  display: inline-block;
-  position: relative;
-  right: 120px;
-  top: 10px;
+
+.logo{
+    display: inline-block;
+    position: relative;
+    right: 120px;
+
 }
 .logo img {
   width: 350px;
   height: auto;
 }
-.searchengine {
-  position: relative;
-  right: 125px;
-  top: 25px;
-  height: 100%;
-  text-align: right;
+
+.searchengine{
+    position: relative;
+    right: 125px;
+    top: 10px;
+    height: 100%;
+    text-align: right;
 }
 .searchengine input {
   width: 550px;
@@ -54,7 +56,7 @@
   top: 5px;
 }
 .logo2 img {
-  width: 300px;
+  width: 350px;
   height: auto;
 }
 .glasses {
@@ -83,3 +85,4 @@
   top: 8px;
   left: 8px;
 }
+

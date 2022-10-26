@@ -96,7 +96,8 @@ const Search = () => {
             </form>
           </div>
           <div className="logo2">
-            <img src="/img/owl.gif"></img>
+                <img src="/img/owl2.gif"></img>
+
           </div>
         </div>
       </div>
