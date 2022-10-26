@@ -1,6 +1,8 @@
 import React from "react"
 import  Button  from "@mui/material/Button"
-import StarBorderIcon from "@mui/icons-material/StarBorder";
+import StarIcon from "@mui/icons-material/Star";
+import ThumbDownIcon from '@mui/icons-material/ThumbDown';
+import { margin } from "@mui/system";
 
 
 export default function GoodBtn(){
@@ -12,22 +14,28 @@ export default function GoodBtn(){
             width: "100px",
             paddingLeft: "25px",
             backgroundColor: "#4545AC",
-            padding:"5px"
+            padding:"5px",
+            margin:"10px"
           }}
           id="GoodBtn"
           variant="contained"
           startIcon={
-            <StarBorderIcon
+            <StarIcon
               style={{ fontSize: "25px" }}
               id="Icon"
               variant="contained"
-            ></StarBorderIcon>
+            ></StarIcon>
           }
           onClick={() => {
             document.getElementById("Icon").style.color = "yellow";
-            document.getElementById("Icon").variant = "contained"
           }}
         >개추</Button>
+        <Button 
+        variant="outlined"
+        style={{margin:"10px"}}
+        startIcon={<ThumbDownIcon></ThumbDownIcon>}
+        onClick={()=>{}}
+        >비추</Button>
       </>
     );
 }
