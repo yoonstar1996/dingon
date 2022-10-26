@@ -38,7 +38,6 @@ export default function GoodBtn(){
               url: "/post/like",
               method: "post",
               withCredentials: true,
-
             }).then((response)=>{
               console.log(response.data)
             });
