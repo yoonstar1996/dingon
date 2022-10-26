@@ -280,7 +280,7 @@ const Show = ({ isLogin }) => {
                               {v.content}
                             </div>
                             <div style={{ width: "15%", display: "flex", justifyContent: "flex-end" }}>
-                              {isLogin ? <Button style={{ marginTop:0,color: "black" }} variant="text"><DeleteIcon /></Button> : <></>}
+                              {isLogin === v.userId ? <Button style={{ marginTop:0,color: "black" }} variant="text"><DeleteIcon /></Button> : <></>}
                             </div>
                             <div style={{ width: "20%", display: "flex" }}>
                               {sendDate}
