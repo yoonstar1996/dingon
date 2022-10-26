@@ -74,12 +74,13 @@ router.post("/emailCheck", isNotLoggedIn, async (req, res, next) => {
     next(err);
   }
 });
-router.post("/nickNameCheck", isNotLoggedIn, async (req, res, next) => {
+router.post("/nickNameCheck", isLoggedIn, async (req, res, next) => {
   try {
     //비동기 처리 및 변수 바꿈
     const Userdata = await User.findOne({
       where: { nickName: req.body.nickName },
     });
+    console.log( req.body.nickName, Userdata )
     if (Userdata) {
       res.send({ code: 400 });
     } else {
