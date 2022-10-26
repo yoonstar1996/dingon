@@ -32,11 +32,12 @@ export default function GoodBtn(){
             ></StarIcon>
           }
           onClick={() => {
-            setLike(like +1)
+            setLike(like +1);
             document.getElementById("Icon").style.color = "yellow";
             axios({
-              url: "/post/like",
+              url: "http://localhost:8050/post/like",
               method: "post",
+              data: postid,
               withCredentials: true,
             }).then((response)=>{
               console.log(response.data)
@@ -51,8 +52,9 @@ export default function GoodBtn(){
         onClick={()=>{
           setDislike(dislike +1)
           axios({
-            url: "/post/dislike",
+            url: "http://localhost:8050/post/dislike",
             method: "post",
+            data: postid,
             withCredentials: true,
           }).then((response)=>{
             console.log(response.data)
