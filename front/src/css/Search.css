@@ -8,29 +8,29 @@
   display: flex;
   align-items: center;
 }
-.logo{
-    display: inline-block;
-    position: relative;
-    right: 120px;
-    top: 10px;
+.logo {
+  display: inline-block;
+  position: relative;
+  right: 120px;
+  top: 10px;
 }
-.logo img{
-    width: 350px;
-    height: auto;
+.logo img {
+  width: 350px;
+  height: auto;
 }
-.searchengine{
-    position: relative;
-    right: 125px;
-    top: 25px;
-    height: 100%;
-    text-align: right;
+.searchengine {
+  position: relative;
+  right: 125px;
+  top: 25px;
+  height: 100%;
+  text-align: right;
 }
-.searchengine input{
-    width: 550px;
-    height: 35px;
-    text-align: left;
-    padding-left: 20px;
-    border: 5px solid rgb(69, 69, 172);
+.searchengine input {
+  width: 550px;
+  height: 35px;
+  text-align: left;
+  padding-left: 20px;
+  border: 5px solid rgb(69, 69, 172);
 }
 .searchengine button {
   position: relative;
@@ -57,4 +57,31 @@
   height: auto;
 }
 
+
+.glasses {
+  position: absolute;
+  display: flex;
+  top: 50px;
+}
+.lefteyeball,
+.righteyeball {
+  background-color: rgb(162, 174, 237);
+  position: relative;
+  width: 34px;
+  height: 34px;
+  border-radius: 50px;
+  top: 4px;
+  left: 162px;
+  margin: 0 3px;
+}
+.lefteye,
+.righteye {
+  background-color: black;
+  width: 19px;
+  height: 19px;
+  border-radius: 50px;
+  position: relative;
+  top: 8px;
+  left: 8px;
+}
 
