@@ -11,8 +11,8 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import DeleteIcon from '@mui/icons-material/Delete';
 import ButtonGroup from "@mui/material/ButtonGroup";
 import { Hidden } from "@mui/material";
-import  SubComment  from "./SubComment";
-import  SubCommentUi  from "./SubCommentUi";
+import SubComment from "./SubComment";
+import SubCommentUi from "./SubCommentUi";
 const Show = ({ isLogin }) => {
   const PaginationBox = styled.div`
     a:link {
@@ -69,7 +69,7 @@ const Show = ({ isLogin }) => {
     { name: "병신을보면 짖는개", comment: "wdewedwewef" },
     { name: "재매이햄", comment: "wefwefwfewfe" },
   ]);
-  const [subComment,setSubComment]=useState(-1);
+  const [subComment, setSubComment] = useState(-1);
   const [err, setErr] = useState(false);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
@@ -84,7 +84,7 @@ const Show = ({ isLogin }) => {
       params: { postId: id },
       withCredentials: true,
     }).then((response) => {
-      //console.log(response.data);
+      console.log(response.data);
       // //console.log(response.data.postId);
       setUserId(response.data.userId);
       let date = new Date(response.data.createdAt);
@@ -121,12 +121,12 @@ const Show = ({ isLogin }) => {
       params: { page: page, postId: id },
       withCredentials: true,
     }).then((response) => {
-      // //console.log("댓글정보", response.data.list);
+      console.log("댓글정보", response.data.list);
       setComment(response.data.list);
       setTotal(response.data.list.length)
     });
   }, [page]);
-  
+
   return (
     <>
       <div className="wrap">
@@ -141,7 +141,7 @@ const Show = ({ isLogin }) => {
               {isLogin === userId ? (
                 <Link
                   style={{ textDecoration: "none" }}
-                  to={"/gallery/made/"+name +"/"+ id}
+                  to={"/gallery/made/" + name + "/" + id}
                 >
                   <Button style={{ background: "#4545AC" }} variant="contained">
                     수정
@@ -159,7 +159,7 @@ const Show = ({ isLogin }) => {
                   {cont.title}
                 </h4>
                 <div>
-                  닉네임: {cont.nickName +" | "+time}
+                  닉네임: {cont.nickName + " | " + time}
                 </div>
               </div>
               <div className="info">
@@ -217,28 +217,64 @@ const Show = ({ isLogin }) => {
               sendDate += +date.getMinutes();
               return (
                 <>
-                  <div style={{fontSize:"small", paddingRight: 0, paddingLeft: 0, display: "flex",alignItems:"center" }}>
+                  <div style={{ fontSize: "small", paddingRight: 0, paddingLeft: 0, display: "flex", alignItems: "center" }}>
                     <div style={{ width: "25%" }}>
                       {value.nickName}
                     </div>
-                    <div onClick={()=>{
-                      if(subComment === -1){
+                    <div onClick={() => {
+                      if (subComment === -1) {
                         setSubComment(value.id);
-                      }else{
+                      } else {
                         setSubComment(-1);
                       }
                     }} style={{ width: "80%", overflow: "hidden", wordBreak: "break-all" }}>
                       {value.content}
                     </div>
-                    <div style={{ width: "15%", display: "flex" ,justifyContent:"flex-end" }}>
-                      {isLogin === value.userId ? <Button style={{color:"black"}} variant="text"><DeleteIcon/></Button>:<></>}
+                    <div style={{ width: "15%", display: "flex", justifyContent: "flex-end" }}>
+                      {isLogin === value.userId ? <Button style={{ color: "black" }} variant="text"><DeleteIcon /></Button> : <></>}
                     </div>
-                    <div style={{ width: "15%", display: "flex"  }}>
+                    <div style={{ width: "15%", display: "flex" }}>
                       {sendDate}
                     </div>
                   </div>
-                    {value.id === subComment ? <SubComment commentId={value.id} postId={id} isLogin={isLogin} comment={value.id}/>:<></>}
-                    <SubCommentUi sublist={[]} isLogin={isLogin} commentId={value.id}/>
+                  {console.log("aaaaaaa",value.subcomment)}
+                  {value.subcomment && value.subcomment.length > 0 && <div className="subcommentframe">
+                    <div style={{ marginBottom: "5px", fontSize: "small", paddingRight: 0, paddingLeft: 0, display: "flex", alignItems: "center" }}>
+                      {value.subcomment.map((v, key) => {
+                        let date = new Date(v.createdAt);
+                        let sendDate =
+                          date.getFullYear() +
+                          "." +
+                          (parseInt(date.getMonth()) + 1) +
+                          "." +
+                          date.getDate() +
+                          " ";
+                        if (date.getHours() < 12) {
+                          sendDate += date.getHours() + ":";
+                        } else {
+                          sendDate += parseInt(date.getHours()) - 12 + ":";
+                        }
+                        sendDate += +date.getMinutes();
+                        return (
+                          <>
+                            <div style={{ width: "25%" }}>
+                              
+                            </div>
+                            <div style={{ width: "80%", overflow: "hidden", wordBreak: "break-all" }}>
+                              ㄴ{v.content}
+                            </div>
+                            <div style={{ width: "15%", display: "flex", justifyContent: "flex-end" }}>
+                              {isLogin === v.userId ? <Button style={{ color: "black" }} variant="text"><DeleteIcon /></Button> : <></>}
+                            </div>
+                            <div style={{ width: "20%", display: "flex" }}>
+                              {sendDate}
+                            </div>
+                          </>
+                        )
+                      })}
+                    </div>
+                    <hr style={{ marginBottom: 0, width: "100%", backgroundColor: "#e2e2e2" }} />
+                  </div>}
                   <hr style={{ backgroundColor: "#e2e2e2" }} />
                 </>
               );
