@@ -136,7 +136,7 @@ router.post("/dislike",isLoggedIn,async(req,res,next)=>{
         next(err);
     }
 });
-router.get("/concept",async(req,res,next)=>{
+router.get("/list",async(req,res,next)=>{
     try{
         const query = `select *,posts.id as postId from posts inner join boards on posts.boardId = boards.id inner join users on users.id = posts.userId inner join concepts on concepts.PostId = posts.id where boards.name="${decodeURI(req.query.name)}" ORDER BY posts.createdAt DESC LIMIT 10 OFFSET ${(req.query.page-1)*10}`;
         const data = await sequelize.query(query,{type:QueryTypes.SELECT});
