@@ -1,5 +1,5 @@
 .right-title > div {
-  margin: 15px 0 20px 0;
+  margin: 15px 0 20px 10px;
 }
 .fix-input {
   display: flex;
@@ -70,8 +70,18 @@
   padding: 15px 20px;
   width: 150px;
   background-color: transparent;
-  border-bottom: 1px solid #eaeaeaea;
+  border-color: white black black white;
+  box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
+  border-style: solid solid solid solid;
+  border-width: 1px 1px 1px 1px;
   font-weight: bold;
+  margin: 0 0 0 8px;
+}
+.left-mypage:active,
+.left-fix:active {
+  box-shadow: 0px 0px 0 rgb(0, 0, 0, 0.5);
+  position: relative;
+  top: 2px;
 }
 .left-mypage:hover,
 .left-fix:hover {
