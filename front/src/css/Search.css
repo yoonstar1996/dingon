@@ -11,15 +11,19 @@
 .logo{
     display: inline-block;
     margin-right: 20px;
+    position: relative;
+    right: 100px;
 }
 .logo img{
     width: 400px;
     height: auto;
 }
 .searchengine{
+    position: relative;
+    right: 150px;
+    top: 20px;
     height: 100%;
     text-align: right;
-    
 }
 .searchengine input{
     width: 450px;
@@ -30,7 +34,8 @@
 }
 .searchengine button{
     position: relative;
-    right: 80px;
+    right: 10px;
+    bottom: 43px;
     background-color: rgb(69, 69, 172);
     color: white;
     border-radius: 10px;
@@ -42,4 +47,12 @@
 .searchengine button:hover{
     background-color: wheat;
     color: black;
+}
+.logo2{
+    position: relative;
+    right: 150px;
+}
+.logo2 img{
+    width: 300px;
+    height: auto;
 }
