@@ -48,13 +48,16 @@
   margin: 0px 10px 0px 60px;
   display: inline-block;
 }
+
 .theRecentGallSpan{
   display: inline-block;
   color: white;
   text-decoration: none;
-  /* background-color: yellow; */
   font-size: 14px;
-  margin-left: 5px;
-  width: 84px;
+  margin-left: 10px;
+  /* width: 84px; */
   text-align: center;
+}
+.theRecentGallSpan:hover{
+  text-decoration: underline;
 }
