@@ -123,7 +123,7 @@ function PostMade() {
                 <TextField onChange={(e)=>{setTitle(e.target.value)
                 if(e.target.value.length >= 15){
                   alert("제목 그만 늘려라");
-                  e.target.value = " "
+                  e.target.value = ""
                 }}} fullWidth type="text" placeholder="제목" maxLength={15}/>
             </div>
             <div className="alertstory">

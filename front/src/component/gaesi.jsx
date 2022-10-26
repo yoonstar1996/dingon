@@ -8,7 +8,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 const Gaesi = () => {
   const [title, Settitle] = useState(""); // 콘텐츠 타이틀
@@ -110,10 +110,12 @@ const Gaesi = () => {
     <>
       <div className="wrap">
         <div className="content">
-          {/* <h2 variant="h2" style={{ color: "#4545AC" }}>
-            야구갤러리
-          </h2>
-          <hr></hr> */}
+          <Link style={{textDecoration:"none"}} to={"/gallery/" + name}>
+            <h2 variant="h2">
+                {name}갤러리
+            </h2>
+          </Link>
+          <hr></hr>
           <div className="title_head">
             <h2>작성글 수정</h2>
           </div>
