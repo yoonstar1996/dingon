@@ -51,6 +51,7 @@ router.get("/content",async(req,res,next)=>{
         const query3 = `select count(*) as count from subcomments where postId="${req.query.postId}"`;
         const response2 = await sequelize.query(query3,{type:QueryTypes.SELECT});
         data[0][0].commentCount = response[0].count + response2[0].count;
+        data[0][0].total = response[0].count;
         res.send(data[0][0]);
     }
     catch(err){
@@ -156,15 +157,5 @@ router.get("/concept",async(req,res,next)=>{
         next(err);
     }
 });
-router.get("/count",async(req,res,next)=>{
-    try{
-        const query = `select count(*) as total from comments inner join posts on posts.id=comments.postId where posts.id="${req.query.postId}"`;
-        const data = await sequelize.query(query,{type:QueryTypes.SELECT});
-        res.send({code:200,total:data[0].total});
-    }
-    catch(err){
-        next(err);
-    }
 
-});
 module.exports = router;
