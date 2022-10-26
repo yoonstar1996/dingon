@@ -129,4 +129,31 @@ router.post("/dislike",isLoggedIn,async(req,res,next)=>{
         next(err);
     }
 });
+router.get("/concept",async(req,res,next)=>{
+    try{
+        const query = `select *,posts.id as postId from posts inner join boards on posts.boardId = boards.id inner join users on users.id = posts.userId inner join concepts on concepts.PostId = posts.id where boards.name="${decodeURI(req.query.name)}" ORDER BY posts.createdAt DESC LIMIT 10 OFFSET ${(req.query.page-1)*10}`;
+        const data = await sequelize.query(query,{type:QueryTypes.SELECT});
+        data.forEach(ele=>{
+            let flag;
+            flag = ele.content.search(/.*?<img.*?/g);
+            if (flag==-1){
+                ele.img=false;
+            }
+            else{
+                ele.img=true;
+            }
+        });
+        for (let i=0; i<data.length; i++){
+            const query = `select count(*) as count from comments where postId="${data[i].postId}"`;
+            const response = await sequelize.query(query,{type:QueryTypes.SELECT});
+            const query2 = `select count(*) as count from subcomments where postId="${data[i].postId}"`;
+            const response2 = await sequelize.query(query2,{type:QueryTypes.SELECT});
+            data[i].commentCount = response[0].count+response2[0].count;
+        }
+        res.send({code:200,list:data});
+    }
+    catch(err){
+        next(err);
+    }
+});
 module.exports = router;
