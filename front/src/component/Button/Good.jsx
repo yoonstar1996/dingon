@@ -9,9 +9,10 @@ export default function GoodBtn(){
         <Button
           style={{
             borderRadius: "200px",
-            width: "50px",
+            width: "100px",
             paddingLeft: "25px",
             backgroundColor: "#4545AC",
+            padding:"5px"
           }}
           id="GoodBtn"
           variant="contained"
@@ -26,7 +27,7 @@ export default function GoodBtn(){
             document.getElementById("Icon").style.color = "yellow";
             document.getElementById("Icon").variant = "contained"
           }}
-        ></Button>
+        >개추</Button>
       </>
     );
 }
