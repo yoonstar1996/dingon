@@ -160,7 +160,7 @@ const Show = ({ isLogin }) => {
       withCredentials: true,
     }).then((response) => {
       console.log("대댓삭제완료",response.data.code);
-      //window.location.reload()
+      window.location.reload()
     })
   }
   return (
