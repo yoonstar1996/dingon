@@ -1,5 +1,5 @@
 .right-title > div {
-  margin: 15px 0 20px 0;
+  margin: 15px 0 20px 10px;
 }
 .fix-input {
   display: flex;
@@ -15,10 +15,10 @@
 }
 .id,
 .nick {
-  margin-right: 68px;
+  margin-right: 40px;
 }
 .password {
-  margin-right: 52px;
+  margin-right: 24px;
 }
 .fixid,
 .fixpw,
@@ -26,17 +26,25 @@
   padding-left: 5px;
   margin: 10px 0;
   height: 30px;
-  width: 276px;
+  width: 281px;
+  border-radius: 10px;
+  border: 1px solid gray;
 }
 .fixnick {
   padding-left: 5px;
   margin: 10px 0;
   height: 30px;
   width: 200px;
+  border-radius: 10px;
+  border: 1px solid gray;
 }
 .nickConfirm {
   height: 34px;
-  border: 1px solid blue;
+  border: 1px solid #4545ac;
+  color: #4545ac;
+  font-weight: bold;
+  padding: 8px;
+  border-radius: 10px;
   background-color: transparent;
   margin: 0 10px;
 }
@@ -70,8 +78,18 @@
   padding: 15px 20px;
   width: 150px;
   background-color: transparent;
-  border-bottom: 1px solid #eaeaeaea;
+  border-color: white black black white;
+  box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
+  border-style: solid solid solid solid;
+  border-width: 1px 1px 1px 1px;
   font-weight: bold;
+  margin: 0 0 0 8px;
+}
+.left-mypage:active,
+.left-fix:active {
+  box-shadow: 0px 0px 0 rgb(0, 0, 0, 0.5);
+  position: relative;
+  top: 2px;
 }
 .left-mypage:hover,
 .left-fix:hover {
@@ -82,12 +100,19 @@
   font-size: 1.1rem;
 }
 .fixBtn {
-  background-color: #eaeaea;
+  background-color: #9797de;
   border: none;
   border-radius: 10px;
   padding: 10px 15px;
   font-weight: bold;
+  box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
 }
+.fixBtn:active {
+  box-shadow: 0px 0px 0 rgb(0, 0, 0, 0.5);
+  position: relative;
+  top: 2px;
+}
+
 .fixBtn:hover {
   cursor: pointer;
 }
