@@ -239,12 +239,13 @@ const Show = ({ isLogin }) => {
             </div>
           </div>
           <div ref={content} className="get_content"></div>
-          <div>전체 댓글 {cont.commentCount}개</div>
+          
           <div className="LikeViewFrame">
             <div className="LikeView">
               <Good isLogin={isLogin} postId={id} setDisLike={setDisLike} dislike={dislike} like={like} setLike={setLike}/>
             </div>
           </div>
+          <div>전체 댓글 {cont.commentCount}개</div>
           <div className="comment">
             {comment.map((value, key) => {
               //console.log("key", key);
