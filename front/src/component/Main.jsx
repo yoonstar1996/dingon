@@ -12,6 +12,7 @@ import ErrorPage from "./ErrorPage"
 import Best from "./Button/Best";
 import GoodBtn from "./Button/Good";
 
+
 const Main = memo((props) => {
   return (
     <>
@@ -32,7 +33,9 @@ const Main = memo((props) => {
         ></Route>
         <Route
           path="/gallery/:name"
-          element={<Board setRecent={props.setRecent} isLogin={props.isLogin}></Board>}
+          element={
+            <Board setRecent={props.setRecent} isLogin={props.isLogin}></Board>
+          }
         ></Route>
 
         {props.isLogin ? (
@@ -49,18 +52,20 @@ const Main = memo((props) => {
           <></>
         )}
         {props.isLogin ? (
-          <Route path="/gallery/made/:name/:postid" element={<Gaesi></Gaesi>}></Route>
+          <Route
+            path="/gallery/made/:name/:postid"
+            element={<Gaesi></Gaesi>}
+          ></Route>
         ) : (
           <></>
         )}
-        {props.isLogin ?(
-          <Route path="/create" element={<NewBoard></NewBoard>}></Route>          
+        {props.isLogin ? (
+          <Route path="/create" element={<NewBoard></NewBoard>}></Route>
         ) : (
           <></>
-        )      
-        }
+        )}
         <Route path="/*" element={<ErrorPage></ErrorPage>}></Route>
-        <Route path="/Best" element={<Best></Best>}></Route>
+        {/* <Route path="/Best" element={<Best></Best>}></Route> */}
         <Route path="/Good" element={<GoodBtn></GoodBtn>}></Route>
       </Routes>
     </>

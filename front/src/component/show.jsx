@@ -10,6 +10,7 @@ import SentimentVerySatisfiedIcon from "@mui/icons-material/SentimentVerySatisfi
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import { Hidden } from "@mui/material";
+import Good from "./Button/Good"
 const Show = ({ isLogin }) => {
   const PaginationBox = styled.div`
     a:link {
@@ -228,6 +229,7 @@ const Show = ({ isLogin }) => {
                 </>
               );
             })}
+            <Good></Good>
           </div>
         </div>
         <PaginationBox>
