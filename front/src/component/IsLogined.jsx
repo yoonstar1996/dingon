@@ -20,7 +20,6 @@ export default function IsLogined({ setIsLogin, nickname, userId }) {
       }
     });
   };
-  console.log(userId);
 
   return (
     <>

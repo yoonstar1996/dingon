@@ -19,9 +19,10 @@ export default function Allgall() {
       <>
       <div className="wrapper">
         <div className="top-div">
-          <div className="allSelect">갤러리 전체보기</div>
+          <div className="allSelect">전체 갤러리</div>
           {/* <div className="namesort">ㄱㄴㄷ순</div> */}
         </div>
+        <div className="box-wrapper">
         <div className="mid-div">
           {all.map(item => (
             <div key={item.name}>
@@ -31,6 +32,9 @@ export default function Allgall() {
             </div>
           ))}
         </div>
+        <div className="ad-box">
+        </div>
+          </div>
       </div>
     </>
   );

@@ -23,7 +23,7 @@
 }
 .mid-div {
   border: 1px solid #4545ac;
-  width: 250px;
+  width: 230px;
   height: 450px;
   margin: 20px 0 0 0;
   display: flex;
@@ -32,6 +32,9 @@
   border-radius: 12px;
   background: radial-gradient(white, #d6d6ff);
   background-repeat: repeat-x;
+}
+::-webkit-scrollbar {
+  display: visible !important;
 }
 .mid-div > div {
   margin: 10px 22px;
@@ -47,22 +50,18 @@
 .mid-div > div:hover {
   color: #4545ac;
 }
-.circle {
-
-  position: absolute;
-
-  top: 0; 
-
-  left: 0;
-
-  width: 150px; 
-
-  height: 150px; 
-
-  border-radius: 50%;
-
-  background-color: #9bf50b; 
-
-  transform: translate(-50%, -50%); 
-
+.box-wrapper {
+  display: flex;
+}
+.ad-box{
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  overflow-x: scroll;
+  width: 900px;
+  height: 450px;
+  margin:20px 0 0 30px;
+  border-radius: 10px;
 }
