@@ -314,7 +314,6 @@ const Show = ({ isLogin }) => {
                       {sendDate}
                     </div>
                   </div>
-<<<<<<< HEAD
                   {value.id === subComment ? <SubComment commentId={value.id} postId={id} isLogin={isLogin} comment={value.id}/>:<></>}
                   <div>
                   {value.subcomment && value.subcomment.length > 0 && <div className="subcommentframe">
@@ -359,106 +358,6 @@ const Show = ({ isLogin }) => {
                   </div>}
                   </div>
                   
-=======
-                  {value.id === subComment ? (
-                    <SubComment
-                      commentId={value.id}
-                      postId={id}
-                      isLogin={isLogin}
-                      comment={value.id}
-                    />
-                  ) : (
-                    <></>
-                  )}
-                  {value.subcomment && value.subcomment.length > 0 && (
-                    <div className="subcommentframe">
-                      <div
-                        style={{
-                          marginBottom: "5px",
-                          fontSize: "small",
-                          paddingRight: 0,
-                          paddingLeft: 0,
-                          display: "flex",
-                          justifyContent: "center",
-                          flexDirection: "column",
-                        }}
-                      >
-                        {value.subcomment.map((v, key) => {
-                          let date = new Date(v.createdAt);
-                          let sendDate =
-                            date.getFullYear() +
-                            "." +
-                            (parseInt(date.getMonth()) + 1) +
-                            "." +
-                            date.getDate() +
-                            " ";
-                          if (date.getHours() < 12) {
-                            sendDate += date.getHours() + ":";
-                          } else {
-                            sendDate += parseInt(date.getHours()) - 12 + ":";
-                          }
-                          sendDate += +date.getMinutes();
-                          return (
-                            <>
-                              <div
-                                style={{
-                                  display: "flex",
-                                  marginBottom: "5px",
-                                  marginTop: "5px",
-                                  alignItems: "center",
-                                }}
-                              >
-                                <div style={{ width: "25%" }}>
-                                  ㄴ{v.nickName}
-                                </div>
-                                <div
-                                  style={{
-                                    width: "80%",
-                                    overflow: "hidden",
-                                    wordBreak: "break-all",
-                                  }}
-                                >
-                                  {v.content}
-                                </div>
-                                <div
-                                  style={{
-                                    width: "15%",
-                                    display: "flex",
-                                    justifyContent: "flex-end",
-                                  }}
-                                >
-                                  {isLogin === v.userId ? (
-                                    <Button
-                                      onClick={() => {
-                                        deletesubcomment(v.ID);
-                                      }}
-                                      style={{ marginTop: 0, color: "black" }}
-                                      variant="text"
-                                    >
-                                      <DeleteIcon />
-                                    </Button>
-                                  ) : (
-                                    <></>
-                                  )}
-                                </div>
-                                <div style={{ width: "20%", display: "flex" }}>
-                                  {sendDate}
-                                </div>
-                              </div>
-                              <hr
-                                style={{
-                                  marginBottom: 0,
-                                  width: "100%",
-                                  backgroundColor: "#ffffff",
-                                }}
-                              />
-                            </>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  )}
->>>>>>> upstream/develop
                   <hr style={{ backgroundColor: "#e2e2e2" }} />
                 </>
               );
