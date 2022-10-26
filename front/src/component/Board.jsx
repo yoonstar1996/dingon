@@ -12,6 +12,7 @@ import TableRow from "@mui/material/TableRow";
 import Button from "@mui/material/Button";
 import ErrorPage from "./ErrorPage";
 import ImageIcon from '@mui/icons-material/Image';
+import Best from "./Button/Best";
 import "../css/Board.css";
 const PaginationBox = styled.div`
   a:link {
@@ -59,6 +60,7 @@ const PaginationBox = styled.div`
   }
 `;
 export const Board = (props) => {
+  const [checked, setCheck] = useState(false);
   const columns = [
     { id: "number", label: "번호", minWidth: 100 },
     { id: "title", label: "제목", minWidth: 300 },
@@ -100,17 +102,17 @@ export const Board = (props) => {
     setPage(page);
   };
   useEffect(() => {
-    const arr=JSON.parse(localStorage.getItem("list"));
-    if (arr.length>=10){
+    const arr = JSON.parse(localStorage.getItem("list"));
+    if (arr.length >= 10) {
       arr.shift();
     }
-    const b = arr.filter(v=>{
+    const b = arr.filter(v => {
 
-      return v!=name;
+      return v != name;
     })
     b.push(name);
     props.setRecent(b);
-    localStorage.setItem("list",JSON.stringify(b));
+    localStorage.setItem("list", JSON.stringify(b));
     setPage(1);
     axios
       .get(`http://localhost:8050/gallery?name=${encodeURIComponent(name)}`)
@@ -118,31 +120,43 @@ export const Board = (props) => {
         if (data.data.code == 400) {
           setErr(true);
         } else {
-          setTotal(data.data.cnt);
+          if (checked) {
+            setTotal(data.data.concept)
+          } else {
+            setTotal(data.data.cnt);
+          }
         }
       });
   }, [name]);
   useEffect(() => {
     if (err == false && total != 0) {
+      let takeurl="gallery";
+      if(checked){
+        takeurl="post";
+      }else{
+        takeurl="gallery";
+      }
       axios
         .get(
-          `http://localhost:8050/gallery/list?page=${page}&name=${encodeURI(
+          `http://localhost:8050/${takeurl}/list?page=${page}&name=${encodeURI(
             name
           )}`
         )
         .then((data) => {
+          console.log(data.data);
           setList(data.data.list);
-          console.log(data.data.list);
         });
     }
     if (total == 0) {
       setList([]);
     }
-  }, [page, total, name]);
+  }, [page, total, name, checked]);
   return (
     <>
       {!err ? (
+
         <div style={{ width: "100%" }} className="boardBox">
+          <Best setChecked={setCheck} />
           <h1 style={{ textAlign: "center" }}>
             <Link
               onClick={() => {
@@ -227,11 +241,11 @@ export const Board = (props) => {
                               textOverflow: "ellipsis",
                               width: "300px",
                               overflow: "hidden",
-                              display:"flex",
-                              alignItems:"center"
+                              display: "flex",
+                              alignItems: "center"
                             }}
                           >
-                            {v.img && <ImageIcon/>}
+                            {v.img && <ImageIcon />}
                             <Link
                               style={{ textDecoration: "none" }}
                               to={"/post/" + name + "/" + v.postId}
