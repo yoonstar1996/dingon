@@ -37,6 +37,7 @@ export default function Fix({ userId }) {
       withCredentials: true,
     }).then((response) => {
       console.log("수정완료", response.data);
+      window.location.replace("/");
     });
   }
 
