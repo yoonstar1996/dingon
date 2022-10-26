@@ -52,7 +52,8 @@
 }
 .logo2 {
   position: relative;
-  right: 150px;
+  right: 110px;
+  top: 5px;
 }
 .logo2 img {
   width: 350px;
