@@ -247,7 +247,7 @@ export const Board = (props) => {
                         <TableCell align="center">{v.nickName}</TableCell>
                         <TableCell>{sendDate}</TableCell>
                         <TableCell align="center">{v.clicked}</TableCell>
-                        <TableCell align="center">200</TableCell>
+                        <TableCell align="center">{v.like}</TableCell>
                       </TableRow>
                     );
                   })}

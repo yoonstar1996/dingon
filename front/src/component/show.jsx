@@ -9,12 +9,9 @@ import InsertCommentIcon from "@mui/icons-material/InsertComment";
 import SentimentVerySatisfiedIcon from "@mui/icons-material/SentimentVerySatisfied";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import DeleteIcon from '@mui/icons-material/Delete';
-import ButtonGroup from "@mui/material/ButtonGroup";
-import { Hidden } from "@mui/material";
 import Good from "./Button/Good"
 import SubComment from "./SubComment";
-import SubCommentUi from "./SubCommentUi";
-import {TextField} from "@mui/material";
+import { TextField } from "@mui/material";
 const Show = ({ isLogin }) => {
   const PaginationBox = styled.div`
     a:link {
@@ -74,7 +71,9 @@ const Show = ({ isLogin }) => {
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
   const [sublist, setSubList] = useState([]);
-  const [writeC,setWriteC]=useState("")
+  const [writeC, setWriteC] = useState("")
+  const [like ,setLike]=useState(0);
+  const [dislike,setDisLike]=useState(0)
   const handlePageChange = (page) => {
     setPage(page);
   };
@@ -105,7 +104,8 @@ const Show = ({ isLogin }) => {
       sendDate += +date.getMinutes();
       setTime(sendDate);
       setCont(response.data);
-
+      setLike(response.data.like)
+      setDisLike(response.data.dislike);
       let new_div = document.createElement("div");
       new_div.innerHTML = response.data.content;
       //console.log(content);
@@ -117,7 +117,7 @@ const Show = ({ isLogin }) => {
     });
   }, []);
   useEffect(() => {
-    console.log("page",page)
+    console.log("page", page)
     axios({
       url: "http://localhost:8050/comment/list",
       method: "get",
@@ -126,46 +126,46 @@ const Show = ({ isLogin }) => {
     }).then((response) => {
       console.log("댓글정보", response.data);
       setComment(response.data.list);
-      
+
     });
   }, [page]);
-  const submit=()=>{
-    if(isLogin){
+  const submit = () => {
+    if (isLogin) {
       axios({
         url: "http://localhost:8050/comment",
         method: "post",
-        data: { postId: id,comment:writeC},
+        data: { postId: id, comment: writeC },
         withCredentials: true,
       }).then((response) => {
         window.location.reload()
         console.log(response.data.code);
       })
-    }else{
+    } else {
       alert("댓글 절---대 안된다")
     }
-    
+
   }
-  const deletecomment=(e)=>{
+  const deletecomment = (e) => {
     console.log(e);
     axios({
       url: "http://localhost:8050/comment",
       method: "delete",
-      params: { commentId:e},
+      params: { commentId: e },
       withCredentials: true,
     }).then((response) => {
-      console.log("삭제완료",response.data.code);
+      console.log("삭제완료", response.data.code);
       window.location.reload()
     })
   }
-  const deletesubcomment=(e)=>{
+  const deletesubcomment = (e) => {
     console.log(e)
     axios({
       url: "http://localhost:8050/comment/sub",
       method: "delete",
-      params: { commentId:e},
+      params: { commentId: e },
       withCredentials: true,
     }).then((response) => {
-      console.log("대댓삭제완료",response.data.code);
+      console.log("대댓삭제완료", response.data.code);
       window.location.reload()
     })
   }
@@ -200,7 +200,9 @@ const Show = ({ isLogin }) => {
                 <h4 style={{ marginTop: 0, marginBottom: "10px" }}>
                   {cont.title}
                 </h4>
-                <div>닉네임: {cont.nickName + " | " + time}</div>
+                <div>
+                  닉네임: {cont.nickName + " | " + time}
+                </div>
               </div>
               <div className="info">
                 <div
@@ -221,7 +223,7 @@ const Show = ({ isLogin }) => {
                   }}
                 >
                   <SentimentVerySatisfiedIcon />
-                  <div>200</div>
+                  <div>{like}</div>
                 </div>
                 <div
                   style={{
@@ -237,8 +239,11 @@ const Show = ({ isLogin }) => {
             </div>
           </div>
           <div ref={content} className="get_content"></div>
-          <div>
-            <Good></Good>
+          
+          <div className="LikeViewFrame">
+            <div className="LikeView">
+              <Good isLogin={isLogin} postId={id} setDisLike={setDisLike} dislike={dislike} like={like} setLike={setLike}/>
+            </div>
           </div>
           <div>전체 댓글 {cont.commentCount}개</div>
           <div className="comment">
@@ -260,155 +265,66 @@ const Show = ({ isLogin }) => {
               sendDate += +date.getMinutes();
               return (
                 <>
-                  <div
-                    style={{
-                      fontSize: "small",
-                      paddingRight: 0,
-                      paddingLeft: 0,
-                      display: "flex",
-                      alignItems: "center",
-                    }}
-                  >
-                    <div style={{ width: "25%" }}>{value.nickName}</div>
-                    <div
-                      onClick={() => {
-                        if (subComment === -1) {
-                          setSubComment(value.id);
-                        } else {
-                          setSubComment(-1);
-                        }
-                      }}
-                      style={{
-                        width: "80%",
-                        overflow: "hidden",
-                        wordBreak: "break-all",
-                      }}
-                    >
+                  <div style={{ fontSize: "small", paddingRight: 0, paddingLeft: 0, display: "flex", alignItems: "center" }}>
+                    <div style={{ width: "25%" }}>
+                      {value.nickName}
+                    </div>
+                    <div onClick={() => {
+                      if (subComment === -1) {
+                        setSubComment(value.id);
+                      } else {
+                        setSubComment(-1);
+                      }
+                    }} style={{ width: "80%", overflow: "hidden", wordBreak: "break-all" }}>
                       {value.content}
                     </div>
-                    <div
-                      style={{
-                        width: "15%",
-                        display: "flex",
-                        justifyContent: "flex-end",
-                      }}
-                    >
-                      {isLogin === value.userId ? (
-                        <Button
-                          onClick={() => {
-                            deletecomment(value.id);
-                          }}
-                          style={{ color: "black" }}
-                          variant="text"
-                        >
-                          <DeleteIcon />
-                        </Button>
-                      ) : (
-                        <></>
-                      )}
+                    <div style={{ width: "15%", display: "flex", justifyContent: "flex-end" }}>
+                      {isLogin === value.userId ? <Button onClick={() => { deletecomment(value.id) }} style={{ color: "black" }} variant="text"><DeleteIcon /></Button> : <></>}
                     </div>
                     <div style={{ width: "20%", display: "flex" }}>
                       {sendDate}
                     </div>
                   </div>
-                  {value.id === subComment ? (
-                    <SubComment
-                      commentId={value.id}
-                      postId={id}
-                      isLogin={isLogin}
-                      comment={value.id}
-                    />
-                  ) : (
-                    <></>
-                  )}
-                  {value.subcomment && value.subcomment.length > 0 && (
-                    <div className="subcommentframe">
-                      <div
-                        style={{
-                          marginBottom: "5px",
-                          fontSize: "small",
-                          paddingRight: 0,
-                          paddingLeft: 0,
-                          display: "flex",
-                          justifyContent: "center",
-                          flexDirection: "column",
-                        }}
-                      >
-                        {value.subcomment.map((v, key) => {
-                          let date = new Date(v.createdAt);
-                          let sendDate =
-                            date.getFullYear() +
-                            "." +
-                            (parseInt(date.getMonth()) + 1) +
-                            "." +
-                            date.getDate() +
-                            " ";
-                          if (date.getHours() < 12) {
-                            sendDate += date.getHours() + ":";
-                          } else {
-                            sendDate += parseInt(date.getHours()) - 12 + ":";
-                          }
-                          sendDate += +date.getMinutes();
-                          return (
-                            <>
-                              <div
-                                style={{
-                                  display: "flex",
-                                  marginBottom: "5px",
-                                  marginTop: "5px",
-                                  alignItems: "center",
-                                }}
-                              >
-                                <div style={{ width: "25%" }}>
-                                  ㄴ{v.nickName}
-                                </div>
-                                <div
-                                  style={{
-                                    width: "80%",
-                                    overflow: "hidden",
-                                    wordBreak: "break-all",
-                                  }}
-                                >
-                                  {v.content}
-                                </div>
-                                <div
-                                  style={{
-                                    width: "15%",
-                                    display: "flex",
-                                    justifyContent: "flex-end",
-                                  }}
-                                >
-                                  {isLogin === v.userId ? (
-                                    <Button
-                                      onClick={() => {
-                                        deletesubcomment(v.ID);
-                                      }}
-                                      style={{ marginTop: 0, color: "black" }}
-                                      variant="text"
-                                    >
-                                      <DeleteIcon />
-                                    </Button>
-                                  ) : (
-                                    <></>
-                                  )}
-                                </div>
-                                <div style={{ width: "20%", display: "flex" }}>
-                                  {sendDate}
-                                </div>
+                  {value.id === subComment ? <SubComment commentId={value.id} postId={id} isLogin={isLogin} comment={value.id} /> : <></>}
+                  {value.subcomment && value.subcomment.length > 0 && <div className="subcommentframe">
+                    <div style={{ marginBottom: "5px", fontSize: "small", paddingRight: 0, paddingLeft: 0, display: "flex", justifyContent: "center", flexDirection: "column" }}>
+                      {value.subcomment.map((v, key) => {
+                        let date = new Date(v.createdAt);
+                        let sendDate =
+                          date.getFullYear() +
+                          "." +
+                          (parseInt(date.getMonth()) + 1) +
+                          "." +
+                          date.getDate() +
+                          " ";
+                        if (date.getHours() < 12) {
+                          sendDate += date.getHours() + ":";
+                        } else {
+                          sendDate += parseInt(date.getHours()) - 12 + ":";
+                        }
+                        sendDate += +date.getMinutes();
+                        return (
+                          <>
+                            <div style={{ display: "flex", marginBottom: "5px", marginTop: "5px", alignItems: "center" }}>
+                              <div style={{ width: "25%" }}>
+                                ㄴ{v.nickName}
                               </div>
-                              <hr
-                                style={{
-                                  marginBottom: 0,
-                                  width: "100%",
-                                  backgroundColor: "#ffffff",
-                                }}
-                              />
-                            </>
-                          );
-                        })}
-                      </div>
+                              <div style={{ width: "80%", overflow: "hidden", wordBreak: "break-all" }}>
+                                {v.content}
+                              </div>
+                              <div style={{ width: "15%", display: "flex", justifyContent: "flex-end" }}>
+                                {isLogin === v.userId ? <Button onClick={() => { deletesubcomment(v.ID) }} style={{ marginTop: 0, color: "black" }} variant="text"><DeleteIcon /></Button> : <></>}
+                              </div>
+                              <div style={{ width: "20%", display: "flex" }}>
+                                {sendDate}
+                              </div>
+                            </div>
+                            <hr style={{ marginBottom: 0, width: "100%", backgroundColor: "#ffffff" }} />
+                          </>
+                        )
+                      })}
                     </div>
-                  )}
+                  </div>}
                   <hr style={{ backgroundColor: "#e2e2e2" }} />
                 </>
               );
@@ -443,9 +359,7 @@ const Show = ({ isLogin }) => {
           />
         </div>
         <div className="buttonFrame">
-          <Button ref={submitBtn} onClick={submit}>
-            댓글 쓰기
-          </Button>
+          <Button ref={submitBtn} onClick={submit}>댓글 쓰기</Button>
         </div>
       </div>
     </>
