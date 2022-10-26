@@ -67,7 +67,7 @@ app.use("/gallery", galleryRouter);
 app.use("/comment", commentRouter);
 app.use("/profile", profileRouter);
 const server = app.listen(8050, async () => {
-  await UserCount.destroy({ where: {} });
+    await UserCount.destroy({ where: {} });
 });
 webSocket(server, app, sessionMiddleware);
 app.use((req, res, next) => {
