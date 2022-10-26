@@ -156,4 +156,15 @@ router.get("/concept",async(req,res,next)=>{
         next(err);
     }
 });
+router.get("/count",async(req,res,next)=>{
+    try{
+        const query = `select count(*) as total from comments inner join posts on posts.id=comments.postId where posts.id="${req.query.postId}"`;
+        const data = await sequelize.query(query,{type:QueryTypes.SELECT});
+        res.send({code:200,total:data[0].total});
+    }
+    catch(err){
+        next(err);
+    }
+
+});
 module.exports = router;
