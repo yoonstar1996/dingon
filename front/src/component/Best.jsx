@@ -1,10 +1,13 @@
 import React from "react";
+import Switch from '@mui/material/Switch'
 
 const Best = () => {
     return (
     <>
     <div>
-        아아 안녕하세요?
+     <label style={{fontWeight:"900"}}>일반</label>
+     <Switch></Switch>
+     <label style={{fontWeight:"900"}}>개념글</label>
     </div>
     </>
     )
