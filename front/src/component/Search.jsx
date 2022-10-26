@@ -41,7 +41,7 @@ const Search = () => {
             </form>
           </div>
           <div className="logo2">
-            <img src="/public/img/guel.png" />
+                <img src="/img/guel.png"></img>
           </div>
         </div>
       </div>
