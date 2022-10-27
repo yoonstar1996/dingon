@@ -18,7 +18,7 @@ export default function Hitgall() {
   return (
     <>
       <div className="refresh">
-        <div>실시간 힛갤</div>
+        <div className="hit-title">실시간 힛갤</div>
         <button
           onClick={() => {
             axios({
