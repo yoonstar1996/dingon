@@ -17,7 +17,7 @@ import "../css/Board.css";
 export const SearchPage = (props) => {
     const columns = [
         { id: "number", label: "번호", minWidth: 100 },
-        { id: "title", label: "제목", minWidth: 300 },
+        { id: "title", label: "제목", minWidth: 350 },
         {
             id: "name",
             label: "이름",
@@ -85,21 +85,7 @@ export const SearchPage = (props) => {
               <TableBody>
                 {list.length !== 0 &&
                   list.map((v, key) => {
-                    let date = new Date(v.createdAt);
-                    let sendDate =
-                      date.getFullYear() +
-                      "-" +
-                      (parseInt(date.getMonth()) + 1) +
-                      "-" +
-                      date.getDate() +
-                      " ";
-                    if (date.getHours() < 12) {
-                      sendDate += date.getHours() + ":";
-                    } else {
-                      sendDate += parseInt(date.getHours()) - 12 + ":";
-                    }
-                    sendDate += +date.getMinutes();
-                    console.log(date.getDate());
+                    
                     return (
                       <TableRow
                         align="center"
@@ -108,7 +94,7 @@ export const SearchPage = (props) => {
                         tabIndex={-1}
                         key={v.id}
                       >
-                        <TableCell>{v.postId}</TableCell>
+                        <TableCell>{v.id}</TableCell>
                         <TableCell>
                           <div
                             style={{
@@ -134,7 +120,7 @@ export const SearchPage = (props) => {
                         </TableCell>
 
                         <TableCell align="center">{v.nickName}</TableCell>
-                        <TableCell>{sendDate}</TableCell>
+                        <TableCell align="center">{v.name}</TableCell>
                         <TableCell align="center">{v.clicked}</TableCell>
                         <TableCell align="center">{v.like}</TableCell>
                       </TableRow>
