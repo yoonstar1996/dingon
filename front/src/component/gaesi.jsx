@@ -179,7 +179,7 @@ const Gaesi = () => {
               }).then((response) => {
                 if (response.data.code == 200) {
                   Swal.fire({
-                    title : "정상적으로 삭제되었습니다",
+                    title : "삭제되어버렸당께요",
                     icon : "success"
                   })
                   window.location = `/gallery/${name}`;
@@ -222,13 +222,13 @@ const Gaesi = () => {
                 if (response.data.code == 200) {
                   
                   Swal.fire({
-                    title : "정상적으로 수정되었습니다",
+                    title : "수정 seccess",
                     icon : "success"
                   })
                   window.location = `/post/${name}/${postid}`;
                 } else {
                   Swal.fire({
-                    title : "수정이 불가합니다.",
+                    title : "아따 수정 안되요잉",
                     icon: "error"
                   })
                 }

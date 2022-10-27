@@ -14,13 +14,13 @@ export default function IsLogined({ setIsLogin, nickname, userId }) {
       console.log(response.data);
       if (response.data) {
         Swal.fire({
-          title : "로그아웃 완료",
+          title : "Logout",
           icon : "success"
         })
         setIsLogin(false);
       } else {
         Swal.fire({
-          title : "로그아웃 실패",
+          title : "Logout falied",
           icon : "error"
         })
       }
