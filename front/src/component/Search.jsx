@@ -78,19 +78,16 @@ const Search = () => {
               <Input
                 type="text"
                 placeholder="검색"
+                onKeyUp={()=>{
+                  window.location = `/serach/${name}`;
+                }}
                 onChange={(e) => {
                   // console.log(e.target.value);
                   setText(e.target.value);
                 }}
               ></Input>
               <button
-                onClick={() => {
-                  axios({
-                    url: "/search/board",
-                    method: "get",
-                    data: "name",
-                  });
-                }}
+                onClick={() => {}}
               >
                 검색
               </button>
