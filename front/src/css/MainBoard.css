@@ -15,12 +15,13 @@
 }
 
 .mainBoardsBox::-webkit-scrollbar {
+
   width: 8px;
   display: none;
 }
 .mainBoardsBox::-webkit-scrollbar-track {
   border-radius: 8px;
-  background-color: #eaeaea;
+  background-color: white;
 }
 .mainBoardsBox::-webkit-scrollbar-thumb {
   border-radius: 8px;
