@@ -79,8 +79,12 @@ const Search = () => {
                 type="text"
                 placeholder="검색"
                 onKeyUp={()=>{
+                  if(window.event.keyCode == 13){
+                    console.log("안녕하세요");
+                  }
                   window.location = `/serach/${name}`;
                 }}
+                
                 onChange={(e) => {
                   // console.log(e.target.value);
                   setText(e.target.value);
