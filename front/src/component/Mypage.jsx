@@ -216,7 +216,7 @@ export default function Mypage(userId, setUserId, nickname) {
                             {sendDate}
                           </TableCell>
                           <TableCell align="center">{v.clicked}</TableCell>
-                          <TableCell align="center">200</TableCell>
+                          <TableCell align="center">{v.like}</TableCell>
                         </TableRow>
                       );
                     })}
