@@ -95,6 +95,11 @@ router.get("/my",isLoggedIn,async(req,res,next)=>{
         //list:{title, clicked, createdAt, gallery(게시판 이름)
         const query = `select posts.id, posts.title, posts.clicked, posts.createdAt, boards.name as gallery from posts inner join boards on posts.boardId=boards.id where posts.userId="${req.user.id}"`;
         const data =await sequelize.query(query,{type:QueryTypes.SELECT});
+        for (let i = 0 ; i<data.length;i++){
+            const query = `select * from likes where PostId="${data[i].id}"`;
+            const data2 = sequelize.query(query,{QueryTypes:SELECT});
+            data[i].like = data2.length;
+        }
         res.send({code:200,list:data});
     }
     catch(err){

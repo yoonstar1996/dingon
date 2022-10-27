@@ -50,10 +50,14 @@ export default function Allgall() {
             <img className="ad-img" src="/img/mbti-banner.gif"></img>
           </div>
           <div className="img-container">
+            <a href="https://codingon.co.kr/">
             <img className="ad-img" src="/img/codingon-banner.gif"></img>
+            </a>
           </div>
           <div className="img-container">
+          <a href="https://codingon.co.kr/">
             <img className="ad-img" src="/img/codingon-banner.gif"></img>
+            </a>
           </div>
           <div className="img-container">
             <img className="ad-img" src="/img/neighbor-banner.gif"></img>
