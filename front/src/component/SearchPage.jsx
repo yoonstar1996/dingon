@@ -59,7 +59,7 @@ const PaginationBox = styled.div`
     color: white;
   }
 `;
-export const Board = (props) => {
+export const SearchPage = (props) => {
     const columns = [
         { id: "number", label: "번호", minWidth: 100 },
         { id: "title", label: "제목", minWidth: 300 },

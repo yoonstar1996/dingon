@@ -11,6 +11,7 @@ import Fix from "./Fix";
 import ErrorPage from "./ErrorPage"
 import Best from "./Button/Best";
 import GoodBtn from "./Button/Good";
+import { SearchPage } from "./SearchPage";
 
 
 const Main = memo((props) => {
@@ -31,7 +32,7 @@ const Main = memo((props) => {
             }
           }
         ></Route>
-        <Route path="/serach/:content" element={<></>}></Route>
+        <Route path="/serach/:content" element={<SearchPage/>}></Route>
         <Route
           path="/gallery/:name"
           element={
