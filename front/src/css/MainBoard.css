@@ -7,7 +7,7 @@
   margin-bottom: 30px;
   border-radius: 10px;
   overflow-y: scroll;
-  overflow-x: hidden;
+  overflow-x: scroll;
   border-radius: 20px;
 }
 .mainBoardsBox:hover{
@@ -15,7 +15,9 @@
 }
 
 .mainBoardsBox::-webkit-scrollbar {
-  width: 0px;
+
+  width: 8px;
+  display: none;
 }
 .mainBoardsBox::-webkit-scrollbar-track {
   border-radius: 8px;
