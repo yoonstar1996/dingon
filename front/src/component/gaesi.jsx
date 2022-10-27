@@ -222,7 +222,7 @@ const Gaesi = () => {
                 if (response.data.code == 200) {
                   
                   Swal.fire({
-                    title : "수정 suckcex",
+                    title : "수정 seccess",
                     icon : "success"
                   })
                   window.location = `/post/${name}/${postid}`;
