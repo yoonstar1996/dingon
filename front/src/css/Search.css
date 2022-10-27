@@ -23,12 +23,12 @@
 .searchengine{
     position: relative;
     right: 50px;
-    top: 10px;
+    top: 20px;
     height: 100%;
     text-align: right;
 }
 .searchengine input {
-  width: 350px;
+  width: 400px;
   height: 35px;
   text-align: left;
   padding-left: 20px;
@@ -37,7 +37,7 @@
 .searchengine button {
   position: relative;
   right: 10px;
-  bottom: 43px;
+  bottom: 44px;
   background-color: rgb(69, 69, 172);
   color: white;
   border-radius: 10px;
@@ -52,7 +52,7 @@
 }
 .logo2 {
   position: relative;
-  right: 50px;
+  right: 70px;
   top: 5px;
 }
 .logo2 img {
