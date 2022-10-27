@@ -1,4 +1,3 @@
-import axios from "axios";
 import "../css/Search.css";
 import { useState, useEffect, useRef } from "react";
 import Input from "@mui/material/Input";
@@ -84,7 +83,6 @@ const Search = () => {
                     window.location = `/search/${name}`;
                   }
                 }}
-                
                 onChange={(e) => {
                   // console.log(e.target.value);
                   setText(e.target.value);
