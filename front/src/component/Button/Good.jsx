@@ -5,7 +5,7 @@ import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 import axios from "axios"
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-
+import Swal from "sweetalert2";
 
 export default function GoodBtn({isLogin,postId,setDisLike,dislike,like,setLike}){
   const {postid} = useParams();
@@ -40,13 +40,19 @@ export default function GoodBtn({isLogin,postId,setDisLike,dislike,like,setLike}
             }).then((response)=>{
               console.log(response.data)
               if(response.data.code===400){
-                alert("이미 했잖아 시발")
+                Swal.fire({
+                  title : "개추는 ID당 1번만 가능합니다",
+                  icon : "error"
+                })
               }else{
                 setLike(like +1)
               }
             });
             }else{
-              alert("로그인부터 쳐하셈 병신새끼야")
+              Swal.fire({
+                title : "로그인 후 가능합니다",
+                icon : "question"
+              })
             }
           }}
         >개추 {like}</Button>
@@ -66,13 +72,19 @@ export default function GoodBtn({isLogin,postId,setDisLike,dislike,like,setLike}
           }).then((response)=>{
             console.log(response.data)
             if(response.data.code===400){
-              alert("이미 했잖아 시발")
+              Swal.fire({
+                title : "비추는 ID당 1번만 가능합니다",
+                icon : "error"
+              })
             }else{
               setDisLike(dislike +1)
             }
           });
           }else{
-            alert("로그인부터 쳐하셈 병신새끼야")
+            Swal.fire({
+              title : "로그인 후 가능합니다",
+              icon : "question"
+            })
           }
         }}
         >비추 {dislike}</Button>

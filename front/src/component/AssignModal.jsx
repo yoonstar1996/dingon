@@ -5,6 +5,7 @@ import "../css/AssignModal.css";
 import Button from "@mui/material/Button";
 import { useState } from "react";
 import Alert from "@mui/material/Alert";
+import Swal from "sweetalert2";
 
 function AssignModal({ senddata }) {
   const [nickName, setName] = useState("");
@@ -65,10 +66,16 @@ function AssignModal({ senddata }) {
       console.log(result.data);
 
       if (result.data.code === 200) {
-        alert("가입이 완료되었습니다");
+        Swal.fire({
+          title : "가입이 완료되었습니다",
+          icon : "success"
+        })
         window.location.replace("/");
       } else {
-        alert("예기치 못한 오류 ㄷ ㄷ");
+        Swal.fire({
+          title : "예기치 못한 오류가 발생했습니다.",
+          icon : "error"
+        })
       }
     });
   };
@@ -83,17 +90,29 @@ function AssignModal({ senddata }) {
       /[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]$/i;
       if (result.data.code === 400) {
         console.log("겹침");
-        alert("이메일이 겹칩니다");
+        Swal.fire({
+          title : "이미 사용중인 이메일입니다",
+          icon : "error"
+        })
         setEmailOk(false);
       }
       else if (Email === ""){
-        alert("내용을 입력해주세요")
+        Swal.fire({
+          title : "내용을 입력해주세요",
+          icon : "warning"
+        })
       }
       else if (!check.test(Email)){
-        alert("형식에 맞게 입력해주세요")
+        Swal.fire({
+          title : "형식에 맞게 입력해주세요",
+          icon : "question"
+        })
       }
       else {
-        alert("success");
+        Swal.fire({
+        title : "사용 가능한 이메일입니다.",
+        icon : "success"
+        })
         setEmailOk(true);
       }
     });
@@ -110,17 +129,29 @@ function AssignModal({ senddata }) {
 
       if (result.data.code === 400) {
         console.log("겹침");
-        alert("닉네임이 겹칩니다");
+        Swal.fire({
+          title : "이미 사용중인 닉네임입니다",
+          icon : "error"
+        })
         setIsNameOk(false);
       } 
       else if (nickName === ""){
-        alert("내용을 입력해주세요")
+        Swal.fire({
+          title : "내용을 입력해주세요",
+          icon : "warning"
+        })
       }
       else if(!check.test(nickName)){
-        alert("형식에 맞게 입력해주세요")
+        Swal.fire({
+          title : "2~10자 이내로 입력해주세요",
+          icon : "question"
+        })
       }
       else {
-        alert("success");
+        Swal.fire({
+          title : "사용 가능한 닉네임입니다.",
+          icon : "success"
+          })
         setIsNameOk(true);
       }
     });
