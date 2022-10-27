@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../css/NewBoard.css";
+import Button from "@mui/material/Button"
+import CheckIcon from '@mui/icons-material/Check';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 
 function NewBoard(){
@@ -77,11 +80,12 @@ function NewBoard(){
                         maxLength={6}
                         >
                     </input>
-                    <button 
+                    <Button 
+                        startIcon={<CheckIcon></CheckIcon>}
                         className="checkBtn" 
                         onClick={()=>{
                         checkBoardName();
-                    }}>중복확인</button>
+                    }}>중복확인</Button>
                     {/* <br></br> */}
                     <div className="maxTxt">
                         <span>{TxtLength}</span>
@@ -89,14 +93,15 @@ function NewBoard(){
                         <span>6</span>
                     </div>
                     <br></br>
-                    <button 
+                    <Button 
+                        startIcon={<ExitToAppIcon></ExitToAppIcon>}
                         className="createBtn" 
                         onClick={()=>{
                         create();
                         }} 
                         disabled={!BtnAble}>
                     갤러리 생성
-                    </button>
+                    </Button>
                 </div>
             </div>
         </>
