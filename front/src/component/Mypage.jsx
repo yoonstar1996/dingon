@@ -170,8 +170,19 @@ export default function Mypage(userId, setUserId, nickname) {
                 <TableBody>
                   {list.length !== 0 &&
                     list.map((v, key) => {
-                      console.log(v);
+              
                       let date = new Date(v.createdAt);
+      let sendDate =
+        date.getFullYear() +
+        "." +
+        (parseInt(date.getMonth()) + 1) +
+        "." +
+        date.getDate() +
+        " ";
+      
+        sendDate += date.getHours() + ":";
+      
+      sendDate += +date.getMinutes();
                       return (
                         <TableRow
                           align="center"
@@ -202,15 +213,7 @@ export default function Mypage(userId, setUserId, nickname) {
                           </TableCell>
 
                           <TableCell>
-                            {date.getFullYear() +
-                              "-" +
-                              date.getMonth() +
-                              "-" +
-                              date.getDay() +
-                              " " +
-                              date.getHours() +
-                              ":" +
-                              date.getMinutes()}
+                            {sendDate}
                           </TableCell>
                           <TableCell align="center">{v.clicked}</TableCell>
                           <TableCell align="center">200</TableCell>
