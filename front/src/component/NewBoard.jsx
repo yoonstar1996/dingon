@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../css/NewBoard.css";
+import Button from "@mui/material/Button"
+import CheckIcon from '@mui/icons-material/Check';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import Swal from "sweetalert2";
 
 function NewBoard(){
@@ -16,15 +19,15 @@ function NewBoard(){
         }).then((result) => {
             if(result.data.code === 200){
                 Swal.fire({
-                    title : "갤러리 생성이 완료됐습니다!",
+                    title : "갤러리 생성 suckcex",
                     icon : "success",
-                    timer : 3000 
+                    // timer : 3000 
                 })
                 window.location.replace(`/gallery/${Name}`)
             }
             else{
                 Swal.fire({
-                    title: "갤러리 생성에 실패했습니다",
+                    title: "갤러리 생성하지마라",
                     icon : "error"
                 })
             }
@@ -47,7 +50,7 @@ function NewBoard(){
             console.log("resultData : ", result.data);
             if (result.data.code === 400){
                 Swal.fire({
-                    title: "이미 존재하는 갤러리이름입니다",
+                    title: "아따 이미 있당께요",
                     icon: "error"
                 })
                 setBtnAble(false);
@@ -99,11 +102,12 @@ function NewBoard(){
                         maxLength={6}
                         >
                     </input>
-                    <button 
+                    <Button 
+                        startIcon={<CheckIcon></CheckIcon>}
                         className="checkBtn" 
                         onClick={()=>{
                         checkBoardName();
-                    }}>중복확인</button>
+                    }}>중복확인</Button>
                     {/* <br></br> */}
                     <div className="maxTxt">
                         <span>{TxtLength}</span>
@@ -111,14 +115,15 @@ function NewBoard(){
                         <span>6</span>
                     </div>
                     <br></br>
-                    <button 
+                    <Button 
+                        startIcon={<ExitToAppIcon></ExitToAppIcon>}
                         className="createBtn" 
                         onClick={()=>{
                         create();
                         }} 
                         disabled={!BtnAble}>
                     갤러리 생성
-                    </button>
+                    </Button>
                 </div>
             </div>
         </>
