@@ -158,7 +158,14 @@
 .HitList > a:hover {
   color: rgb(69, 69, 172);
 }
+.HitList > a > li {
+  margin: 8px 0;
+}
 
 .form-upbox {
   display: flex;
+}
+.hit-title{
+  color: #4545ac;
+  font-weight: bold;
 }
