@@ -74,7 +74,7 @@ router.post("/emailCheck", isNotLoggedIn, async (req, res, next) => {
     next(err);
   }
 });
-router.post("/nickNameCheck", isLoggedIn, async (req, res, next) => {
+router.post("/nickNameCheck", async (req, res, next) => {
   try {
     //비동기 처리 및 변수 바꿈
     const Userdata = await User.findOne({

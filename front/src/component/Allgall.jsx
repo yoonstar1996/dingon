@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "../css/Allgall.css";
 import { Link } from "react-router-dom";
+import beermode from '../'
 export default function Allgall() {
   const [all, setAll] = useState([]);
 
@@ -33,6 +34,51 @@ export default function Allgall() {
           ))}
         </div>
         <div className="ad-box">
+          <div className="img-container">
+            <img clssName="ad-img" src="/img/BM-banner.gif"></img>
+          </div>
+          <div className="img-container">
+            <img clssName="ad-img" src="/img/SGT-banner.gif"></img>
+          </div>
+          <div className="img-container">
+            <img clssName="ad-img" src="/img/BM-banner.gif"></img>
+          </div>
+          <div className="img-container">
+            <img clssName="ad-img" src="/img/BM-banner.gif"></img>
+          </div>
+          <div className="img-container">
+            <img clssName="ad-img" src="/img/BM-banner.gif"></img>
+          </div>
+          <div className="img-container">
+            <img clssName="ad-img" src="/img/BM-banner.gif"></img>
+          </div>
+          <div className="img-container">
+            <img clssName="ad-img" src="/img/BM-banner.gif"></img>
+          </div>
+          <div className="img-container">
+            <img clssName="ad-img" src="/img/BM-banner.gif"></img>
+          </div>
+          <div className="img-container">
+            <img clssName="ad-img" src="/img/BM-banner.gif"></img>
+          </div>
+          <div className="img-container">
+            <img clssName="ad-img" src="/img/BM-banner.gif"></img>
+          </div>
+          <div className="img-container">
+            <img clssName="ad-img" src="/img/BM-banner.gif"></img>
+          </div>
+          <div className="img-container">
+            <img clssName="ad-img" src="/img/BM-banner.gif"></img>
+          </div>
+          <div className="img-container">
+            <img clssName="ad-img" src="/img/BM-banner.gif"></img>
+          </div>
+          <div className="img-container">
+            <img clssName="ad-img" src="/img/BM-banner.gif"></img>
+          </div>
+          <div className="img-container">
+            <img clssName="ad-img" src="/img/BM-banner.gif"></img>
+          </div>
         </div>
           </div>
       </div>
