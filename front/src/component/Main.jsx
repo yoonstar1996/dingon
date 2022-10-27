@@ -31,6 +31,7 @@ const Main = memo((props) => {
             }
           }
         ></Route>
+        <Route path="/serach/:content" element={<></>}></Route>
         <Route
           path="/gallery/:name"
           element={
