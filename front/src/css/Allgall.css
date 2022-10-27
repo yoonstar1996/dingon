@@ -76,7 +76,7 @@
   border-radius: 5px;
 }
 .ad-box::-webkit-scrollbar {
-  height: 1px;
+  height: 7px;
 }
 .ad-box::-webkit-scrollbar-track {
   border-radius: 3px;
@@ -88,7 +88,7 @@
 }
 .img-container{
   width: 300px;
-  height: 112px;
+  height: 110px;
   display: inline;
 }
 .img-container > img {
