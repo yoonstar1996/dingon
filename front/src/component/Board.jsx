@@ -213,11 +213,9 @@ export const Board = (props) => {
                       "-" +
                       date.getDate() +
                       " ";
-                    if (date.getHours() < 12) {
+                    
                       sendDate += date.getHours() + ":";
-                    } else {
-                      sendDate += parseInt(date.getHours()) - 12 + ":";
-                    }
+                    
                     sendDate += +date.getMinutes();
                     console.log(date.getDate());
                     return (

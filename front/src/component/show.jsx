@@ -100,11 +100,9 @@ const Show = ({ isLogin }) => {
         "." +
         date.getDate() +
         " ";
-      if (date.getHours() < 12) {
+      
         sendDate += date.getHours() + ":";
-      } else {
-        sendDate += parseInt(date.getHours()) - 12 + ":";
-      }
+      
       sendDate += +date.getMinutes();
       setTime(sendDate);
       setCont(response.data);
