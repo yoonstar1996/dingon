@@ -6,7 +6,8 @@ const { sequelize } = require("../models");
 
 router.get("/board",async(req,res,next)=>{
     try{
-        const query = `select posts.id, posts.title, boards.name, users.nickName, posts.clicked from posts inner join users on users.id = posts.userId inner join boards on boards.id = posts.boardId where posts.title="%${decodeURI(req.query.name)}%"`;
+        console.log(decodeURI(req.query.name));
+        const query = `select posts.id, posts.title, boards.name, users.nickName, posts.clicked from posts inner join users on users.id = posts.userId inner join boards on boards.id = posts.boardId where posts.title LIKE "%${decodeURI(req.query.name)}%"`;
         const data = await sequelize.query(query,{type:QueryTypes.SELECT});
         for (let i = 0; i<data.length; i++){
             const query = `select * from likes where likes.PostId = "${data[i].id}"`;
