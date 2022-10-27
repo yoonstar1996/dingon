@@ -109,7 +109,7 @@ export const SearchPage = (props) => {
                             {v.img && <ImageIcon />}
                             <Link
                               style={{ textDecoration: "none" }}
-                              to={"/post/" + content + "/" + v.postId}
+                              to={"/post/" + v.name + "/" + v.id}
                             >
                               {v.title}{" "}
                               <span style={{ color: "purple" }}>
