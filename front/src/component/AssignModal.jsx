@@ -106,6 +106,8 @@ function AssignModal({ senddata }) {
       withCredentials: true,
     }).then((result) => {
       console.log(result.data);
+      let check = /^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,10}$/;
+
       if (result.data.code === 400) {
         console.log("겹침");
         alert("닉네임이 겹칩니다");
@@ -113,6 +115,9 @@ function AssignModal({ senddata }) {
       } 
       else if (nickName === ""){
         alert("내용을 입력해주세요")
+      }
+      else if(!check.test(nickName)){
+        alert("형식에 맞게 입력해주세요")
       }
       else {
         alert("success");
