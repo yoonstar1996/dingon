@@ -41,25 +41,25 @@ export default function Allgall() {
             <img clssName="ad-img" src="/img/SGT-banner.gif"></img>
           </div>
           <div className="img-container">
-            <img clssName="ad-img" src="/img/BM-banner.gif"></img>
+            <img clssName="ad-img" src="/img/nakdang-banner.gif"></img>
           </div>
           <div className="img-container">
-            <img clssName="ad-img" src="/img/BM-banner.gif"></img>
+            <img clssName="ad-img" src="/img/sponge-banner.gif"></img>
           </div>
           <div className="img-container">
-            <img clssName="ad-img" src="/img/BM-banner.gif"></img>
+            <img clssName="ad-img" src="/img/mbti-banner.gif"></img>
           </div>
           <div className="img-container">
-            <img clssName="ad-img" src="/img/BM-banner.gif"></img>
+            <img clssName="ad-img" src="/img/campang-banner.gif"></img>
           </div>
           <div className="img-container">
-            <img clssName="ad-img" src="/img/BM-banner.gif"></img>
+            <img clssName="ad-img" src="/img/pickme-banner.gif"></img>
           </div>
           <div className="img-container">
-            <img clssName="ad-img" src="/img/BM-banner.gif"></img>
+            <img clssName="ad-img" src="/img/neighbor-banner.gif"></img>
           </div>
           <div className="img-container">
-            <img clssName="ad-img" src="/img/BM-banner.gif"></img>
+            <img clssName="ad-img" src="/img/bread-banner.gif"></img>
           </div>
           <div className="img-container">
             <img clssName="ad-img" src="/img/BM-banner.gif"></img>
