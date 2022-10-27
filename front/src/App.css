@@ -16,8 +16,6 @@ body::-webkit-scrollbar-corner{
 }
 body::-webkit-scrollbar-thumb{
   background-color: #4545AC;
-  height: 10px;
-  
 }
 .searchandLogo {
   background-color: transparent;
