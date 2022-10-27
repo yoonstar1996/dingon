@@ -15,6 +15,12 @@ function AssignModal({ senddata }) {
   const [PriteState, PsetwriteState] = useState(false);
   const [emailOk, setEmailOk] = useState(false);
   const [isNameOk, setIsNameOk] = useState(false);
+  const [SubmitAble, setSubmitAble] = useState(false);
+  useEffect(()=>{
+    if(emailOk && isNameOk && Pw) setSubmitAble(true); 
+    else setSubmitAble(false); 
+  },[emailOk ,isNameOk, Pw]);
+
   const Emailvalidate = () => {
     let check =
       /[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]$/i;
@@ -42,6 +48,8 @@ function AssignModal({ senddata }) {
       return false;
     }
   };
+
+
   const submit = () => {
     let data = {
       email: Email,
@@ -75,7 +83,11 @@ function AssignModal({ senddata }) {
         console.log("겹침");
         alert("이메일이 겹칩니다");
         setEmailOk(false);
-      } else {
+      }
+      else if (Email === ""){
+        alert("내용을 입력해주세요")
+      }
+      else {
         alert("success");
         setEmailOk(true);
       }
@@ -86,13 +98,18 @@ function AssignModal({ senddata }) {
       url: "http://localhost:8050/auth/nickNameCheck",
       method: "post",
       data: { nickName: nickName },
+      withCredentials: true,
     }).then((result) => {
       console.log(result.data);
       if (result.data.code === 400) {
         console.log("겹침");
         alert("닉네임이 겹칩니다");
         setIsNameOk(false);
-      } else {
+      } 
+      else if (nickName === ""){
+        alert("내용을 입력해주세요")
+      }
+      else {
         alert("success");
         setIsNameOk(true);
       }
@@ -179,7 +196,12 @@ function AssignModal({ senddata }) {
           ></div>
         </div>
 
-        <Button onClick={submit} className="buton" variant="outlined">
+        <Button 
+         onClick={submit} 
+         className="buton" 
+         variant="outlined"
+         disabled={!SubmitAble}
+         >
           회원가입 하기
         </Button>
       </div>
