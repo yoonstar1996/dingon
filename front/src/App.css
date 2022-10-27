@@ -4,7 +4,21 @@
   justify-content: center;
   flex-direction: column;
 }
-
+body {
+  overflow-x: hidden;
+}
+body::-webkit-scrollbar{
+  width: 5px;
+  background-color: transparent;
+}
+body::-webkit-scrollbar-corner{
+  border-radius: 15px;
+}
+body::-webkit-scrollbar-thumb{
+  background-color: #4545AC;
+  height: 10px;
+  
+}
 .searchandLogo {
   background-color: transparent;
   width: 1100px;
