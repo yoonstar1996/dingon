@@ -26,7 +26,7 @@ router.get("/",async (req,res,next)=>{
 });
 router.get("/list",async(req,res,next)=>{
     try{
-        const query = `select *,posts.id as postId from posts inner join boards on posts.boardId = boards.id inner join users on users.id = posts.userId where boards.name="${decodeURI(req.query.name)}" ORDER BY posts.createdAt DESC LIMIT 10 OFFSET ${(req.query.page-1)*10}`;
+        const query = `select *,posts.id as postId, posts.createdAt as createdAt  from posts inner join boards on posts.boardId = boards.id inner join users on users.id = posts.userId where boards.name="${decodeURI(req.query.name)}" ORDER BY posts.createdAt DESC LIMIT 10 OFFSET ${(req.query.page-1)*10}`;
         const data = await sequelize.query(query,{type:QueryTypes.SELECT});
         data.forEach(ele=>{
             let flag;
