@@ -74,27 +74,26 @@ const Search = () => {
             </div>
           </Link>
           <div className="searchengine">
-            <form>
+            
               <Input
                 type="text"
                 placeholder="검색"
+                onKeyUp={(e)=>{
+                  if(e.key === "Enter"){
+                    window.location = `/search/${name}`;
+                  }
+                }}
                 onChange={(e) => {
                   // console.log(e.target.value);
                   setText(e.target.value);
                 }}
               ></Input>
               <button
-                onClick={() => {
-                  axios({
-                    url: "/search/board",
-                    method: "get",
-                    data: "name",
-                  });
-                }}
+                onClick={() => {}}
               >
                 검색
               </button>
-            </form>
+            
           </div>
           <div className="logo2">
                 <img src="/img/owl2.gif"></img>
