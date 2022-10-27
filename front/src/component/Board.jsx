@@ -127,8 +127,9 @@ export const Board = (props) => {
           }
         }
       });
-  }, [name]);
+  }, [name,checked]);
   useEffect(() => {
+    console.log("aaaaaaaaaaaaaaaaaa");
     if (err == false && total != 0) {
       let takeurl="gallery";
       if(checked){
@@ -177,13 +178,7 @@ export const Board = (props) => {
               </Link>
             </div>
           ) : null}
-          {total == 0 ? (
-            <div style={{ backgroundColor: "white", textAlign: "center" }}>
-              게시글이 없어요! 게시글을 추가해 보세요
-            </div>
-          ) : (
-            ""
-          )}
+          
           <hr
             style={{
               background: "#4545AC",
