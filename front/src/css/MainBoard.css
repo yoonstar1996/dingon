@@ -6,11 +6,24 @@
   /* margin-right: 20px; */
   margin-bottom: 30px;
   border-radius: 10px;
-  overflow-y: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
   border-radius: 20px;
 }
 .mainBoardsBox:hover{
   box-shadow: 1px 1px 7px 0px;
+}
+
+.mainBoardsBox::-webkit-scrollbar {
+  width: 8px;
+}
+.mainBoardsBox::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: #eaeaea;
+}
+.mainBoardsBox::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #8b8be6;
 }
 
 .boxPost {
