@@ -127,8 +127,9 @@ export const Board = (props) => {
           }
         }
       });
-  }, [name]);
+  }, [name,checked]);
   useEffect(() => {
+    console.log("aaaaaaaaaaaaaaaaaa");
     if (err == false && total != 0) {
       let takeurl="gallery";
       if(checked){
