@@ -14,51 +14,6 @@ import ErrorPage from "./ErrorPage";
 import ImageIcon from '@mui/icons-material/Image';
 import Best from "./Button/Best";
 import "../css/Board.css";
-const PaginationBox = styled.div`
-  a:link {
-    color: black;
-  }
-  .pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 15px;
-  }
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  ul.pagination li {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    border: 1px solid #e2e2e2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1rem;
-  }
-  ul.pagination li:first-child {
-    border-radius: 5px 0 0 5px;
-  }
-  ul.pagination li:last-child {
-    border-radius: 0 5px 5px 0;
-  }
-  ul.pagination li a {
-    text-decoration: none;
-    color: #4545ac;
-    font-size: 1rem;
-  }
-  ul.pagination li.active a {
-    color: white;
-  }
-  ul.pagination li.active {
-    background-color: #4545ac;
-  }
-  ul.pagination li a:hover,
-  ul.pagination li a.active {
-    color: white;
-  }
-`;
 export const SearchPage = (props) => {
     const columns = [
         { id: "number", label: "번호", minWidth: 100 },
@@ -72,14 +27,14 @@ export const SearchPage = (props) => {
         },
         {
             id: "time",
-            label: "작성일",
+            label: "갤러리",
             minWidth: 50,
             align: "center",
             format: (value) => value.toLocaleString("en-US"),
         },
         {
             id: "clicked",
-            label: "갤러리",
+            label: "조회수",
             minWidth: 5,
             align: "center",
             format: (value) => value.toFixed(2),
@@ -99,16 +54,19 @@ export const SearchPage = (props) => {
         axios({
             url: "http://localhost:8050/search/board",
             method: "get",
-            params:{name:content},
+            params:{name:encodeURI(content)},
             withCredentials: true,
           }).then((data) => {
             setList(data.data.list);
-            console.log(data.data.list);
+            console.log(data.data);
           });
 
     }, []);
     return (
-        <>
+        <>  
+        <h2>
+            검색결과
+        </h2>
             <TableContainer sx={{ maxHeight: 800 }}>
             <Table size="small">
               <TableHead>

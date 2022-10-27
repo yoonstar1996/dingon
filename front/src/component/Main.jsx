@@ -32,7 +32,7 @@ const Main = memo((props) => {
             }
           }
         ></Route>
-        <Route path="/serach/:content" element={<SearchPage/>}></Route>
+        <Route path="/search/:content" element={<SearchPage/>}></Route>
         <Route
           path="/gallery/:name"
           element={
