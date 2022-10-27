@@ -79,6 +79,8 @@ function AssignModal({ senddata }) {
       data: { email: Email },
     }).then((result) => {
       console.log(result.data);
+      let check =
+      /[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]$/i;
       if (result.data.code === 400) {
         console.log("겹침");
         alert("이메일이 겹칩니다");
@@ -86,6 +88,9 @@ function AssignModal({ senddata }) {
       }
       else if (Email === ""){
         alert("내용을 입력해주세요")
+      }
+      else if (!check.test(Email)){
+        alert("형식에 맞게 입력해주세요")
       }
       else {
         alert("success");
