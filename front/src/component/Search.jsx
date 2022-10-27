@@ -1,4 +1,3 @@
-import axios from "axios";
 import "../css/Search.css";
 import { useState, useEffect, useRef } from "react";
 import Input from "@mui/material/Input";
@@ -78,6 +77,7 @@ const Search = () => {
               <Input
                 type="text"
                 placeholder="검색"
+
                 onKeyUp={(e)=>{
                   if(e.key === "Enter"){
                     window.location = `/search/${name}`;

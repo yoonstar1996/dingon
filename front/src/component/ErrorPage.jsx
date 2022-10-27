@@ -1,3 +1,4 @@
+import { height } from "@mui/system";
 import React from "react";
 import "../css/ErrorPage.css";
 
@@ -13,6 +14,7 @@ const ErrorPage = (()=>{
                 404 Not Found
                 </div>
                 <hr></hr>
+                <img src="/img/pepe1.jpg" style={{width:"auto",height:"auto",float:"left"}}></img>
                 <div className="errTitle">
                 죄송합니다. 해당 페이지를 찾을 수 없습니다.
                 </div>         

@@ -86,7 +86,9 @@ const Show = ({ isLogin }) => {
       params: { postId: id },
       withCredentials: true,
     }).then((response) => {
-      console.log(response.data);
+      if(!response.data.nickName){
+        return window.location="/404";
+      }
       setTotal(response.data.total)
       // //console.log(response.data.postId);
       setUserId(response.data.userId);

@@ -220,15 +220,7 @@ export default function Mypage(userId, setUserId, nickname) {
                 </TableBody>
               </Table>
             </TableContainer>
-            <PaginationBox>
-              <Pagination
-                activePage={page}
-                itemsCountPerPage={10}
-                totalItemsCount={total}
-                pageRangeDisplayed={5}
-                onChange={handlePageChange}
-              ></Pagination>
-            </PaginationBox>
+           
           </div>
         </div>
       </div>

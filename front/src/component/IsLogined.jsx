@@ -18,7 +18,6 @@ export default function IsLogined({ setIsLogin, nickname, userId }) {
           icon : "success"
         })
         setIsLogin(false);
-        window.location = "/";
       } else {
         Swal.fire({
           title : "로그아웃 실패",

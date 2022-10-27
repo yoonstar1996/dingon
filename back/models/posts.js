@@ -10,7 +10,7 @@ module.exports = class Post extends Sequelize.Model{
             }
             ,
             content:{
-                type:Sequelize.STRING(1000),
+                type:Sequelize.TEXT("long"),
                 allowNull:false,
             },
             clicked:{

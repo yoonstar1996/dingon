@@ -37,6 +37,7 @@ export default function Loginbox({
           title : "로그인 실패",
           icon : "error"
         })
+        window.location="/";
       }
     });
   }
