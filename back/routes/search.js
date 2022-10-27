@@ -5,10 +5,14 @@ const { QueryTypes } = require('sequelize');
 const { sequelize } = require("../models");
 
 router.get("/board",async(req,res,next)=>{
-    const info = req.query.name;
     try{
-        const query = `select name from boards where name "${info}%"`;
+        const query = `select posts.id, posts.title, boards.name, users.nickName, posts.clicked from posts inner join users on users.id = posts.userId inner join boards on boards.id = posts.boardId where posts.title="%${req.query.name}%"`;
         const data = await sequelize.query(query,{type:QueryTypes.SELECT});
+        for (let i = 0; i<data.length; i++){
+            const query = `select * from likes where likes.PostId = "${data[i].id}"`;
+            const data2 = await sequelize.query (query,{type:QueryTypes.SELECT});
+            data[i].like = data2.length;
+        }
         res.send({code:200,list:data});
     }
     catch(err){
