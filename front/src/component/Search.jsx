@@ -74,15 +74,15 @@ const Search = () => {
             </div>
           </Link>
           <div className="searchengine">
-            <form>
+            
               <Input
                 type="text"
                 placeholder="검색"
-                onKeyUp={()=>{
-                  if(window.event.keyCode == 13){
-                    console.log("안녕하세요");
+
+                onKeyUp={(e)=>{
+                  if(e.key === "Enter"){
+                    window.location = `/search/${name}`;
                   }
-                  window.location = `/serach/${name}`;
                 }}
                 
                 onChange={(e) => {
@@ -95,7 +95,7 @@ const Search = () => {
               >
                 검색
               </button>
-            </form>
+            
           </div>
           <div className="logo2">
                 <img src="/img/owl2.gif"></img>
