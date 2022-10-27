@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../css/Fix.css";
+import Swal from "sweetalert2";
 
 export default function Fix({ userId }) {
   const [nickChange, setNickChange] = useState("");
@@ -15,19 +16,32 @@ export default function Fix({ userId }) {
       password: pwChange,
     };
     if (nickChange === "") {
-      alert("닉네임을 입력하세용");
+      Swal.fire({
+        title : "닉네임을 입력해주세요",
+        icon : "warning"
+      })
+
       return;
     } else if (nickChange.length <= 10) {
       console.log("10자 이하");
     } else if (nickChange.length > 10) {
-      alert("10글자 이하로 입력하세용");
+      Swal.fire({
+        title : "10글자 이하로 입력해주세요",
+        icon : "question"
+      })
       return;
     }
     if (pwChange === "") {
-      alert("비밀번호를 입력하세용");
+      Swal.fire({
+        title : "비밀번호를 입력해주세요",
+        icon : "warning"
+      })
       return;
     } else if (pwChange.length < 8) {
-      alert("8글자 이상 입력하세용");
+      Swal.fire({
+        title : "8글자 이상 입력해주세요",
+        icon : "question"
+      })
       return;
     } else if (pwChange.length >= 8) {
       console.log("헤위");
@@ -46,7 +60,10 @@ export default function Fix({ userId }) {
 
   const nickConfirm = () => {
     if (nickChange === "") {
-      alert("내용을 입력해주세요.");
+      Swal.fire({
+        title : "내용을 입력해주세요",
+        icon : "warning"
+      })
       return false;
     }
     axios({
@@ -58,13 +75,22 @@ export default function Fix({ userId }) {
       console.log(result.data);
       console.log("code", result.data.code);
       if (result.data.code === 400) {
-        alert("이미 존재하는 닉네임입니다.");
+        Swal.fire({
+          title : "이미 사용중인 닉네임입니다",
+          icon : "error"
+        })
         setFixBtnAble(false);
       } else if (result.data.code === 500) {
-        alert("서버상 문제가 발생했습니다.");
+        Swal.fire({
+          title : "서버상 문제가 발생했습니다",
+          icon : "error"
+        })
         setFixBtnAble(false);
       } else {
-        alert("사용 가능한 닉네임입니다.");
+        Swal.fire({
+          title : "사용 가능한 닉네임입니다.",
+          icon : "success"
+          })
         setFixBtnAble(true);
       }
     });

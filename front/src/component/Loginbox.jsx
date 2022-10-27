@@ -2,6 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Button from "@mui/material/Button";
+import Swal from "sweetalert2";
+
 export default function Loginbox({
   setOnAssign,
   isLogin,
@@ -31,7 +33,10 @@ export default function Loginbox({
         setNickname(response.data.user.nickName);
         setIsLogin(response.data.user.userId);
       } else {
-        alert("로그인 실패~");
+        Swal.fire({
+          title : "로그인 실패",
+          icon : "error"
+        })
         window.location="/";
       }
     });

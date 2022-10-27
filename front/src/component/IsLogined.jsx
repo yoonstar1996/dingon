@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export default function IsLogined({ setIsLogin, nickname, userId }) {
   const logout = () => {
@@ -12,10 +13,16 @@ export default function IsLogined({ setIsLogin, nickname, userId }) {
     }).then((response) => {
       console.log(response.data);
       if (response.data) {
-        alert("로그아웃~");
+        Swal.fire({
+          title : "로그아웃 완료",
+          icon : "success"
+        })
         setIsLogin(false);
       } else {
-        alert("로그아웃 실패~");
+        Swal.fire({
+          title : "로그아웃 실패",
+          icon : "error"
+        })
       }
     });
   };
