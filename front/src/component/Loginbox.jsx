@@ -32,6 +32,7 @@ export default function Loginbox({
         setIsLogin(response.data.user.userId);
       } else {
         alert("로그인 실패~");
+        window.location="/";
       }
     });
   }
