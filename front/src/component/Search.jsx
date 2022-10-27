@@ -77,23 +77,16 @@ const Search = () => {
             <form>
               <Input
                 type="text"
-                placeholder="검색"
+                placeholder="갤러리 검색"
                 onChange={(e) => {
                   // console.log(e.target.value);
                   setText(e.target.value);
+                  if(e.target.value != "" || null){
+                    let new_div = document.createElement("div");
+                  }
                 }}
               ></Input>
-              <button
-                onClick={() => {
-                  axios({
-                    url: "/search/board",
-                    method: "get",
-                    data: "name",
-                  });
-                }}
-              >
-                검색
-              </button>
+              
             </form>
           </div>
           <div className="logo2">
