@@ -12,6 +12,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import Good from "./Button/Good"
 import SubComment from "./SubComment";
 import { TextField } from "@mui/material";
+import Swal from "sweetalert2";
+
 const Show = ({ isLogin }) => {
   const PaginationBox = styled.div`
     a:link {
@@ -141,7 +143,10 @@ const Show = ({ isLogin }) => {
         console.log(response.data.code);
       })
     } else {
-      alert("댓글 절---대 안된다")
+      Swal.fire({
+        title : "로그인 후 댓글 작성이 가능합니다.",
+        icon : "question"
+      })
     }
 
   }
