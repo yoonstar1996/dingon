@@ -94,7 +94,7 @@ export const SearchPage = (props) => {
                         tabIndex={-1}
                         key={v.id}
                       >
-                        <TableCell>{v.id}</TableCell>
+                        <TableCell >{v.id}</TableCell>
                         <TableCell>
                           <div
                             style={{
