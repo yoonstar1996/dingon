@@ -22,11 +22,12 @@ export default function Fix({ userId }) {
       })
 
       return;
-    } else if (nickChange.length <= 10) {
-      console.log("10자 이하");
-    } else if (nickChange.length > 10) {
+    } else if (nickChange.length <= 8) {
+      console.log("8자 이하");
+    } else if (nickChange.length > 8) {
       Swal.fire({
-        title : "10글자 이하로 입력해주세요",
+        title : "2~8자 이내로 입력해주세요",
+        text : "초성, 특수문자 사용 불가능",
         icon : "question"
       })
       return;
@@ -72,6 +73,7 @@ export default function Fix({ userId }) {
       withCredentials: true,
       data: { nickName: nickChange },
     }).then((result) => {
+      let check = /^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,8}$/;
       console.log(result.data);
       console.log("code", result.data.code);
       if (result.data.code === 400) {
@@ -80,13 +82,24 @@ export default function Fix({ userId }) {
           icon : "error"
         })
         setFixBtnAble(false);
-      } else if (result.data.code === 500) {
+      } 
+      
+      else if (result.data.code === 500) {
         Swal.fire({
           title : "서버상 문제가 발생했습니다",
           icon : "error"
         })
         setFixBtnAble(false);
-      } else {
+      } 
+      else if(!check.test(nickChange)){
+        Swal.fire({
+          title : "2~8자 이내로 입력해주세요",
+          text : "초성, 특수문자 사용 불가능",
+          icon : "question"
+        })
+        setFixBtnAble(false);
+      }
+      else {
         Swal.fire({
           title : "사용 가능한 닉네임입니다.",
           icon : "success"
@@ -136,16 +149,16 @@ export default function Fix({ userId }) {
                   닉네임 :
                 </label>
                 <input
-                  maxLength={10}
+                  maxLength={8}
                   type="text"
-                  placeholder="10자 이하로 입력"
+                  placeholder="8자 이하로 입력"
                   id="nickname"
                   className="fixnick"
                   name="nickname"
                   value={nickChange}
                   onChange={(e) => {
                     setNickChange(e.target.value);
-                    if (e.target.value.length < 10) {
+                    if (e.target.value.length <= 10) {
                       setLength(true);
                     } else {
                       setLength(false);
@@ -162,7 +175,7 @@ export default function Fix({ userId }) {
                 </button>
 
                 <div className={length ? "d-none" : "color"}>
-                  10자 이하로 입력
+                  8자 이하로 입력
                 </div>
                 <br />
 

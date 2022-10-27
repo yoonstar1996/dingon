@@ -131,7 +131,7 @@ function PostMade() {
                 <TextField onChange={(e)=>{setTitle(e.target.value)
                 if(e.target.value.length >= 15){
                   Swal.fire({
-                    title : "제목은 최대 15자까지 입력 가능합니다",
+                    title : "제목 길게 쓰지마세요잉~!",
                     icon : "question"
                   })
                   e.target.value = ""
