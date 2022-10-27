@@ -4,7 +4,7 @@ import "../css/NewBoard.css";
 import Button from "@mui/material/Button"
 import CheckIcon from '@mui/icons-material/Check';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-
+import Swal from "sweetalert2";
 
 function NewBoard(){
     const [Name, setName] = useState("");
@@ -18,17 +18,27 @@ function NewBoard(){
             data : {name : Name}
         }).then((result) => {
             if(result.data.code === 200){
-                alert("갤러리 생성이 완료됐습니다!")
+                Swal.fire({
+                    title : "갤러리 생성이 완료됐습니다!",
+                    icon : "success",
+                    timer : 3000 
+                })
                 window.location.replace(`/gallery/${Name}`)
             }
             else{
-                alert("갤러리 생성에 실패했습니다.")
+                Swal.fire({
+                    title: "갤러리 생성에 실패했습니다",
+                    icon : "error"
+                })
             }
         }); 
     };
     const checkBoardName = () => {
         if(Name == ""){
-            alert("내용을 입력해주세요.");
+            Swal.fire({
+                title : "내용을 입력해주세요",
+                icon : "warning",
+            })
             return false;
         }
         axios({
@@ -39,15 +49,24 @@ function NewBoard(){
         }).then((result) => {
             console.log("resultData : ", result.data);
             if (result.data.code === 400){
-                alert("이미 존재하는 갤러리이름입니다.");
+                Swal.fire({
+                    title: "이미 존재하는 갤러리이름입니다",
+                    icon: "error"
+                })
                 setBtnAble(false);
             }
             else if (result.data.code === 500){
-                alert("서버상 문제가 발생했습니다");
+                Swal.fire({
+                    title: "서버상 문제가 발생했습니다",
+                    icon: "error"
+                })
                 setBtnAble(false);
             }
             else {
-                alert("등록 가능한 갤러리 이름입니다!");
+                Swal.fire({
+                    title : "등록 가능한 갤러리 이름입니다",
+                    icon : "info"
+                })
                 setBtnAble(true);
             }
         })
@@ -74,7 +93,10 @@ function NewBoard(){
                             setBtnAble(false);
                             setTxtLength(e.target.value.length);
                             if(e.target.value.length > 6){
-                                alert("최대 6자까지 입력 가능합니다")
+                                Swal.fire({
+                                    title: "최대 6자까지 입력 가능합니다",
+                                    icon : "question"
+                                })
                             }
                         }}
                         maxLength={6}

@@ -2,6 +2,8 @@ import { useRef, useState } from "react"
 import "../css/subComment.css"
 import { TextField ,Button } from "@mui/material";
 import axios from "axios";
+import Swal from "sweetalert2";
+
 const SubComment = ({postId, commentId ,isLogin}) => {
 
     const [subComment,setSubComment]=useState("");
@@ -18,7 +20,10 @@ const SubComment = ({postId, commentId ,isLogin}) => {
                 window.location.reload();
               });
         }else{
-            alert("댓글 절---대 안된다")
+            Swal.fire({
+                title : "로그인 후 댓글 작성이 가능합니다.",
+                icon : "question"
+              })
         }
     }
 

@@ -8,6 +8,8 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useState, useMemo,useRef } from "react"
 import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
+
 function PostMade() {
     const [title,setTitle]=useState("");
     const [value, setValue] = useState(''); // 에디터 속 콘텐츠를 저장하는 state
@@ -96,7 +98,10 @@ function PostMade() {
           content:quillRef.current.value
         }
         if(title.length===0){
-          alert("제목은 비면 안되용!");
+          Swal.fire({
+            title : "제목을 입력해주세요",
+            icon : "warning",
+        })
           return;
         }
         const result = await axios({
@@ -109,7 +114,10 @@ function PostMade() {
           window.location=`/gallery/${name}`;
         }
         else{
-          alert("서버에러 났음ㅋ");
+          Swal.fire({
+            title : "서버상 문제가 발생했습니다",
+            icon : "error"
+          })
           window.location=`/gallery/${name}`;
         }
       }
@@ -122,7 +130,10 @@ function PostMade() {
             <div className="titlename">
                 <TextField onChange={(e)=>{setTitle(e.target.value)
                 if(e.target.value.length >= 15){
-                  alert("제목 그만 늘려라");
+                  Swal.fire({
+                    title : "제목은 최대 15자까지 입력 가능합니다",
+                    icon : "question"
+                  })
                   e.target.value = ""
                 }}} fullWidth type="text" placeholder="제목" maxLength={15}/>
             </div>

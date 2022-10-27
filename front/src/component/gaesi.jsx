@@ -1,5 +1,3 @@
-
-
 import "../css/Gaesi.css";
 import { useState, useRef, useMemo, useEffect } from "react";
 import React from "react";
@@ -10,6 +8,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import Swal from "sweetalert2";
 const Gaesi = () => {
   const [title, Settitle] = useState(""); // 콘텐츠 타이틀
   const [content, Setcontent] = useState(""); // 콘텐츠 저장하기
@@ -179,7 +178,10 @@ const Gaesi = () => {
                 withCredentials: true,
               }).then((response) => {
                 if (response.data.code == 200) {
-                  alert("삭제 가버렷!!!!!!");
+                  Swal.fire({
+                    title : "정상적으로 삭제되었습니다",
+                    icon : "success"
+                  })
                   window.location = `/gallery/${name}`;
                 }
               });
@@ -199,10 +201,16 @@ const Gaesi = () => {
                 content: quillRef.current.value,
               };
               if (title.length === 0) {
-                alert("믿을 수 없을만큼 돌아버린거냐? 제목 써라");
+                Swal.fire({
+                  title : "제목을 입력해주세요",
+                  icon : "warning",
+              })
                 return;
               } else if (content.length == "" || 0 ) {
-                alert("두부외상 이라 내용 쓰는거 까먹음?");
+                Swal.fire({
+                  title : "내용을 입력해주세요",
+                  icon : "warning",
+              })
                 return;
               }
               axios({
@@ -212,10 +220,17 @@ const Gaesi = () => {
                 withCredentials: true,
               }).then((response) => {
                 if (response.data.code == 200) {
-                  alert("수정성공");
+                  
+                  Swal.fire({
+                    title : "정상적으로 수정되었습니다",
+                    icon : "success"
+                  })
                   window.location = `/post/${name}/${postid}`;
                 } else {
-                  alert("수정불가");
+                  Swal.fire({
+                    title : "수정이 불가합니다.",
+                    icon: "error"
+                  })
                 }
               });
             }}
