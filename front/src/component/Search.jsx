@@ -85,10 +85,14 @@ const Search = () => {
               ></Input>
               <button
                 onClick={() => {
+                  
+                  window.location = "/serach/:content";
                   axios({
                     url: "/search/board",
                     method: "get",
                     data: "name",
+                  }).then((response)=>{
+                    console.log(response.data);
                   });
                 }}
               >

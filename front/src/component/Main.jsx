@@ -31,7 +31,7 @@ const Main = memo((props) => {
             }
           }
         ></Route>
-        <Route path="/serach/:content" element={<></>}></Route>
+        <Route path="/serach/:content" element={<><div>안녕</div></>}></Route>
         <Route
           path="/gallery/:name"
           element={
