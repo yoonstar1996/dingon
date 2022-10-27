@@ -144,7 +144,7 @@ const Show = ({ isLogin }) => {
       })
     } else {
       Swal.fire({
-        title : "로그인 후 댓글 작성이 가능합니다.",
+        title : "로그인 `해줘` ",
         icon : "question"
       })
     }
