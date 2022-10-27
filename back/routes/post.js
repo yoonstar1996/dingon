@@ -97,7 +97,7 @@ router.get("/my",isLoggedIn,async(req,res,next)=>{
         const data =await sequelize.query(query,{type:QueryTypes.SELECT});
         for (let i = 0 ; i<data.length;i++){
             const query = `select * from likes where PostId="${data[i].id}"`;
-            const data2 = sequelize.query(query,{QueryTypes:SELECT});
+            const data2 = sequelize.query(query,{type:QueryTypes.SELECT});
             data[i].like = data2.length;
         }
         res.send({code:200,list:data});
