@@ -10,7 +10,7 @@
   border-radius: 20px;
 }
 .mainBoardsBox:hover{
-  box-shadow: 1px 1px 5px 0px;
+  box-shadow: 1px 1px 7px 0px;
 }
 
 .boxPost {
@@ -33,7 +33,7 @@
   background-color: rgb(69, 69, 172);
   color: white;
   width: 380px;
-  height: 40px;
+  height: 30px;
 }
 .boardTitle:hover{
   color: yellow;
