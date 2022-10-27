@@ -125,7 +125,7 @@ function AssignModal({ senddata }) {
       withCredentials: true,
     }).then((result) => {
       console.log(result.data);
-      let check = /^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,10}$/;
+      let check = /^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,8}$/;
 
       if (result.data.code === 400) {
         console.log("겹침");
@@ -143,7 +143,8 @@ function AssignModal({ senddata }) {
       }
       else if(!check.test(nickName)){
         Swal.fire({
-          title : "2~10자 이내로 입력해주세요",
+          title : "2~8자 이내로 입력해주세요",
+          text : "초성, 특수문자 사용 불가능",
           icon : "question"
         })
       }
